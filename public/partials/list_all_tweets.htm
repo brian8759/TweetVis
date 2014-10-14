@@ -1,0 +1,45 @@
+<section>
+	<div>
+		<h1>
+			Complete List of All Tweets Users
+		</h1>
+	</div>
+
+	<div>
+		<label>
+			Search:
+		</label>
+		<input type="text" class="form-control" ng-model="query" placeholder="Search for a Tweet User" autofocus>
+
+		<label class="form-group"> by:
+			<select ng-model="tweetOrder">
+				<option value="user_screen_name">User Screen Name</option>
+				<option value="created_at">Created Time</option>
+			</select>
+		</label>
+
+		<label class="form-group">
+			<input type="radio" ng-model="direction" name="direction" checked>
+			ascending
+		</label>
+		<label class="form-group">
+			<input type="radio" ng-model="direction" name="direction" value="reverse">
+			descending
+		</label>
+	</div>
+	
+	<div class="col-xs-12"><hr></div>
+    
+    <div ng-switch on="tweets.length">
+    	<ul ng-switch-when="0">
+    		<li><em> There are no tweets in the DB right now.</em></li>
+    	</ul>
+    	<ul ng-switch-default>
+    		<li ng-repeat="tweet in tweets | filter: query | orderBy: tweetOrder:direction">
+    			<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name}}</a>
+    		</li>
+    	</ul>
+
+    </div>
+
+</section>

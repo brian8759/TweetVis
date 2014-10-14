@@ -3,3 +3,25 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  // load all those lib first
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js')
+  script(src='https://code.angularjs.org/1.2.26/angular-animate.js')
+  script(src='https://code.angularjs.org/1.2.26/angular-resource.js')
+  script(src='https://code.angularjs.org/1.2.26/angular-route.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+  script(src="https://cdn.socket.io/socket.io-1.1.0.js")
+  // load user scripts
+  //script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/ng-app.js')
+  script(src='/javascripts/ng-controllers.js')
+  script(src='/javascripts/ng-services.js')
+  // make a shortcut for "listing all valid tweets"
+  div(ng-controller="ListAllTweetsController")
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      div.navbar-header
+        a.navbar-brand(href='#/all_tweets') Show All Tweets
+
+  // different views corresponding to different routers    
+  div.container
+    div(ng-view)
