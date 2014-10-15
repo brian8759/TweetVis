@@ -16,7 +16,8 @@ var tweetSchema = new Schema({
 		// nested schema!!
 		geo: [geoSchema],
 		user_screen_name: String
-	});
+	}, {collection: "Oct16thEvent"});
 
+//var collection = 'Oct16thEvent';
 
-module.exports = mongoose.model('EbolaLatest', tweetSchema);
+module.exports = mongoose.model('Oct16thEvent', tweetSchema);

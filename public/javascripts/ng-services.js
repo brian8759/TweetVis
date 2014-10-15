@@ -1,9 +1,9 @@
 "use strict";
 
-var TweetServices = angular.module('TweetServices', ['ngResource']);
+var TweetServices = angular.module('tweetvis.Services', []);
 
-TweetServices.factory('Tweet', function($resoure) {
-  var ret = $resoure('tweetAPI/:tweetId', {}, {
+TweetServices.factory('Tweet', function($resource) {
+  var ret = $resource('tweetAPI/:tweetId', {}, {
     query: {
       method: 'GET', params: { tweetId: 'All' }, isArray: true
     }

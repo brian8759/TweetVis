@@ -36,7 +36,7 @@
     	</ul>
     	<ul ng-switch-default>
     		<li ng-repeat="tweet in tweets | filter: query | orderBy: tweetOrder:direction">
-    			<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name}}</a>
+    			<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name + "@" + tweet.created_at}}</a>
     		</li>
     	</ul>
 
