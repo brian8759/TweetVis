@@ -21,12 +21,12 @@ router.get('/tweetAPI/All', function(req, res) {
 
 router.get('/tweetAPI/:tweetId', function(req, res) {
   var tweetId = req.params.tweetId;
-  console.log(tweetId);
+  //console.log(tweetId);
   Tweet.findById(tweetId, '', {lean: true}, function(err, tweet) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
-      console.log(tweet);
+      //console.log(tweet);
       res.json(tweet);
     }
   });
