@@ -1,0 +1,35 @@
+<section>
+	<div>
+		<h1>
+			Inside google map!!
+		</h1>
+	</div>
+	<style type="text/css">
+	html, body{
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+        #map_canvas {
+            height: 500px;
+            margin: 200px;
+            position: relative;
+        }
+
+        .angular-google-map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+	</style>
+	<div id="map_canvas" ng-controller="GoogleMapController">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+        <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
+        </ui-gmap-markers>
+    </ui-gmap-google-map>
+    </div>
+
+</section>

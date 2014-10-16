@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+//var path = require('path');
 var Tweet = require('../schema/TweetSchema');
 
 /* GET home page. */
@@ -27,6 +27,7 @@ router.get('/tweetAPI/:tweetId', function(req, res) {
       res.status(500).json({ status: 'failure' });
     } else {
       //console.log(tweet);
+      //res.sendFile(path.join(__dirname, '../public/partials/', 'googlemap.htm'));
       res.json(tweet);
     }
   });

@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var geoSchema = new Schema({
-	type: String,
-	coordinates: [Number]
+	'type': { type: String, default: "Point" },
+	coordinates: [{ type: "Number" }]
 });
 
 //var Geo = mongoose.model('Geo', geoSchema);

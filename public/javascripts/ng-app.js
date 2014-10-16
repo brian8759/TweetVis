@@ -1,6 +1,6 @@
 "use strict";
 
-var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 'tweetvis.Controllers', 'tweetvis.Services']);
+var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 'tweetvis.Controllers', 'tweetvis.Services', 'google-maps'.ns()]);
 
 tweetvis.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -12,6 +12,10 @@ tweetvis.config(['$routeProvider', function($routeProvider) {
   when('/tweet/:tweetId', {
     templateUrl: 'partials/list_one_tweet.htm',
     controller: 'ListOneTweetController'
+  }).
+  when('/googlemap', {
+    templateUrl: 'partials/googlemap.htm',
+    controller: 'GoogleMapController'
   }).
   otherwise({
     redirectTo: '/all_tweets'
