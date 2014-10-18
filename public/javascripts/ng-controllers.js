@@ -16,6 +16,8 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', funct
 
     $scope.tweets.$promise.then(function () {
     $scope.totalItems = $scope.tweets.length;
+    $scope.numOfPages = 8;
+    $scope.maxSize = 8;
     $scope.$watch('currentPage + itemsPerPage', function() {
       var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
         end = begin + $scope.itemsPerPage;
