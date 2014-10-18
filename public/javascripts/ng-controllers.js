@@ -4,20 +4,26 @@ var TweetControllers = angular.module('tweetvis.Controllers', []);
 
 TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', function($scope, Tweet) {
     $scope.tweets = Tweet.query();
-    $scope.totalItems = 64;
-    $scope.currentPage = 4;
 
-    $scope.setPage = function (pageNo) {
-        $scope.currentPage = pageNo;
+    $scope.totalItems = $scope.tweets.length;
+
+    $scope.currentPage = 1;
+    $scope.numPerPage = 20;
+
+    $scope.pageCount = function () {
+        return Math.ceil($scope.tweets.length / $scope.numPerPage);
     };
 
-    $scope.pageChanged = function() {
-        console.log('Page changed to: ' + $scope.currentPage);
-    };
+    $scope.tweets.$promise.then(function() {
+        $scope.totalItems = $scope.tweets.length;
+        $scope.$watch('currentPage + numPerPage', function() {
+            var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+            var end = begin + $scope.numPerPage;
 
-    $scope.maxSize = 5;
-    $scope.bigTotalItems = 175;
-    $scope.bigCurrentPage = 1;
+            $scope.filteredTweets = $scope.tweets.slice(begin, end);
+        });
+    });
+
 }]);
 
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
