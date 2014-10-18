@@ -33,7 +33,9 @@
         <ui-gmap-markers models="randomMarkers" coords="'geometry'" icon="'icon'" fit='true' doCluster=true click="'onClick'">
             <ui-gmap-windows show="show">
                 <div ng-non-bindable>
-                    {{user}}
+                    {{user}}<br>
+                    {{created_at}}<br>
+                    {{text}}
                 </div>
             </ui-gmap-windows>
         </ui-gmap-markers>

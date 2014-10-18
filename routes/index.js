@@ -28,7 +28,7 @@ router.get('/tweetAPI/All', function(req, res) {
 router.get('/tweetAPI/Map', function(req, res) {
   //Tweet.find({}, 'user_screen_name created_at', function(err, tweets) {
   model.find({}, '', {lean: true})
-  .limit(100)
+  .limit(1000)
   .exec(function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });

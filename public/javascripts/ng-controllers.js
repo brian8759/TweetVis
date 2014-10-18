@@ -68,7 +68,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
         bounds: {}
     };
     $scope.options = {scrollwheel: false};
-
+    $scope.randomMarkers = [];
     var createRandomMarker = function(i, tweet, idKey) {
         if (idKey == null) {
             idKey = "id";
@@ -87,7 +87,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
 
         ret.onClick = function() {
             console.log("Clicked!");
-            ret.show = !ret.show;
+            ret.show = true;
             //$scope.apply();
         };
         ret[idKey] = i;
@@ -97,10 +97,10 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
     $scope.tweets.$promise.then(function() {
         // when it comes here, it means all tweets info have been retrieved
         // then we can use $scope.tweets.forEach(fucntion(tweet) {create markers})
-        var tweetsCopy = $scope.tweets;
-        console.log("total tweets:", tweetsCopy.length);
+        //var tweetsCopy = $scope.tweets;
+        console.log("total tweets:", $scope.tweets.length);
         
-        $scope.randomMarkers = [];
+        
         $scope.$watch(function() { return $scope.map.bounds; }, function(nv, ov) {
             console.log("start to generate markers!");
             // Only need to regenerate once
@@ -108,16 +108,13 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
             if (!ov.southwest && nv.southwest) {
                 var markers = [];
                 //var count = 1;
-                var len = tweetsCopy.length;
+                var len = $scope.tweets.length;
                 for (var i = 0; i < len; i++) {
                     //console.log($scope.tweets[i]);
-                    var tweet = tweetsCopy[i];
+                    var tweet = $scope.tweets[i];
                     markers.push(createRandomMarker(i, tweet));
                     //console.log(markers[i]);
-                    //count = count + 1;
                 }
-            
-                //$scope.randomMarkers = [];
                 $scope.randomMarkers = markers;
             }
         }, true);
