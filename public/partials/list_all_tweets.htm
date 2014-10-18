@@ -35,15 +35,18 @@
     		<li><em> There are no tweets in the DB right now.</em></li>
     	</ul>
     	<ul ng-switch-default>
-    		<li ng-repeat="tweet in filteredTweets | filter: query | orderBy: tweetOrder:direction">
+    		
+    		<li ng-repeat="tweet in filteredTweets">
     			<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name + "@" + tweet.created_at}}</a>
     		</li>
     	</ul>
-    	<pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
-    	<pre>The selected page no: {{currentPage}}</pre>
+
+    	<pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()" boundary-links="true"></pagination>
+    	<p>
+      total Items: {{totalItems}}<br />
+      Items per page: {{itemsPerPage}}<br />
+      Current Page: {{currentPage}}
+      </p>
     </div>
-    <hr>
-    <div>
-    	
-    </div>
+   
 </section>

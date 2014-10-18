@@ -1,6 +1,7 @@
 "use strict";
 
-var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 'tweetvis.Controllers', 'tweetvis.Services', 'ui.bootstrap', 'google-maps'.ns()]);
+var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 
+  'tweetvis.Controllers', 'tweetvis.Services', 'ui.bootstrap', 'google-maps'.ns()]);
 
 tweetvis.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -21,3 +22,5 @@ tweetvis.config(['$routeProvider', function($routeProvider) {
     redirectTo: '/all_tweets'
   });
 }]);
+
+

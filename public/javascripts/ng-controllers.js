@@ -3,27 +3,41 @@
 var TweetControllers = angular.module('tweetvis.Controllers', []);
 
 TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', function($scope, Tweet) {
+    // async get tweets from DB
     $scope.tweets = Tweet.query();
 
-    $scope.totalItems = $scope.tweets.length;
-
+    //$scope.totalItems = 64;
+    $scope.itemsPerPage = 20;
     $scope.currentPage = 1;
-    $scope.numPerPage = 20;
 
-    $scope.pageCount = function () {
-        return Math.ceil($scope.tweets.length / $scope.numPerPage);
+    $scope.pageChanged = function() {
+        console.log('Page changed to: ' + $scope.currentPage);
     };
 
-    $scope.tweets.$promise.then(function() {
-        $scope.totalItems = $scope.tweets.length;
-        $scope.$watch('currentPage + numPerPage', function() {
-            var begin = (($scope.currentPage - 1) * $scope.numPerPage);
-            var end = begin + $scope.numPerPage;
+    $scope.tweets.$promise.then(function () {
+    $scope.totalItems = $scope.tweets.length;
+    $scope.$watch('currentPage + itemsPerPage', function() {
+      var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+        end = begin + $scope.itemsPerPage;
 
-            $scope.filteredTweets = $scope.tweets.slice(begin, end);
-        });
+      $scope.filteredTweets = $scope.tweets.slice(begin, end);
+      console.log("filteredTweets:", $scope.filteredTweets.length);
+      console.log("total tweets", $scope.tweets.length);
     });
-
+  });
+    /*
+    $scope.totalItems = $scope.tweets.length;
+    $scope.currentPage = 1;
+    $scope.numPerPage = 10;
+  
+    $scope.paginate = function(value) {
+        var begin, end, index;
+        begin = ($scope.currentPage - 1) * $scope.numPerPage;
+        end = begin + $scope.numPerPage;
+        index = $scope.tweets.indexOf(value);
+        return (begin <= index && index < end);
+    };
+    */
 }]);
 
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
