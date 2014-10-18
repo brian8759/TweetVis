@@ -36,12 +36,12 @@
     	</ul>
     	<ul ng-switch-default>
     		
-    		<li ng-repeat="tweet in filteredTweets | startFrom:(currentPage-1)*itemsPerPage | limitTo:itemsPerPage">
+    		<li ng-repeat="tweet in filteredTweets | startFrom:(currentPage-1)*itemsPerPage | limitTo:itemsPerPage | orderBy: tweetOrder: direction">
     			<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name + "@" + tweet.created_at}}</a>
     		</li>
     	</ul>
 
-    	<pagination total-items="totalItems" num-pages="noOfPages" items-per-page="itemsPerPage" max-size="maxSize" current-page="currentPage" class="pagination-small" boundary-links="true"></pagination>
+    	<pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" class="pagination-small" boundary-links="true"></pagination>
     	<p>
       total Items: {{totalItems}}<br />
       Items per page: {{itemsPerPage}}<br />

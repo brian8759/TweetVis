@@ -29,10 +29,13 @@ TweetControllers.controller('ListAllTweetsController', function($scope, Tweet, $
     $scope.totalItems = $scope.tweets.length;
     //$scope.numOfPages = 8;
     $scope.maxSize = 8;
-    $scope.$watch('query', function (newQuery) {
+    $scope.$watch('query', function (newQuery, oldQuery) {
         $scope.currentPage = 1;
         $scope.filteredTweets = $filter('filter')($scope.tweets, $scope.query);
         $scope.noOfPages = $scope.filteredTweets.length / $scope.itemsPerPage;
+        if(newQuery !== oldQuery) {
+            $scope.totalItems = $scope.filteredTweets.length;
+        }
         //$scope.$apply();
     });
   });
