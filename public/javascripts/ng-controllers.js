@@ -2,7 +2,7 @@
 
 var TweetControllers = angular.module('tweetvis.Controllers', []);
 
-TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', function($scope, Tweet) {
+TweetControllers.controller('ListAllTweetsController', function($scope, Tweet, $filter) {
     // async get tweets from DB
     $scope.tweets = Tweet.query();
 
@@ -10,13 +10,10 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', funct
     $scope.itemsPerPage = 20;
     $scope.currentPage = 1;
 
-    $scope.pageChanged = function() {
-        console.log('Page changed to: ' + $scope.currentPage);
-    };
-
+/*
     $scope.tweets.$promise.then(function () {
     $scope.totalItems = $scope.tweets.length;
-    $scope.numOfPages = 8;
+    //$scope.numOfPages = 8;
     $scope.maxSize = 8;
     $scope.$watch('currentPage + itemsPerPage', function() {
       var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
@@ -25,6 +22,18 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', funct
       $scope.filteredTweets = $scope.tweets.slice(begin, end);
       console.log("filteredTweets:", $scope.filteredTweets.length);
       console.log("total tweets", $scope.tweets.length);
+    });
+  });
+*/
+    $scope.tweets.$promise.then(function () {
+    $scope.totalItems = $scope.tweets.length;
+    //$scope.numOfPages = 8;
+    $scope.maxSize = 8;
+    $scope.$watch('query', function (newQuery) {
+        $scope.currentPage = 1;
+        $scope.filteredTweets = $filter('filter')($scope.tweets, $scope.query);
+        $scope.noOfPages = $scope.filteredTweets.length / $scope.itemsPerPage;
+        //$scope.$apply();
     });
   });
     /*
@@ -40,7 +49,7 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', funct
         return (begin <= index && index < end);
     };
     */
-}]);
+});
 
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
     $scope.tweet = Tweet.get({ tweetId: $routeParams.tweetId });
