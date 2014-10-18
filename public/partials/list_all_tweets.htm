@@ -40,10 +40,10 @@
     		</li>
     	</ul>
     </div>
-    <!--
-    </div>
-      <p>Try to load googlemap.htm</p>
-      <iframe src="file:///Users/Anne/Documents/TweetVis/public/partials/googlemap.htm" seamless id="PageContent_Iframe"></iframe>
+    <hr>
     <div>
-    -->
+    	<pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    	<pre>The selected page no: {{currentPage}}</pre>
+    	<button class="btn btn-info" ng-click="setPage(3)">Set current page to: 3</button>
+    </div>
 </section>
