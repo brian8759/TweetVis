@@ -11,13 +11,14 @@ var geoSchema = new Schema({
 var tweetSchema = new Schema({
 		text: String,
 		created_at: Date,
-		source: String,
+		//source: String,
 		//geo: {type: mongoose.Schema.Types.ObjectId, ref: 'Geo'},
 		// nested schema!!
-		geo: [geoSchema],
+		// geo: [geoSchema]
+		coordinates: [geoSchema],
 		user_screen_name: String
-	}, {collection: "Oct16thEvent"});
+	}, {collection: 'EbolaGeo'});
 
 //var collection = 'Oct16thEvent';
-
-module.exports = mongoose.model('Oct16thEvent', tweetSchema);
+//module.exports = tweetSchema;
+module.exports = mongoose.model('EbolaGeo', tweetSchema);
