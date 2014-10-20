@@ -56,6 +56,7 @@ TweetControllers.controller('ListAllTweetsController', function($scope, Tweet, $
 
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
     $scope.tweet = Tweet.get({ tweetId: $routeParams.tweetId });
+    //Tweet.render();
 }]);
 
 TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function($scope, Tweet) {

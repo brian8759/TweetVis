@@ -10,7 +10,8 @@ var model = require('../schema/TweetSchema');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'TweetVis' });
+  //res.render('index', { title: 'TweetVis' });
+  res.render('googlemap',{});
 });
 
 router.get('/tweetAPI/All', function(req, res) {
@@ -47,6 +48,10 @@ router.get('/tweetAPI/Map', function(req, res) {
     }
   }); 
 */
+});
+
+router.get('/tweetAPI/Render', function(req, res) {
+  res.render('googlemap',{});
 });
 
 router.get('/tweetAPI/:tweetId', function(req, res) {

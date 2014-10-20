@@ -10,6 +10,10 @@ TweetServices.factory('Tweet', function($resource) {
     
     map: {
       method: 'GET', params: { tweetId: 'Map' }, isArray: true
+    },
+
+    render: {
+      method: 'GET', params: { tweetId: 'Render' }, isArray: true
     }
     
     // we can define more methods here

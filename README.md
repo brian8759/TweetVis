@@ -15,3 +15,9 @@ And I combine the pagination with user defined query and the sorting method.
 Besides, I have used the angular-google-maps to show the tweets' geo location. 
 The markers will be clustered at the first time. Then user can click it and zoom into the detail part.
 If user click the marker, the info window will show the detail part of the tweet.
+
+
+However, if we have too many markers to draw on the google map, it will be really slow to render the map with makers in the browser(client side).
+Therefore, we need to render the google map with markers in the node.js, via jade.
+
+googlemap.jade is a test file to render the google map with four markers in the node.js with jade. And it works!!
