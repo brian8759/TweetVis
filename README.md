@@ -5,3 +5,13 @@ Use MongoDB as the database storage.
 Use Node.js and express.js to make the back end. 
 Use Mongoose as the connection layer between Node.js and MongoDB.
 Use Angular.js to do the front end.
+
+I used ngRoute to handle different views. 
+So far, three views, they are, "listing all tweets in the DB", "listing the detail info of certain tweet" and 
+"visualizing the tweets' GEO in the google map"
+So far, I have used UI Boottrap to implement the pagination.
+And I combine the pagination with user defined query and the sorting method.
+
+Besides, I have used the angular-google-maps to show the tweets' geo location. 
+The markers will be clustered at the first time. Then user can click it and zoom into the detail part.
+If user click the marker, the info window will show the detail part of the tweet.
