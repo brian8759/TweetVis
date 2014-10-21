@@ -65,32 +65,32 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
     // set up a map
 	$scope.map = {
         center: {latitude: 40.1451, longitude: -99.6680 }, 
-        zoom: 1, 
+        zoom: 3, 
         bounds: {}
     };
     $scope.options = {scrollwheel: false};
     $scope.randomMarkers = [];
-    var createRandomMarker = function(i, tweet, idKey) {
+    var createMarker = function(i, tweet, idKey) {
         if (idKey == null) {
             idKey = "id";
         }
 
         var ret = {
-            geometry: tweet.coordinates,
-                //latitude: latitude,
-                //longitude: longitude,
-            user: tweet.user_screen_name,
-            created_at: tweet.created_at,
-            text: tweet.text,
+            geometry: tweet.geo,
+            tweetId: tweet._id
+            //user: tweet.user_screen_name,
+            //created_at: tweet.created_at,
+            //text: tweet.text,
             //source: tweet.source,
-            show: false
+            //show: false
         };
-
+        /*
         ret.onClick = function() {
             console.log("Clicked!");
             ret.show = true;
             //$scope.apply();
         };
+        */
         ret[idKey] = i;
         return ret;
     };
@@ -100,8 +100,16 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
         // then we can use $scope.tweets.forEach(fucntion(tweet) {create markers})
         //var tweetsCopy = $scope.tweets;
         console.log("total tweets:", $scope.tweets.length);
-        
-        
+        var markers = [];
+        var len = $scope.tweets.length;
+        for (var i = 0; i < len; i++) {
+            //console.log($scope.tweets[i]);
+            var tweet = $scope.tweets[i];
+            markers.push(createMarker(i, tweet));
+            //console.log(markers[i]);
+        }
+        $scope.randomMarkers = markers;
+        /*
         $scope.$watch(function() { return $scope.map.bounds; }, function(nv, ov) {
             console.log("start to generate markers!");
             // Only need to regenerate once
@@ -113,50 +121,12 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
                 for (var i = 0; i < len; i++) {
                     //console.log($scope.tweets[i]);
                     var tweet = $scope.tweets[i];
-                    markers.push(createRandomMarker(i, tweet));
+                    markers.push(createMarker(i, tweet));
                     //console.log(markers[i]);
                 }
                 $scope.randomMarkers = markers;
             }
         }, true);
-    
+        */
     });
-    /*
-        var createRandomMarker = function (i, bounds, idKey) {
-            var lat_min = bounds.southwest.latitude,
-                lat_range = bounds.northeast.latitude - lat_min,
-                lng_min = bounds.southwest.longitude,
-                lng_range = bounds.northeast.longitude - lng_min;
-
-            if (idKey == null) {
-                idKey = "id";
-            }
-
-            var latitude = lat_min + (Math.random() * lat_range);
-            var longitude = lng_min + (Math.random() * lng_range);
-            var ret = {
-                geometry: {
-                    type: "Point",
-                    coordinates: [ -77, 33 ]
-                },
-                //latitude: latitude,
-                //longitude: longitude,
-                title: 'm' + i
-            };
-            ret[idKey] = i;
-            return ret;
-        };
-        $scope.randomMarkers = [];
-        // Get the bounds from the map once it's loaded
-        $scope.$watch(function() { return $scope.map.bounds; }, function(nv, ov) {
-            // Only need to regenerate once
-            if (!ov.southwest && nv.southwest) {
-                var markers = [];
-                for (var i = 0; i < 50; i++) {
-                    markers.push(createRandomMarker(i, $scope.map.bounds))
-                }
-                $scope.randomMarkers = markers;
-            }
-        }, true);
-    */    
 }]);

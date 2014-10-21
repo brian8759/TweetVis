@@ -21,3 +21,15 @@ However, if we have too many markers to draw on the google map, it will be reall
 Therefore, we need to render the google map with markers in the node.js, via jade.
 
 googlemap.jade is a test file to render the google map with four markers in the node.js with jade. And it works!!
+
+After checking online resource, I found out rendering big data in google maps in the node.js is not good for  
+my case. Because, this projects involves large amount of user interaction in the front-end.
+I will find other ways to do it.
+
+One possible choice:
+At first, we only fetch Geo information of every tweets from DB. Then we create markers containing geo info. 
+And render markers in the angular.js.
+Later, when user zoom in and click one marker, this marker will use tweet._id to query DB again to retrieve the detail info 
+of this tweet, and show it up in the info window. This way can handle 5285 tweets at one time. However, when it comes to 7000
+tweets, it does not work!
+
