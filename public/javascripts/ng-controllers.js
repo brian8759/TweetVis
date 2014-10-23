@@ -2,7 +2,7 @@
 
 var TweetControllers = angular.module('tweetvis.Controllers', []);
 
-TweetControllers.controller('ListAllTweetsController', function($scope, Tweet, $filter) {
+TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filterFilter', function($scope, Tweet, filterFilter) {
     // async get tweets from DB
     $scope.tweets = Tweet.query();
 
@@ -10,49 +10,21 @@ TweetControllers.controller('ListAllTweetsController', function($scope, Tweet, $
     $scope.itemsPerPage = 20;
     $scope.currentPage = 1;
 
-/*
-    $scope.tweets.$promise.then(function () {
-    $scope.totalItems = $scope.tweets.length;
-    //$scope.numOfPages = 8;
-    $scope.maxSize = 8;
-    $scope.$watch('currentPage + itemsPerPage', function() {
-      var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
-        end = begin + $scope.itemsPerPage;
-
-      $scope.filteredTweets = $scope.tweets.slice(begin, end);
-      console.log("filteredTweets:", $scope.filteredTweets.length);
-      console.log("total tweets", $scope.tweets.length);
-    });
-  });
-*/
     $scope.tweets.$promise.then(function () {
     $scope.totalItems = $scope.tweets.length;
     //$scope.numOfPages = 8;
     $scope.maxSize = 8;
     $scope.$watch('query', function (newQuery, oldQuery) {
         $scope.currentPage = 1;
-        $scope.filteredTweets = $filter('filter')($scope.tweets, $scope.query);
+        //$scope.filteredTweets = $filter('filter')($scope.tweets, $scope.query);
+        $scope.filteredTweets = filterFilter($scope.tweets, {user_screen_name: $scope.query});
         $scope.noOfPages = $scope.filteredTweets.length / $scope.itemsPerPage;
         if(newQuery !== oldQuery) {
             $scope.totalItems = $scope.filteredTweets.length;
         }
-        //$scope.$apply();
     });
   });
-    /*
-    $scope.totalItems = $scope.tweets.length;
-    $scope.currentPage = 1;
-    $scope.numPerPage = 10;
-  
-    $scope.paginate = function(value) {
-        var begin, end, index;
-        begin = ($scope.currentPage - 1) * $scope.numPerPage;
-        end = begin + $scope.numPerPage;
-        index = $scope.tweets.indexOf(value);
-        return (begin <= index && index < end);
-    };
-    */
-});
+}]);
 
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
     $scope.tweet = Tweet.get({ tweetId: $routeParams.tweetId });
@@ -109,24 +81,6 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
             //console.log(markers[i]);
         }
         $scope.randomMarkers = markers;
-        /*
-        $scope.$watch(function() { return $scope.map.bounds; }, function(nv, ov) {
-            console.log("start to generate markers!");
-            // Only need to regenerate once
-            
-            if (!ov.southwest && nv.southwest) {
-                var markers = [];
-                //var count = 1;
-                var len = $scope.tweets.length;
-                for (var i = 0; i < len; i++) {
-                    //console.log($scope.tweets[i]);
-                    var tweet = $scope.tweets[i];
-                    markers.push(createMarker(i, tweet));
-                    //console.log(markers[i]);
-                }
-                $scope.randomMarkers = markers;
-            }
-        }, true);
-        */
+        
     });
 }]);
