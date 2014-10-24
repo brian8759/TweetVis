@@ -28,7 +28,22 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filt
 
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
     $scope.tweet = Tweet.get({ tweetId: $routeParams.tweetId });
-    //Tweet.render();
+    
+    $scope.tweet.$promise.then(function() {
+        // set up a map
+        $scope.map = {
+            center: {latitude: 40.1451, longitude: -99.6680 }, 
+            zoom: 3, 
+            bounds: {},
+            options: {scrollwheel: false},
+            marker: [{
+                id: 1,
+                geometry: $scope.tweet.geo,
+                tweetId: $scope.tweet._id
+            }]
+        };
+    });
+    
 }]);
 
 TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function($scope, Tweet) {

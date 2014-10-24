@@ -1,38 +1,49 @@
 <section>
 	<div>
-		<h1> Detail Info</h1>
+		<h3> Detail Info</h3>
 	</div>
+	<style type="text/css">
+	html, body{
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+        #geo_canvas {
+            height: 600px;
+            width: 600px;
+            margin: 20px;
+            position: relative;
+        }
+
+        .angular-google-map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+	</style>
 
 	<div>
-		<strong><em>User Name:</em></strong> {{tweet.user_screen_name}}<br>
-		<ul>
-			<li>
-				<strong>Content:</strong> {{tweet.text}}<br>
-			</li>
-			<li>
-				<strong>Created at:</strong> {{tweet.created_at}}<br>
-			</li>
-			
-			<li>
-				<strong>Platform:</strong> {{tweet.source}}<br>
-			</li>
-			<li>
-				<strong>Geo:</strong> {{tweet.geo}}<br>
-			</li>
-			
-			<!--
-			<li>
-				<strong>Geo:</strong> {{tweet.coordinates}}<br>
-			</li>
-			-->
-		</ul>
+		<dl class="dl-horizontal">
+			<dt>User Name</dt>
+			<dd>{{tweet.user_screen_name}}</dd>
+			<dt>Content</dt>
+			<dd>{{tweet.text}}</dd>
+			<dt>Created at</dt>
+			<dd>{{tweet.created_at}}</dd>
+			<dt>Platform</dt>
+			<dd>{{tweet.source}}</dd>
+			<dt>Geo</dt>
+			<dd>{{tweet.geo}}</dd>
+		</dl>
+	</div>
 
-	</div>
-	<!--
-	<p>
-		Try to load html
-	</p>
-	<div ng-include="'/public/partials/googlemap.htm'">
-	</div>
-	-->
+	<div id="geo_canvas">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" bounds="map.bounds">
+        <ui-gmap-markers models="map.marker" coords="'geometry'" icon="'icon'" fit='true'></ui-gmap-markers>
+    </ui-gmap-google-map>
+    </div>
+	
 </section>

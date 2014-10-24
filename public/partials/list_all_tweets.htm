@@ -34,12 +34,32 @@
     	<ul ng-switch-when="0">
     		<li><em> There are no tweets in the DB right now.</em></li>
     	</ul>
+    	<!--
     	<ul ng-switch-default>
     		
     		<li ng-repeat="tweet in filteredTweets | startFrom:(currentPage-1)*itemsPerPage | limitTo:itemsPerPage | orderBy: tweetOrder: direction">
     			<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name + "@" + tweet.created_at}}</a>
     		</li>
     	</ul>
+		-->
+		<table class="table table-bordered table-hover" ng-switch-default>
+			<thead>
+				<tr>
+					<th>User Name</th>
+					<th>Tweet time</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tweet in filteredTweets | startFrom:(currentPage-1)*itemsPerPage | limitTo:itemsPerPage | orderBy: tweetOrder: direction">
+					<td>
+						<a href="#/tweet/{{tweet._id}}">{{tweet.user_screen_name}}</a>
+					</td>
+					<td>
+						<a href="#/tweet/{{tweet._id}}">{{tweet.created_at}}</a>
+					</td>
+			</tr>
+			</tbody>
+		</table>
 
     	<pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" class="pagination-small" boundary-links="true"></pagination>
     	<p>
