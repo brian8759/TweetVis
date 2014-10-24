@@ -18,8 +18,12 @@ tweetvis.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/googlemap.htm',
     controller: 'GoogleMapController'
   }).
+  when('/real_time_streaming', {
+    templateUrl: 'partials/real_time_streaming.htm',
+    controller: 'RealTimeStreamingController'
+  }).
   otherwise({
-    redirectTo: '/all_tweets'
+    redirectTo: '/'
   });
 }]);
 
@@ -28,6 +32,12 @@ tweetvis.filter('startFrom', function() {
         start = +start; //parse to int
         return input.slice(start);
     }
+});
+
+tweetvis.filter('reverse', function() {
+  return function(items) {
+    return (items != null ? items.slice().reverse() : []);
+  };
 });
 
 

@@ -33,3 +33,8 @@ Later, when user zoom in and click one marker, this marker will use tweet._id to
 of this tweet, and show it up in the info window. This way can handle 5285 tweets at one time. However, when it comes to 7000
 tweets, it does not work!
 
+
+Add one important functionality:
+With the help of Twit, we can stream live tweets now, and apply some filters, such as location and key word.
+
+

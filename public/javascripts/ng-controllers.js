@@ -99,3 +99,33 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
         
     });
 }]);
+
+TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', function($scope, Socket) {
+    $scope.tweets = [];
+    $scope.btnIsDisabled = false;
+    $scope.btnText = "Find Tweets From San Francisco";
+    $scope.btnIsDisabledStop = true;
+    $scope.btnTextStop = "Stop Streaming Tweets";
+
+    $scope.findTweets = function findTweets() {
+
+        Socket.emit('tweet-io:start', true);
+
+        $scope.btnText = "Streaming Real Time Tweets Now...";
+        $scope.btnIsDisabled = true;
+        $scope.btnIsDisabledStop = false;
+
+        Socket.on('tweet-io:tweets', function (data) {
+            //console.log(data);
+            $scope.tweets = $scope.tweets.concat(data);
+            //$scope.tweets = data;
+        });         
+    };
+
+    $scope.stopStreaming = function stopStreaming() {
+        Socket.emit('tweet-io:stop', true);
+        $scope.btnText = "Find Tweets From San Francisco";
+        $scope.btnIsDisabled = false;
+        $scope.btnIsDisabledStop = true;
+    };
+}]);

@@ -1,0 +1,52 @@
+<section>
+	<style type="text/css">
+	h1, h2, h3, h4, h5, h6{
+	 	font-family: 'Varela Round', sans-serif;
+	}
+
+	/* Post */
+	.post {
+		background: #fff;
+		border-radius: 3px;
+		box-shadow: 0px 1px 1px #aaa;
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-bottom: 0.5em;
+		padding-top: 0.5em;
+		margin: 1em auto;
+	}
+
+	.post-header {
+		margin: 0 0 1em;
+	}
+
+	.post-avatar {
+	  border-radius: 50%;
+	  float: left;
+	  margin-left: -3.5em;
+	  margin-top: -2em;
+	  margin-right: 1em;
+	}
+
+	.btn-primary {
+		background-color: #235A9F;
+		border-color: rgb(16, 76, 128);
+	}
+	</style>
+
+	<div class="row">
+            <div>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="findTweets()" ng-disabled="btnIsDisabled">{{btnText}}</button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="stopStreaming()" ng-disabled="btnIsDisabledStop">{{btnTextStop}}</button>
+                <span ng-repeat="tweet in tweets | reverse">
+                    <section class="post">
+    					<header class="post-header">
+        					<img class="post-avatar" alt="{{tweet.user.name}}" height="52" width="52" src="{{tweet.user.image}}" />
+        					<h4 class="post-user"> {{tweet.user.name}} @ {{tweet.location}}</h4>
+        					<h5>{{tweet.text}}</h5>
+    					</header>
+					</section>
+                </span>
+            </div>            
+    </div>
+</section>		

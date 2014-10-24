@@ -4,6 +4,10 @@ var app = require('../app');
 var http = require('http');
 var server = http.createServer(app);
 var db = require('../db');
+var io = require('socket.io').listen(server);
+exports.io = io;
+
+var twitter = require('../twitter');
 
 app.set('port', process.env.PORT || 3000);
 
