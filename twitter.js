@@ -1,6 +1,6 @@
 var Twit = require('twit');
 var io = require('./bin/www').io;
-var TWEETS_BUFFER_SIZE = 4;
+var TWEETS_BUFFER_SIZE = 1;
 var SOCKETIO_TWEETS_EVENT = 'tweet-io:tweets';
 var SOCKETIO_START_EVENT = 'tweet-io:start';
 var SOCKETIO_STOP_EVENT = 'tweet-io:stop';
@@ -14,9 +14,10 @@ var T = new Twit({
     access_token_secret:  '71YWjyxocYhu8VTFJV91H3hhZ36iowTOcnWmj1VOwzrn2'
 });
 
-console.log("Listening for tweets from San Francisco...");
-var stream = T.stream('statuses/filter', { locations: [-122.75,36.8,-121.75,37.8] });
-//var stream;
+console.log("Listening for tweets....");
+var hashTag = 'Ebola';
+//var stream = T.stream('statuses/filter', { locations: [-122.75,36.8,-121.75,37.8] });
+var stream = T.stream('statuses/filter', { track: hashTag });
 var tweetsBuffer = [];
 
 //Handle Socket.IO events
@@ -82,7 +83,7 @@ stream.on('tweet', function(tweet) {
 		stream.stop();
 	}
 
-	if (tweet.place == null) {
+	if (tweet.coordinates == null || tweet.place == null) {
 		return ;
 	}
 

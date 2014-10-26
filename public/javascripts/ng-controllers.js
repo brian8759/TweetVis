@@ -103,28 +103,54 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
 TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', function($scope, Socket) {
     $scope.tweets = [];
     $scope.btnIsDisabled = false;
-    $scope.btnText = "Find Tweets From San Francisco";
+    $scope.btnText = "Stream Tweets Now";
     $scope.btnIsDisabledStop = true;
     $scope.btnTextStop = "Stop Streaming Tweets";
+
+    $scope.map = {
+            center: {latitude: 37.47, longitude: -122.26 }, 
+            zoom: 2, 
+            bounds: {},
+            options: {scrollwheel: false},
+            marker: []
+    };
+    var count = 1;
 
     $scope.findTweets = function findTweets() {
 
         Socket.emit('tweet-io:start', true);
 
-        $scope.btnText = "Streaming Real Time Tweets Now...";
+        $scope.btnText = "Streaming Tweets Now...";
         $scope.btnIsDisabled = true;
         $scope.btnIsDisabledStop = false;
 
         Socket.on('tweet-io:tweets', function (data) {
             //console.log(data);
             $scope.tweets = $scope.tweets.concat(data);
-            //$scope.tweets = data;
+            // for each object in data, we check the data[i].user.coordinates
+            data.forEach(function(v) {
+                if(v.user.coordinates != null) {
+                    var marker = {
+                        id: count,
+                        geometry: v.user.coordinates,
+                        user_name: v.user.name,
+                        text: v.text,
+                        show: false
+                    };
+                    marker.onClick = function() {
+                        marker.show = !marker.show;
+                    };
+                    //console.log(marker);
+                    count++;
+                    $scope.map.marker.push(marker);
+                }
+            });
         });         
     };
 
     $scope.stopStreaming = function stopStreaming() {
         Socket.emit('tweet-io:stop', true);
-        $scope.btnText = "Find Tweets From San Francisco";
+        $scope.btnText = "Stream Tweets Now";
         $scope.btnIsDisabled = false;
         $scope.btnIsDisabledStop = true;
     };

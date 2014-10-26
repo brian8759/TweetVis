@@ -16,7 +16,6 @@ block content
   script(src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js")
   script(src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js")
   script(src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js")
-  //link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
   
   // load user scripts
   script(src='/lib/socketio/socket.io.js')
@@ -52,5 +51,5 @@ block content
         //a.navbar-brand(href='#/all_tweets') Show All Tweets
 
   // different views corresponding to different routers    
-  div.container
+  div.container-fluid
     div(ng-view)

@@ -37,4 +37,16 @@ tweets, it does not work!
 Add one important functionality:
 With the help of Twit, we can stream live tweets now, and apply some filters, such as location and key word.
 
+We can use "natural" module, to create a Naive Bayes Classifier, then use a corpus to train the classifier,
+then for every incoming tweet, we can do the sentimental analysis
+
+However, this is still "beat the bush!!"
+
+I found a great way to do the sentiment analysis.
+Use ZeroRPC to connect python and node.js.
+Use current Twit in node.js to stream Tweets, and then for a batch of tweets, send them to python part via ZeroRPC, to use
+the well established nltk package. 
+Then in the node.js part, the callback will have the result and push it to the frontend!!
+This is brilliant!!
+
 

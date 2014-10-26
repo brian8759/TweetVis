@@ -32,10 +32,24 @@
 		background-color: #235A9F;
 		border-color: rgb(16, 76, 128);
 	}
+	#geo_canvas {
+        height: 350px;
+	    width: 600px;
+	    margin: 10px;
+	    position: relative;
+	}
+    .angular-google-map-container {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    right: 0;
+	    left: 0;
+	}
+
 	</style>
 
 	<div class="row">
-            <div>
+            <div class="col-md-offset-1 col-md-5">
                 <button type="button" class="btn btn-primary btn-lg" ng-click="findTweets()" ng-disabled="btnIsDisabled">{{btnText}}</button>
                 <button type="button" class="btn btn-primary btn-lg" ng-click="stopStreaming()" ng-disabled="btnIsDisabledStop">{{btnTextStop}}</button>
                 <span ng-repeat="tweet in tweets | reverse">
@@ -47,6 +61,20 @@
     					</header>
 					</section>
                 </span>
-            </div>            
+            </div> 
+            <div class="col-md-6">
+            	<div id="geo_canvas">
+    				<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" bounds="map.bounds">
+        				<ui-gmap-markers models="map.marker" coords="'geometry'" icon="'icon'" click="'onClick'">
+        					<ui-gmap-windows show="'show'">
+                				<div ng-non-bindable>
+                    				{{user_name}}<br>
+                    				{{text}}
+                				</div>
+            				</ui-gmap-windows>
+        				</ui-gmap-markers>
+    				</ui-gmap-google-map>
+   			 	</div>
+            </div>           
     </div>
 </section>		
