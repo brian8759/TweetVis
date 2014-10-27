@@ -33,8 +33,8 @@
 		border-color: rgb(16, 76, 128);
 	}
 	#geo_canvas {
-        height: 350px;
-	    width: 600px;
+        height: 600px;
+	    width: 750px;
 	    margin: 10px;
 	    position: relative;
 	}
@@ -47,9 +47,13 @@
 	}
 
 	</style>
-
 	<div class="row">
-            <div class="col-md-offset-1 col-md-5">
+		<div class="col-md-offset-8 col-md-2">
+			<button type="button" class="btn btn-primary btn-lg" ng-click="cleanMarkers()"> Clear Markers</button>
+		</div>
+	</div>
+	<div class="row">
+            <div class="col-md-5">
                 <button type="button" class="btn btn-primary btn-lg" ng-click="findTweets()" ng-disabled="btnIsDisabled">{{btnText}}</button>
                 <button type="button" class="btn btn-primary btn-lg" ng-click="stopStreaming()" ng-disabled="btnIsDisabledStop">{{btnTextStop}}</button>
                 <span ng-repeat="tweet in tweets | reverse">
@@ -62,10 +66,10 @@
 					</section>
                 </span>
             </div> 
-            <div class="col-md-6">
+            <div class="col-md-7">
             	<div id="geo_canvas">
     				<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" bounds="map.bounds">
-        				<ui-gmap-markers models="map.marker" coords="'geometry'" icon="'icon'" click="'onClick'">
+        				<ui-gmap-markers models="map.marker" coords="'geometry'" icon="'icon'" click="'onClick'" control="map.markersControl">
         					<ui-gmap-windows show="'show'">
                 				<div ng-non-bindable>
                     				{{user_name}}<br>

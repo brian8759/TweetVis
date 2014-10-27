@@ -112,9 +112,16 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             zoom: 2, 
             bounds: {},
             options: {scrollwheel: false},
-            marker: []
+            marker: [],
+            markersControl: {}
     };
     var count = 1;
+
+    $scope.cleanMarkers = function cleanMarkers() {
+        $scope.map.markersControl.getGMarkers().forEach(function(marker) {
+            marker.setMap(null);
+        });
+    };
 
     $scope.findTweets = function findTweets() {
 
