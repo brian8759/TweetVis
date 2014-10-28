@@ -100,7 +100,28 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
     });
 }]);
 
-TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', function($scope, Socket) {
+TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'GoogleMapApi'.ns(), function($scope, Socket, GoogleMapApi) {
+    GoogleMapApi.then(function(maps) {
+        maps.visualRefresh = true;
+        $scope.defaultBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(40.82148, -73.66450),
+          new google.maps.LatLng(40.66541, -74.31715));
+
+        
+        $scope.map.bounds = {
+          northeast: {
+            latitude:$scope.defaultBounds.getNorthEast().lat(),
+            longitude:$scope.defaultBounds.getNorthEast().lng()
+          },
+          southwest: {
+            latitude:$scope.defaultBounds.getSouthWest().lat(),
+            longitude:-$scope.defaultBounds.getSouthWest().lng()
+
+          }
+        }
+        $scope.searchbox.options.bounds = new google.maps.LatLngBounds($scope.defaultBounds.getNorthEast(), $scope.defaultBounds.getSouthWest());
+    });
+
     $scope.tweets = [];
     $scope.btnIsDisabled = false;
     $scope.btnIsDisabledKeyWord = false;
@@ -109,19 +130,52 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
     $scope.btnTextStop = "Stop Streaming Tweets";
 
     $scope.map = {
-            center: {latitude: 37.47, longitude: -122.26 }, 
-            zoom: 2, 
-            bounds: {},
-            options: {scrollwheel: false},
-            marker: [],
-            markersControl: {}
+        control: {},
+        center: {
+            latitude: 40.74349,
+            longitude: -73.990822
+        },
+        zoom: 3,
+        dragging: false,
+        bounds: {},
+        markers: [],
+        markersControl: {},
+        events: {
+            idle: function (map) {
+                var bounds = map.getBounds();
+                var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+                //console.log("ne bounds " + ne.lat() + ", " + ne.lng());
+                var sw = bounds.getSouthWest(); // LatLng of the south-west corder
+                //console.log("sw bounds " + sw.lat() + ", " + sw.lng());
+            }
+        }
     };
-    var count = 1;
+    $scope.searchbox = {
+      template:'searchbox.tpl.html',
+      position:'top-left',
+      options: {
+        bounds: {} 
+      },
+      //parentdiv:'searchBoxParent',
+      events: {
+        places_changed: function (searchBox) {
+          var places = searchBox.getPlaces();
+          if (places.length == 0) {
+            return;
+          }
+          
+          var bounds = new google.maps.LatLngBounds();
+          var place = places[0];
 
-    $scope.sendKeyWord = function() {
-        var keyWord = $scope.keyWord;
-        if(keyWord) {
-            Socket.emit('sendKeyWord', $scope.keyWord);
+          var newStreamingParam = {
+              longitude: place.geometry.location.lng(),
+              latitude: place.geometry.location.lat()
+          };
+
+          bounds.extend(place.geometry.location);
+
+          Socket.emit('newStreamingParam', newStreamingParam);
+
             $scope.btnIsDisabledKeyWord = true;
             $scope.btnIsDisabled = false;
             // we need to clean tweets and markers
@@ -129,7 +183,45 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             $scope.map.markersControl.getGMarkers().forEach(function(marker) {
                 marker.setMap(null);
             });
-            $scope.map.marker = [];
+            $scope.map.markers = [];
+
+          $scope.map.bounds = {
+            northeast: {
+              latitude: bounds.getNorthEast().lat(),
+              longitude: bounds.getNorthEast().lng()
+            },
+            southwest: {
+              latitude: bounds.getSouthWest().lat(),
+              longitude: bounds.getSouthWest().lng()
+            }
+          };
+
+          $scope.map.zoom = 10;
+         
+        }
+      }   
+    };
+
+    var count = 1;
+
+    $scope.sendKeyWord = function() {
+        var keyWord = $scope.keyWord;
+        if(keyWord) {
+            Socket.emit('newStreamingParam', $scope.keyWord);
+            $scope.btnIsDisabledKeyWord = true;
+            $scope.btnIsDisabled = false;
+            // we need to clean tweets and markers
+            $scope.tweets = [];
+            $scope.map.markersControl.getGMarkers().forEach(function(marker) {
+                marker.setMap(null);
+            });
+            $scope.map.markers = [];
+
+            $scope.map.center = {
+                latitude: 40.74349,
+                longitude: -73.990822
+            };
+            $scope.map.zoom = 3;
         } else {
             alert('You must enter a valid meaningful streaming keyWord');
         }
@@ -141,7 +233,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
         $scope.map.markersControl.getGMarkers().forEach(function(marker) {
             marker.setMap(null);
         });
-        $scope.map.marker = [];
+        $scope.map.markers = [];
     };
 
     $scope.findTweets = function findTweets() {
@@ -177,7 +269,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
                 };
                 //console.log(marker);
                 count++;
-                $scope.map.marker.push(marker);
+                $scope.map.markers.push(marker);
             }
         });
     });         

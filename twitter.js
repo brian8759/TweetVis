@@ -2,7 +2,7 @@ var T = require('./twitWrapper');
 var io = require('./bin/www').io;
 var TWEETS_BUFFER_SIZE = 1;
 var SOCKETIO_TWEETS_EVENT = 'tweet-io:tweets';
-var NEW_KEY_WORD_EVENT = 'sendKeyWord';
+var NEW_STREAMING_PARAM = 'newStreamingParam';
 var SOCKETIO_START_EVENT = 'tweet-io:start';
 var SOCKETIO_STOP_EVENT = 'tweet-io:stop';
 var nbOpenSockets = 0;
@@ -50,17 +50,25 @@ var broadcastTweets = function() {
 var keyWord;
 
 io.sockets.on('connection', function(socket) {
-	socket.on(NEW_KEY_WORD_EVENT, function(data) {
+	socket.on(NEW_STREAMING_PARAM, function(data) {
 		if(stream != null) {
 			stream.stop();
 			isFirstConnectionToTwitter = true;
 			stream = null;
 		}
-		// data is the key word
-		keyWord = data;
-		//userDefinedKeyWord = true;
-		console.log('type:', typeof(keyWord), keyWord);
-		stream = T.stream('statuses/filter', { track: keyWord });
+
+		if(typeof(data) === 'string') {
+			console.log('type:', typeof(data), data);
+			var keyWord = data;
+			stream = T.stream('statuses/filter', { track: keyWord });
+		} else {
+			console.log('type:', typeof(data), data);
+			// data = {longitude: lon, latitude: lat}
+			var longitude = +data.longitude;
+			var latitude = +data.latitude;
+			var margin = 0.3;
+			stream = T.stream('statuses/filter', { locations: [longitude-margin, latitude-margin, longitude+margin, latitude+margin] });
+		}
 
 		stream.on('connect', function(request) {
 			console.log('Connected to Twitter API');

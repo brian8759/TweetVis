@@ -3,6 +3,15 @@
 var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 
   'tweetvis.Controllers', 'tweetvis.Services', 'ui.bootstrap', 'google-maps'.ns()]);
 
+tweetvis.config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
+  GoogleMapApi.configure({
+//    key: 'your api key',
+    key: 'AIzaSyDCdwlKea2jiNxYLXVlpS9GwGUrUBJPCT4',
+    v: '3.17',
+    libraries: 'places'
+  });
+}]);
+
 tweetvis.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
   // show all valid tweets
@@ -25,6 +34,10 @@ tweetvis.config(['$routeProvider', function($routeProvider) {
   otherwise({
     redirectTo: '/'
   });
+}]);
+
+tweetvis.run(['$templateCache', function ($templateCache) {
+  $templateCache.put('searchbox.tpl.html', '<input id="pac-input" class="pac-controls" type="text" placeholder="Search Box">');
 }]);
 
 tweetvis.filter('startFrom', function() {
