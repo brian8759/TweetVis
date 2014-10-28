@@ -103,6 +103,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
 TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', function($scope, Socket) {
     $scope.tweets = [];
     $scope.btnIsDisabled = false;
+    $scope.btnIsDisabledKeyWord = false;
     $scope.btnText = "Stream Tweets Now";
     $scope.btnIsDisabledStop = true;
     $scope.btnTextStop = "Stop Streaming Tweets";
@@ -117,10 +118,31 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
     };
     var count = 1;
 
+    $scope.sendKeyWord = function() {
+        var keyWord = $scope.keyWord;
+        if(keyWord) {
+            
+            Socket.emit('sendKeyWord', $scope.keyWord);
+            $scope.btnIsDisabledKeyWord = true;
+            $scope.btnIsDisabled = false;
+            // we need to clean tweets and markers
+            $scope.tweets = [];
+            $scope.map.markersControl.getGMarkers().forEach(function(marker) {
+                marker.setMap(null);
+            });
+            $scope.map.marker = [];
+        } else {
+            alert('You must enter a valid meaningful streaming keyWord');
+        }
+        
+    };
+
     $scope.cleanMarkers = function cleanMarkers() {
+        $scope.tweets = [];
         $scope.map.markersControl.getGMarkers().forEach(function(marker) {
             marker.setMap(null);
         });
+        $scope.map.marker = [];
     };
 
     $scope.findTweets = function findTweets() {
@@ -132,7 +154,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
         $scope.btnIsDisabledStop = false;
 
         Socket.on('tweet-io:tweets', function (data) {
-            //console.log(data);
+            console.log(data);
             $scope.tweets = $scope.tweets.concat(data);
             // for each object in data, we check the data[i].user.coordinates
             data.forEach(function(v) {
@@ -159,6 +181,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
         Socket.emit('tweet-io:stop', true);
         $scope.btnText = "Stream Tweets Now";
         $scope.btnIsDisabled = false;
+        $scope.btnIsDisabledKeyWord = false;
         $scope.btnIsDisabledStop = true;
     };
 }]);

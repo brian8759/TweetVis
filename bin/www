@@ -12,6 +12,10 @@ var twitter = require('../twitter');
 app.set('port', process.env.PORT || 3000);
 
 
+process.on('uncaughtException', function (err) {
+  console.log(err);
+});
+
 server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
 });

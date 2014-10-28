@@ -1,24 +1,18 @@
-var Twit = require('twit');
+var T = require('./twitWrapper');
 var io = require('./bin/www').io;
 var TWEETS_BUFFER_SIZE = 1;
 var SOCKETIO_TWEETS_EVENT = 'tweet-io:tweets';
+var NEW_KEY_WORD_EVENT = 'sendKeyWord';
 var SOCKETIO_START_EVENT = 'tweet-io:start';
 var SOCKETIO_STOP_EVENT = 'tweet-io:stop';
 var nbOpenSockets = 0;
 var isFirstConnectionToTwitter = true;
+var userDefinedKeyWord = false;
 
-var T = new Twit({
-    consumer_key:         'z2p5HbalegwbTlhTUh6UT1Fbf',
-    consumer_secret:      '0Mc10MCwZNIxm14CRJBTSEkm5bfoE2gVtHwe6g6ZBOgknhzA2t',
-    access_token:         '491396961-Lo6AgeHKuymTkJ1MVf3Z5bhEP3PfndhBNpeuCSOB',
-    access_token_secret:  '71YWjyxocYhu8VTFJV91H3hhZ36iowTOcnWmj1VOwzrn2'
-});
-
-console.log("Listening for tweets....");
-var hashTag = 'Ebola';
+console.log("Waiting for client.....");
 //var stream = T.stream('statuses/filter', { locations: [-122.75,36.8,-121.75,37.8] });
-var stream = T.stream('statuses/filter', { track: hashTag });
 var tweetsBuffer = [];
+var stream = null;
 
 //Handle Socket.IO events
 var discardClient = function() {
@@ -32,8 +26,8 @@ var discardClient = function() {
 	}
 };
 
-var handleClient = function(data, socket) {
-	if (data == true) {
+var handleClient = function() {
+	//if (data == true) {
 		console.log('Client connected !');
 		
 		if (nbOpenSockets <= 0) {
@@ -43,67 +37,8 @@ var handleClient = function(data, socket) {
 		}
 
 		nbOpenSockets++;
-	}
+	//}
 };
-
-io.sockets.on('connection', function(socket) {
-
-	socket.on(SOCKETIO_START_EVENT, function(data) {
-		handleClient(data, socket);
-	});
-
-	socket.on(SOCKETIO_STOP_EVENT, discardClient);
-
-	socket.on('disconnect', discardClient);
-});
-
-
-//Handle Twitter events
-stream.on('connect', function(request) {
-	console.log('Connected to Twitter API');
-	/*
-	if (isFirstConnectionToTwitter) {
-		isFirstConnectionToTwitter = false;
-		stream.stop();
-	}
-	*/
-});
-
-stream.on('disconnect', function(message) {
-	console.log('Disconnected from Twitter API. Message: ' + message);
-});
-
-stream.on('reconnect', function (request, response, connectInterval) {
-  	console.log('Trying to reconnect to Twitter API in ' + connectInterval + ' ms');
-});
-
-stream.on('tweet', function(tweet) {
-	if (isFirstConnectionToTwitter) {
-		isFirstConnectionToTwitter = false;
-		stream.stop();
-	}
-
-	if (tweet.coordinates == null || tweet.place == null) {
-		return ;
-	}
-
-	//Create message containing tweet + location + username + profile pic
-	var msg = {};
-	msg.text = tweet.text;
-	msg.location = tweet.place.full_name;
-	msg.user = {
-		name: tweet.user.name, 
-		image: tweet.user.profile_image_url,
-		coordinates: tweet.coordinates
-	};
-
-	//console.log(msg);
-
-	//push msg into buffer
-	tweetsBuffer.push(msg);
-
-	broadcastTweets();
-});
 
 var broadcastTweets = function() {
 	//send buffer only if full
@@ -113,4 +48,69 @@ var broadcastTweets = function() {
 		
 		tweetsBuffer = [];
 	}
-}
+};
+
+var keyWord;
+
+io.sockets.on('connection', function(socket) {
+	socket.on(NEW_KEY_WORD_EVENT, function(data) {
+		if(stream != null) {
+			stream.stop();
+			isFirstConnectionToTwitter = true;
+			stream = null;
+		}
+		// data is the key word
+		keyWord = data;
+		//userDefinedKeyWord = true;
+		console.log('type:', typeof(keyWord), keyWord);
+		stream = T.stream('statuses/filter', { track: keyWord });
+
+		stream.on('connect', function(request) {
+			console.log('Connected to Twitter API');
+		});
+
+		stream.on('disconnect', function(message) {
+			console.log('Disconnected from Twitter API. Message: ' + message);
+		});
+
+		stream.on('reconnect', function (request, response, connectInterval) {
+		  	console.log('Trying to reconnect to Twitter API in ' + connectInterval + ' ms');
+		});
+
+		stream.on('tweet', function(tweet) {
+			
+			if (isFirstConnectionToTwitter) {
+				isFirstConnectionToTwitter = false;
+				console.log("for saving bandwidth, stop useless streaming");
+				stream.stop();
+			}
+			
+			if (tweet.coordinates == null || tweet.place == null) {
+				return ;
+			}
+
+			//Create message containing tweet + location + username + profile pic
+			var msg = {};
+			msg.text = tweet.text;
+			msg.location = tweet.place.full_name;
+			msg.user = {
+				name: tweet.user.name, 
+				image: tweet.user.profile_image_url,
+				coordinates: tweet.coordinates
+			};
+
+			console.log(msg);
+
+			//push msg into buffer
+			tweetsBuffer.push(msg);
+
+			broadcastTweets();
+		});
+	});
+	
+	socket.on(SOCKETIO_START_EVENT, handleClient);
+	
+	socket.on(SOCKETIO_STOP_EVENT, discardClient);
+
+	socket.on('disconnect', discardClient);
+});
