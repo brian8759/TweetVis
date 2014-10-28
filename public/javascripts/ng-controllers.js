@@ -121,7 +121,6 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
     $scope.sendKeyWord = function() {
         var keyWord = $scope.keyWord;
         if(keyWord) {
-            
             Socket.emit('sendKeyWord', $scope.keyWord);
             $scope.btnIsDisabledKeyWord = true;
             $scope.btnIsDisabled = false;
@@ -146,35 +145,10 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
     };
 
     $scope.findTweets = function findTweets() {
-
         Socket.emit('tweet-io:start', true);
-
         $scope.btnText = "Streaming Tweets Now...";
         $scope.btnIsDisabled = true;
         $scope.btnIsDisabledStop = false;
-
-        Socket.on('tweet-io:tweets', function (data) {
-            console.log(data);
-            $scope.tweets = $scope.tweets.concat(data);
-            // for each object in data, we check the data[i].user.coordinates
-            data.forEach(function(v) {
-                if(v.user.coordinates != null) {
-                    var marker = {
-                        id: count,
-                        geometry: v.user.coordinates,
-                        user_name: v.user.name,
-                        text: v.text,
-                        show: false
-                    };
-                    marker.onClick = function() {
-                        marker.show = !marker.show;
-                    };
-                    //console.log(marker);
-                    count++;
-                    $scope.map.marker.push(marker);
-                }
-            });
-        });         
     };
 
     $scope.stopStreaming = function stopStreaming() {
@@ -184,4 +158,27 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
         $scope.btnIsDisabledKeyWord = false;
         $scope.btnIsDisabledStop = true;
     };
+
+    Socket.on('tweet-io:tweets', function (data) {
+        console.log(data);
+        $scope.tweets = $scope.tweets.concat(data);
+        // for each object in data, we check the data[i].user.coordinates
+        data.forEach(function(v) {
+            if(v.user.coordinates != null) {
+                var marker = {
+                    id: count,
+                    geometry: v.user.coordinates,
+                    user_name: v.user.name,
+                    text: v.text,
+                    show: false
+                };
+                marker.onClick = function() {
+                    marker.show = !marker.show;
+                };
+                //console.log(marker);
+                count++;
+                $scope.map.marker.push(marker);
+            }
+        });
+    });         
 }]);

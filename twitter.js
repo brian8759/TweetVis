@@ -7,7 +7,6 @@ var SOCKETIO_START_EVENT = 'tweet-io:start';
 var SOCKETIO_STOP_EVENT = 'tweet-io:stop';
 var nbOpenSockets = 0;
 var isFirstConnectionToTwitter = true;
-var userDefinedKeyWord = false;
 
 console.log("Waiting for client.....");
 //var stream = T.stream('statuses/filter', { locations: [-122.75,36.8,-121.75,37.8] });
@@ -17,32 +16,30 @@ var stream = null;
 //Handle Socket.IO events
 var discardClient = function() {
 	console.log('Client disconnected !');
-	nbOpenSockets--;
-
-	if (nbOpenSockets <= 0) {
-		nbOpenSockets = 0;
-		console.log("No active client. Stop streaming from Twitter");
-		stream.stop();
+	if(nbOpenSockets > 0) {
+		nbOpenSockets--;
+		if(nbOpenSockets == 0) {
+			console.log("No active client. Stop streaming from Twitter");
+			stream.stop();
+		}
 	}
 };
 
 var handleClient = function() {
-	//if (data == true) {
-		console.log('Client connected !');
+	console.log('Client connected !');
 		
-		if (nbOpenSockets <= 0) {
-			nbOpenSockets = 0;
-			console.log('First active client. Start streaming from Twitter');
-			stream.start();
-		}
+	if(nbOpenSockets <= 0) {
+		nbOpenSockets = 0;
+		console.log('First active client. Start streaming from Twitter');
+		stream.start();
+	}
 
-		nbOpenSockets++;
-	//}
+	nbOpenSockets++;
 };
 
 var broadcastTweets = function() {
 	//send buffer only if full
-	if (tweetsBuffer.length >= TWEETS_BUFFER_SIZE) {
+	if(tweetsBuffer.length >= TWEETS_BUFFER_SIZE) {
 		//broadcast tweets
 		io.sockets.emit(SOCKETIO_TWEETS_EVENT, tweetsBuffer);
 		
