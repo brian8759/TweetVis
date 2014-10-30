@@ -184,7 +184,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
                 marker.setMap(null);
             });
             $scope.map.markers = [];
-
+          /*  
           $scope.map.bounds = {
             northeast: {
               latitude: bounds.getNorthEast().lat(),
@@ -195,8 +195,12 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
               longitude: bounds.getSouthWest().lng()
             }
           };
-
-          $scope.map.zoom = 10;
+          */
+            $scope.map.center = {
+                longitude: place.geometry.location.lng(),
+                latitude: place.geometry.location.lat()
+            };
+            $scope.map.zoom = 10;
          
         }
       }   

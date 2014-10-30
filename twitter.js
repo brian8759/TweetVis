@@ -15,7 +15,8 @@ var stream = null;
 
 //Handle Socket.IO events
 var discardClient = function() {
-	console.log('Client disconnected !');
+	console.log('Client disconnected. Stop streaming from Twitter!');
+	/*
 	if(nbOpenSockets > 0) {
 		nbOpenSockets--;
 		if(nbOpenSockets == 0) {
@@ -23,18 +24,22 @@ var discardClient = function() {
 			stream.stop();
 		}
 	}
+	*/
+	stream.stop();
 };
 
 var handleClient = function() {
-	console.log('Client connected !');
-		
+	console.log('Client connected! Start streaming from Twitter...');
+	/*	
 	if(nbOpenSockets <= 0) {
 		nbOpenSockets = 0;
 		console.log('First active client. Start streaming from Twitter');
 		stream.start();
 	}
-
+	
 	nbOpenSockets++;
+	*/
+	stream.start();
 };
 
 var broadcastTweets = function() {
@@ -48,6 +53,10 @@ var broadcastTweets = function() {
 };
 
 var keyWord;
+// a valid longitude should be {-180, 180}, a valid latitude should be {-90, 90}
+var longitude = 250;
+var latitude = 250;
+var margin = 0.15;
 
 io.sockets.on('connection', function(socket) {
 	socket.on(NEW_STREAMING_PARAM, function(data) {
@@ -59,19 +68,26 @@ io.sockets.on('connection', function(socket) {
 
 		if(typeof(data) === 'string') {
 			console.log('type:', typeof(data), data);
-			var keyWord = data;
+			keyWord = data;
+			longitude = 250;
+			latitude = 250;
 			stream = T.stream('statuses/filter', { track: keyWord });
 		} else {
 			console.log('type:', typeof(data), data);
 			// data = {longitude: lon, latitude: lat}
-			var longitude = +data.longitude;
-			var latitude = +data.latitude;
-			var margin = 0.3;
+			longitude = +data.longitude;
+			latitude = +data.latitude;
 			stream = T.stream('statuses/filter', { locations: [longitude-margin, latitude-margin, longitude+margin, latitude+margin] });
 		}
 
 		stream.on('connect', function(request) {
 			console.log('Connected to Twitter API');
+
+			if (isFirstConnectionToTwitter) {
+				isFirstConnectionToTwitter = false;
+				console.log("for saving bandwidth, stop useless streaming");
+				stream.stop();
+			}
 		});
 
 		stream.on('disconnect', function(message) {
@@ -84,16 +100,20 @@ io.sockets.on('connection', function(socket) {
 
 		stream.on('tweet', function(tweet) {
 			
-			if (isFirstConnectionToTwitter) {
-				isFirstConnectionToTwitter = false;
-				console.log("for saving bandwidth, stop useless streaming");
-				stream.stop();
-			}
 			
 			if (tweet.coordinates == null || tweet.place == null) {
 				return ;
 			}
-
+			// we need to check tweet's geo location first
+			if(longitude !== 250 || latitude !== 250) {
+				// this means we are streaming tweets based on geo location
+				var tweetLongitude = tweet.coordinates.coordinates[0];
+				var tweetLatitude = tweet.coordinates.coordinates[1];
+				if(tweetLongitude < (longitude-margin) || tweetLongitude > (longitude+margin))
+					return;
+				if(tweetLatitude < (latitude-margin) || tweetLatitude > (latitude+margin))
+					return;
+			}
 			//Create message containing tweet + location + username + profile pic
 			var msg = {};
 			msg.text = tweet.text;

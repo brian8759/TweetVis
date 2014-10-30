@@ -49,4 +49,9 @@ the well established nltk package.
 Then in the node.js part, the callback will have the result and push it to the frontend!!
 This is brilliant!!
 
+Bugs:
+1: If I put "saving bandwidth" methods into stream.on('connect'), there will be [Error: socket hang up] code: 'ECONNRESET'.
+If I put it into stream.on('tweet'), no errors!
+
+
 
