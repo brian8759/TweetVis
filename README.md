@@ -53,5 +53,9 @@ Bugs:
 1: If I put "saving bandwidth" methods into stream.on('connect'), there will be [Error: socket hang up] code: 'ECONNRESET'.
 If I put it into stream.on('tweet'), no errors!
 
+So far, user can dynamically stream real time Tweets based on keyword and geo location. 
 
+Everytime when user create a new keyword or a new geo location, a new collection will be created in the MongoDB.
+And real time tweets will be streamed and saved into that collection.
+Then when user stop streaming, he can query the DB to retrieve those tweets!
 
