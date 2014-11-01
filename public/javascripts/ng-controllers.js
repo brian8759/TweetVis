@@ -168,6 +168,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
           var place = places[0];
 
           var newStreamingParam = {
+              name: place.name,        
               longitude: place.geometry.location.lng(),
               latitude: place.geometry.location.lat()
           };

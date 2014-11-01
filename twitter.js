@@ -1,5 +1,8 @@
 var T = require('./twitWrapper');
 var io = require('./bin/www').io;
+var schema = require('./schema/schema');
+var mongoose = require('mongoose');
+// then we can use mongoose.model('Collection', schema, 'collection_name'); 
 var TWEETS_BUFFER_SIZE = 1;
 var SOCKETIO_TWEETS_EVENT = 'tweet-io:tweets';
 var NEW_STREAMING_PARAM = 'newStreamingParam';
@@ -57,7 +60,7 @@ var keyWord;
 var longitude = 250;
 var latitude = 250;
 var margin = 0.15;
-
+var model;
 io.sockets.on('connection', function(socket) {
 	socket.on(NEW_STREAMING_PARAM, function(data) {
 		if(stream != null) {
@@ -65,18 +68,23 @@ io.sockets.on('connection', function(socket) {
 			isFirstConnectionToTwitter = true;
 			stream = null;
 		}
-
+		// we use keyword or cityName_geoLocation as the collection name
 		if(typeof(data) === 'string') {
 			console.log('type:', typeof(data), data);
 			keyWord = data;
 			longitude = 250;
 			latitude = 250;
+			var collectionName = keyWord.toLowerCase();
+			model = mongoose.model(collectionName, schema, collectionName);
 			stream = T.stream('statuses/filter', { track: keyWord });
 		} else {
 			console.log('type:', typeof(data), data);
 			// data = {longitude: lon, latitude: lat}
+			var cityName = data.name;
 			longitude = +data.longitude;
 			latitude = +data.latitude;
+			var collectionName = cityName.concat('_', '[', data.longitude, ', ', data.latitude, ']');
+			model = mongoose.model(collectionName, schema, collectionName);
 			stream = T.stream('statuses/filter', { locations: [longitude-margin, latitude-margin, longitude+margin, latitude+margin] });
 		}
 
@@ -125,7 +133,21 @@ io.sockets.on('connection', function(socket) {
 			};
 
 			console.log(msg);
-
+			// we can save this tweet into mongoDB
+			var tuple = new model({
+				text: tweet.text,
+				created_at: tweet.created_at,
+				source: tweet.source,
+				user_screen_name: tweet.user.screen_name
+			});
+			tuple.geo.push({
+				type: tweet.coordinates.type,
+				coordinates: tweet.coordinates.coordinates
+			});
+			tuple.save(function(err, doc) {
+				if(err) console.error(err);
+				else console.dir(doc);
+			});
 			//push msg into buffer
 			tweetsBuffer.push(msg);
 

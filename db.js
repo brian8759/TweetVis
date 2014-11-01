@@ -3,7 +3,7 @@ var Admin = mongoose.mongo.Admin;
 
 //mongoose.connect('mongodb://localhost:27017/Ebola');
 
-mongoose.connect('mongodb://localhost:27017/Ebola');
+mongoose.connect('mongodb://localhost:27017/RealTimeTweets');
 var connection = mongoose.connection;
 
 connection.on('open', function(){
