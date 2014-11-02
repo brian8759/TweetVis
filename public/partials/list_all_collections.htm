@@ -1,0 +1,53 @@
+<section>
+	<div>
+		<h1>
+			Complete List of All Collections in Database
+		</h1>
+	</div>
+
+	<div>
+		<label>
+			Search:
+		</label>
+		<input type="text" class="form-control" ng-model="query" placeholder="Search for a Collection" autofocus>
+
+		<label class="form-group"> by:
+			<select ng-model="collectionOrder">
+				<option value="name">Collection Name</option>
+			</select>
+		</label>
+
+		<label class="form-group">
+			<input type="radio" ng-model="direction" name="direction" checked>
+			ascending
+		</label>
+		<label class="form-group">
+			<input type="radio" ng-model="direction" name="direction" value="reverse">
+			descending
+		</label>
+	</div>
+	
+	<div class="col-xs-12"><hr></div>
+    
+    <div ng-switch on="collections.length">
+    	<ul ng-switch-when="0">
+    		<li><em> There are no collections in the DB right now.</em></li>
+    	</ul>
+		<table class="table table-bordered table-hover" ng-switch-default>
+			<thead>
+				<tr>
+					<th>Collection Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="collection in collections | filter: query | orderBy: collectionOrder: direction">
+					<td>
+						<a href="#/collection/{{collection.name}}">{{collection.name}}</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+    </div>
+   
+</section>

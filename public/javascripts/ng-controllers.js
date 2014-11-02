@@ -26,10 +26,22 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filt
   });
 }]);
 
+TweetControllers.controller('ListAllCollections', ['$scope', '$http', function($scope, $http) {
+    // async get tweets from DB
+    $http.get('/getAllCollections')
+    .success(function(data) {
+        $scope.collections = data;
+    })
+    .error(function(data, status) {
+        console.log(status);
+    });
+}]);
+
 TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
     $scope.tweet = Tweet.get({ tweetId: $routeParams.tweetId });
     
     $scope.tweet.$promise.then(function() {
+        console.log($scope.tweet);
         // set up a map
         $scope.map = {
             center: {latitude: 40.1451, longitude: -99.6680 }, 
@@ -38,12 +50,40 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
             options: {scrollwheel: false},
             marker: [{
                 id: 1,
-                geometry: $scope.tweet.geo,
+                longitude: $scope.tweet.geo[0].coordinates[0],
+                latitude: $scope.tweet.geo[0].coordinates[1],
                 tweetId: $scope.tweet._id
             }]
         };
     });
     
+}]);
+
+TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Tweet', '$http', 'filterFilter', function($scope, $routeParams, Tweet, $http, filterFilter) {
+    var collectionId = $routeParams.collectionId;
+    // collectionId's format is RealTimeTweets.world, actually, the collection name is world, so we need to parse it
+    var collectionName = collectionId.substring(15);
+
+    $scope.itemsPerPage = 20;
+    $scope.currentPage = 1;
+
+    $http.post('/getAllTweets', {name: collectionName})
+    .success(function(tweets) {
+        $scope.tweets = tweets;
+        $scope.totalItems = $scope.tweets.length;
+        $scope.maxSize = 8;
+        $scope.$watch('query', function (newQuery, oldQuery) {
+            $scope.currentPage = 1;
+            $scope.filteredTweets = filterFilter($scope.tweets, {user_screen_name: $scope.query});
+            $scope.noOfPages = $scope.filteredTweets.length / $scope.itemsPerPage;
+            if(newQuery !== oldQuery) {
+                $scope.totalItems = $scope.filteredTweets.length;
+            }
+        });
+    })
+    .error(function() {
+
+    });
 }]);
 
 TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function($scope, Tweet) {

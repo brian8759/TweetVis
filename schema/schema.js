@@ -12,6 +12,7 @@ var tweetSchema = new Schema({
 		source: String,
 		// nested schema!!
 		geo: [geoSchema],
+		name: String,
 		user_screen_name: String
 	});
 

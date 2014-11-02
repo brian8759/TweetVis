@@ -138,6 +138,7 @@ io.sockets.on('connection', function(socket) {
 				text: tweet.text,
 				created_at: tweet.created_at,
 				source: tweet.source,
+				name: tweet.user.name, 
 				user_screen_name: tweet.user.screen_name
 			});
 			tuple.geo.push({

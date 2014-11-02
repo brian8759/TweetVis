@@ -31,6 +31,14 @@ tweetvis.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/real_time_streaming.htm',
     controller: 'RealTimeStreamingController'
   }).
+  when('/all_collections', {
+    templateUrl: 'partials/list_all_collections.htm',
+    controller: 'ListAllCollections'
+  }).
+  when('/collection/:collectionId', {
+    templateUrl: 'partials/list_one_collection.htm',
+    controller: 'ListOneCollection'
+  }).
   otherwise({
     redirectTo: '/'
   });

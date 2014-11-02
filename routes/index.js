@@ -1,12 +1,10 @@
 var express = require('express');
 var router = express.Router();
 //var path = require('path');
-//var mongoose = require('mongoose');
-//var TweetSchema = require('../schema/TweetSchema');
-var model = require('../schema/TweetSchema');
-//var db = require('../db');
-//var db = mongoose.createConnection('localhost', 'Ebola');
-//var model = db.model('testgeo', TweetSchema);
+var mongoose = require('mongoose');
+var schema = require('../schema/schema');
+var TweetSchema = require('../schema/TweetSchema');
+var model;
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -14,9 +12,33 @@ router.get('/', function(req, res) {
   //res.render('googlemap',{});
 });
 
+router.get('/getAllCollections', function(req, res) {
+  mongoose.connection.db.collectionNames(function(error, names) {
+    if (error) {
+      throw new Error(error);
+    } else {
+      console.dir(names);
+      res.json(names);
+    }
+  });
+});
+
+router.post('/getAllTweets', function(req, res) {
+  var collectionName = req.body.name;
+  model = mongoose.model(collectionName, schema, collectionName);
+  model.find({}, 'name user_screen_name created_at', {lean: true}, function(err, tweets) {
+    if(err) {
+      res.status(500).json({ status: 'failure' });
+    } else {
+      //console.log(tweets);
+      res.json(tweets);
+    }
+  });
+});
+
 router.get('/tweetAPI/All', function(req, res) {
   //Tweet.find({}, 'user_screen_name created_at', function(err, tweets) {
-  model.find({}, 'user_screen_name created_at', {lean: true}, function(err, tweets) {
+  TweetSchema.find({}, 'user_screen_name created_at', {lean: true}, function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
@@ -28,7 +50,7 @@ router.get('/tweetAPI/All', function(req, res) {
 
 router.get('/tweetAPI/Map', function(req, res) {
   //Tweet.find({}, 'user_screen_name created_at', function(err, tweets) {
-  model.find({}, 'geo', {lean: true})
+  TweetSchema.find({}, 'geo', {lean: true})
   .limit(3000)
   .exec(function(err, tweets) {
     if(err) {
@@ -39,7 +61,7 @@ router.get('/tweetAPI/Map', function(req, res) {
     }
   });
   /*  
-  model.find({}, function(err, tweets) {
+  TweetSchema.find({}, function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {

@@ -28,6 +28,8 @@
 	<div>
 		<dl class="dl-horizontal">
 			<dt>User Name</dt>
+			<dd>{{tweet.name}}</dd>
+			<dt>User Screen Name</dt>
 			<dd>{{tweet.user_screen_name}}</dd>
 			<dt>Content</dt>
 			<dd>{{tweet.text}}</dd>
@@ -42,7 +44,7 @@
 
 	<div id="geo_canvas">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" bounds="map.bounds">
-        <ui-gmap-markers models="map.marker" coords="'geometry'" icon="'icon'" fit='true'></ui-gmap-markers>
+        <ui-gmap-markers models="map.marker" coords="'self'" icon="'icon'" fit='true'></ui-gmap-markers>
     </ui-gmap-google-map>
     </div>
 	
