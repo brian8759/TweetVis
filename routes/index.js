@@ -37,7 +37,6 @@ router.post('/getAllTweets', function(req, res) {
 });
 
 router.get('/tweetAPI/All', function(req, res) {
-  //Tweet.find({}, 'user_screen_name created_at', function(err, tweets) {
   TweetSchema.find({}, 'user_screen_name created_at', {lean: true}, function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
@@ -60,26 +59,10 @@ router.get('/tweetAPI/Map', function(req, res) {
       res.json(tweets);
     }
   });
-  /*  
-  TweetSchema.find({}, function(err, tweets) {
-    if(err) {
-      res.status(500).json({ status: 'failure' });
-    } else {
-      //console.log(tweets);
-      res.json(tweets);
-    }
-  }); 
-*/
-});
-
-router.get('/tweetAPI/Render', function(req, res) {
-  res.render('googlemap',{});
 });
 
 router.get('/tweetAPI/:tweetId', function(req, res) {
   var tweetId = req.params.tweetId;
-  //console.log(tweetId);
-  //Tweet.findById(tweetId, '', {lean: true}, function(err, tweet) {
   model.findById(tweetId, '', {lean: true}, function(err, tweet) {
     if(err) {
       res.status(500).json({ status: 'failure' });

@@ -8,7 +8,6 @@ var SOCKETIO_TWEETS_EVENT = 'tweet-io:tweets';
 var NEW_STREAMING_PARAM = 'newStreamingParam';
 var SOCKETIO_START_EVENT = 'tweet-io:start';
 var SOCKETIO_STOP_EVENT = 'tweet-io:stop';
-var nbOpenSockets = 0;
 var isFirstConnectionToTwitter = true;
 
 console.log("Waiting for client.....");
@@ -19,29 +18,11 @@ var stream = null;
 //Handle Socket.IO events
 var discardClient = function() {
 	console.log('Client disconnected. Stop streaming from Twitter!');
-	/*
-	if(nbOpenSockets > 0) {
-		nbOpenSockets--;
-		if(nbOpenSockets == 0) {
-			console.log("No active client. Stop streaming from Twitter");
-			stream.stop();
-		}
-	}
-	*/
 	stream.stop();
 };
 
 var handleClient = function() {
 	console.log('Client connected! Start streaming from Twitter...');
-	/*	
-	if(nbOpenSockets <= 0) {
-		nbOpenSockets = 0;
-		console.log('First active client. Start streaming from Twitter');
-		stream.start();
-	}
-	
-	nbOpenSockets++;
-	*/
 	stream.start();
 };
 
@@ -72,6 +53,7 @@ io.sockets.on('connection', function(socket) {
 		if(typeof(data) === 'string') {
 			console.log('type:', typeof(data), data);
 			keyWord = data;
+			// reset the longitude and latitude
 			longitude = 250;
 			latitude = 250;
 			var collectionName = keyWord.toLowerCase();

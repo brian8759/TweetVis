@@ -64,7 +64,7 @@ TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Twe
     // collectionId's format is RealTimeTweets.world, actually, the collection name is world, so we need to parse it
     var collectionName = collectionId.substring(15);
 
-    $scope.itemsPerPage = 20;
+    $scope.itemsPerPage = 10;
     $scope.currentPage = 1;
 
     $http.post('/getAllTweets', {name: collectionName})
@@ -145,7 +145,8 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
         maps.visualRefresh = true;
         $scope.defaultBounds = new google.maps.LatLngBounds(
           new google.maps.LatLng(40.82148, -73.66450),
-          new google.maps.LatLng(40.66541, -74.31715));
+          new google.maps.LatLng(40.66541, -74.31715)
+        );
 
         
         $scope.map.bounds = {
@@ -190,6 +191,15 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             }
         }
     };
+
+    var cleanUp = function() {
+        $scope.tweets = [];
+        $scope.map.markersControl.getGMarkers().forEach(function(marker) {
+            marker.setMap(null);
+        });
+        $scope.map.markers = [];
+    };
+
     $scope.searchbox = {
       template:'searchbox.tpl.html',
       position:'top-left',
@@ -220,29 +230,13 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             $scope.btnIsDisabledKeyWord = true;
             $scope.btnIsDisabled = false;
             // we need to clean tweets and markers
-            $scope.tweets = [];
-            $scope.map.markersControl.getGMarkers().forEach(function(marker) {
-                marker.setMap(null);
-            });
-            $scope.map.markers = [];
-          /*  
-          $scope.map.bounds = {
-            northeast: {
-              latitude: bounds.getNorthEast().lat(),
-              longitude: bounds.getNorthEast().lng()
-            },
-            southwest: {
-              latitude: bounds.getSouthWest().lat(),
-              longitude: bounds.getSouthWest().lng()
-            }
-          };
-          */
+            cleanUp();
+            // set up the map center and zoom level
             $scope.map.center = {
                 longitude: place.geometry.location.lng(),
                 latitude: place.geometry.location.lat()
             };
             $scope.map.zoom = 10;
-         
         }
       }   
     };
@@ -256,30 +250,20 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             $scope.btnIsDisabledKeyWord = true;
             $scope.btnIsDisabled = false;
             // we need to clean tweets and markers
-            $scope.tweets = [];
-            $scope.map.markersControl.getGMarkers().forEach(function(marker) {
-                marker.setMap(null);
-            });
-            $scope.map.markers = [];
-
+            cleanUp();
+            // reset the map center and zoom level
             $scope.map.center = {
-                latitude: 40.74349,
-                longitude: -73.990822
+                latitude: 19.89677,
+                longitude: -155.58278
             };
-            $scope.map.zoom = 3;
+            $scope.map.zoom = 2;
         } else {
             alert('You must enter a valid meaningful streaming keyWord');
         }
         
     };
 
-    $scope.cleanMarkers = function cleanMarkers() {
-        $scope.tweets = [];
-        $scope.map.markersControl.getGMarkers().forEach(function(marker) {
-            marker.setMap(null);
-        });
-        $scope.map.markers = [];
-    };
+    $scope.cleanMarkers = cleanUp;
 
     $scope.findTweets = function findTweets() {
         Socket.emit('tweet-io:start', true);
