@@ -26,7 +26,7 @@ router.get('/getAllCollections', function(req, res) {
 router.post('/getAllTweets', function(req, res) {
   var collectionName = req.body.name;
   model = mongoose.model(collectionName, schema, collectionName);
-  model.find({}, 'name user_screen_name created_at', {lean: true}, function(err, tweets) {
+  model.find({}, 'name user_screen_name created_at geo text', {lean: true}, function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {

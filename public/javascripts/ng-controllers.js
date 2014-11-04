@@ -60,9 +60,9 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
 }]);
 
 TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Tweet', '$http', 'filterFilter', function($scope, $routeParams, Tweet, $http, filterFilter) {
-    var collectionId = $routeParams.collectionId;
+    $scope.collectionId = $routeParams.collectionId;
     // collectionId's format is RealTimeTweets.world, actually, the collection name is world, so we need to parse it
-    var collectionName = collectionId.substring(15);
+    var collectionName = $scope.collectionId.substring(15);
 
     $scope.itemsPerPage = 10;
     $scope.currentPage = 1;
@@ -86,42 +86,75 @@ TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Twe
     });
 }]);
 
-TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function($scope, Tweet) {
+TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'Tweet', '$http', function($scope, $routeParams, Tweet, $http) {
+    var collectionId = $routeParams.collectionId;
+    // collectionId's format is RealTimeTweets.world, actually, the collection name is world, so we need to parse it
+    var collectionName = collectionId.substring(15);
+    /*
     // async get tweet info
     $scope.tweets = Tweet.map();
+    */
     // set up a map
-	$scope.map = {
-        center: {latitude: 40.1451, longitude: -99.6680 }, 
+    $scope.map = {
+        center: {
+            latitude: 40.1451, 
+            longitude: -99.6680 
+        }, 
         zoom: 3, 
-        bounds: {}
+        bounds: {},
+        options: {
+            scrollwheel: false
+        },
+        markers: []
     };
-    $scope.options = {scrollwheel: false};
-    $scope.randomMarkers = [];
+    
     var createMarker = function(i, tweet, idKey) {
         if (idKey == null) {
             idKey = "id";
         }
 
         var ret = {
-            geometry: tweet.geo,
-            tweetId: tweet._id
-            //user: tweet.user_screen_name,
-            //created_at: tweet.created_at,
-            //text: tweet.text,
+            longitude: tweet.geo[0].coordinates[0],
+            latitude: tweet.geo[0].coordinates[1],
+            //geometry: tweet.geo,
+            user: tweet.user_screen_name,
+            created_at: tweet.created_at,
+            text: tweet.text,
             //source: tweet.source,
-            //show: false
+            show: false,
+            tweetId: tweet._id
         };
-        /*
+        
         ret.onClick = function() {
             console.log("Clicked!");
             ret.show = true;
             //$scope.apply();
         };
-        */
+        
         ret[idKey] = i;
         return ret;
     };
 
+    $http.post('/getAllTweets', {name: collectionName})
+    .success(function(tweets) {
+        $scope.tweets = tweets;
+        console.log("total tweets:", $scope.tweets.length);
+        var markers = [];
+        var len = $scope.tweets.length;
+        for (var i = 0; i < len; i++) {
+            var tweet = $scope.tweets[i];
+            //console.dir(tweet);
+            markers.push(createMarker(i, tweet));
+            //console.log(markers[i]);
+        }
+        $scope.map.markers = markers;
+    })
+    .error(function() {
+
+    });
+
+    
+    /*
     $scope.tweets.$promise.then(function() {
         // when it comes here, it means all tweets info have been retrieved
         // then we can use $scope.tweets.forEach(fucntion(tweet) {create markers})
@@ -138,6 +171,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', 'Tweet', function(
         $scope.randomMarkers = markers;
         
     });
+    */
 }]);
 
 TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'GoogleMapApi'.ns(), function($scope, Socket, GoogleMapApi) {

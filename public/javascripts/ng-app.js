@@ -23,7 +23,7 @@ tweetvis.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/list_one_tweet.htm',
     controller: 'ListOneTweetController'
   }).
-  when('/googlemap', {
+  when('/googlemap/:collectionId', {
     templateUrl: 'partials/googlemap.htm',
     controller: 'GoogleMapController'
   }).

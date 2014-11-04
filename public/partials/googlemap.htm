@@ -1,9 +1,4 @@
 <section>
-	<div>
-		<h1>
-			Inside google map!!
-		</h1>
-	</div>
 	<style type="text/css">
 	html, body{
             height: 100%;
@@ -30,10 +25,10 @@
         There are {{tweets.length}} tweets!
     </h3>
 	<div id="map_canvas" ng-controller="GoogleMapController">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
-    <!--
-        <ui-gmap-markers models="randomMarkers" coords="'geometry'" icon="'icon'" doCluster=true click="'onClick'">
-            <ui-gmap-windows show="show">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" bounds="map.bounds">
+    
+        <ui-gmap-markers models="map.markers" coords="'self'" icon="'icon'" doCluster=true fit='true' click="'onClick'">
+            <ui-gmap-windows show="'show'">
                 <div ng-non-bindable>
                     {{user}}<br>
                     {{created_at}}<br>
@@ -41,8 +36,10 @@
                 </div>
             </ui-gmap-windows>
         </ui-gmap-markers>
+    
+    <!--
+        <ui-gmap-markers models="map.markers" coords="'self'" icon="'icon'" doCluster=true fit='true'></ui-gmap-markers>
     -->
-        <ui-gmap-markers models="randomMarkers" coords="'geometry'" icon="'icon'" doCluster=true></ui-gmap-markers>
     </ui-gmap-google-map>
     </div>
 
