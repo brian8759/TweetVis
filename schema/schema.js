@@ -13,7 +13,8 @@ var tweetSchema = new Schema({
 		// nested schema!!
 		geo: [geoSchema],
 		name: String,
-		user_screen_name: String
+		user_screen_name: String,
+		attitude: String
 	});
 
 module.exports = tweetSchema;

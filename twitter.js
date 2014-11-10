@@ -2,6 +2,17 @@ var T = require('./twitWrapper');
 var io = require('./bin/www').io;
 var schema = require('./schema/schema');
 var mongoose = require('mongoose');
+
+
+var zerorpc = require("zerorpc");
+
+var client = new zerorpc.Client();
+client.connect("tcp://127.0.0.1:4242");
+
+client.invoke("hello", "RPC", function(error, res, more) {
+    console.log(res);
+});
+
 // then we can use mongoose.model('Collection', schema, 'collection_name'); 
 var TWEETS_BUFFER_SIZE = 1;
 var SOCKETIO_TWEETS_EVENT = 'tweet-io:tweets';
@@ -104,6 +115,7 @@ io.sockets.on('connection', function(socket) {
 				if(tweetLatitude < (latitude-margin) || tweetLatitude > (latitude+margin))
 					return;
 			}
+
 			//Create message containing tweet + location + username + profile pic
 			var msg = {};
 			msg.text = tweet.text;
@@ -115,26 +127,33 @@ io.sockets.on('connection', function(socket) {
 			};
 
 			console.log(msg);
-			// we can save this tweet into mongoDB
-			var tuple = new model({
-				text: tweet.text,
-				created_at: tweet.created_at,
-				source: tweet.source,
-				name: tweet.user.name, 
-				user_screen_name: tweet.user.screen_name
-			});
-			tuple.geo.push({
-				type: tweet.coordinates.type,
-				coordinates: tweet.coordinates.coordinates
-			});
-			tuple.save(function(err, doc) {
-				if(err) console.error(err);
-				else console.dir(doc);
-			});
-			//push msg into buffer
-			tweetsBuffer.push(msg);
+			// send valid tweet to python server via zeroRPC
+			client.invoke("analyze", tweet, function(error, res, more) {
+    			console.dir(res);
+    			// we can save this tweet into mongoDB
+    			var tweet = res;
+				var tuple = new model({
+					text: tweet.text,
+					created_at: tweet.created_at,
+					source: tweet.source,
+					name: tweet.user.name, 
+					user_screen_name: tweet.user.screen_name,
+					attitude: tweet.attitude
+				});
+				tuple.geo.push({
+					type: tweet.coordinates.type,
+					coordinates: tweet.coordinates.coordinates
+				});
+				tuple.save(function(err, doc) {
+					if(err) console.error(err);
+					else console.dir(doc);
+				});
+				//push msg into buffer
+				tweetsBuffer.push(msg);
 
-			broadcastTweets();
+				broadcastTweets();
+			});
+			
 		});
 	});
 	

@@ -9,15 +9,6 @@ exports.io = io;
 
 var twitter = require('../twitter');
 
-var zerorpc = require("zerorpc");
-
-var client = new zerorpc.Client();
-client.connect("tcp://127.0.0.1:4242");
-
-client.invoke("hello", "RPC", function(error, res, more) {
-    console.log(res);
-});
-
 app.set('port', process.env.PORT || 3000);
 
 process.on('uncaughtException', function (err) {

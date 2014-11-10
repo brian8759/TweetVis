@@ -49,9 +49,15 @@ class HelloRPC(object):
 		''' tweet is a json file, we need to extract the text part, and do feature extraction, then use classifier '''
 		''' before analyzing tweet, we need to preprocess it'''
 		tweetString = json.loads(tweet)
+		#get the text part
 		text = tweetString['text']
+		# do some preprocessing
 		processedText = preprocessTweet(text)
+		# use classifier to classify it
 		attitude = self.classifier.classify(extract_features(processedText.split()))
+		# add attitude into tweetString
+		tweetString['attitude'] = attitude
+		return json.dumps(tweetString)
 		
 s = zerorpc.Server(HelloRPC())
 s.bind("tcp://127.0.0.1:4242")
