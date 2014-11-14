@@ -52,6 +52,7 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
                 id: 1,
                 longitude: $scope.tweet.geo[0].coordinates[0],
                 latitude: $scope.tweet.geo[0].coordinates[1],
+                icon: 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-a8a8a8/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/tweet.png',
                 tweetId: $scope.tweet._id
             }]
         };
@@ -120,6 +121,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
             user: tweet.user_screen_name,
             created_at: tweet.created_at,
             text: tweet.text,
+            icon: 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-a8a8a8/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/tweet.png',
             //source: tweet.source,
             show: false,
             tweetId: tweet._id
@@ -153,25 +155,6 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
 
     });
 
-    
-    /*
-    $scope.tweets.$promise.then(function() {
-        // when it comes here, it means all tweets info have been retrieved
-        // then we can use $scope.tweets.forEach(fucntion(tweet) {create markers})
-        //var tweetsCopy = $scope.tweets;
-        console.log("total tweets:", $scope.tweets.length);
-        var markers = [];
-        var len = $scope.tweets.length;
-        for (var i = 0; i < len; i++) {
-            //console.log($scope.tweets[i]);
-            var tweet = $scope.tweets[i];
-            markers.push(createMarker(i, tweet));
-            //console.log(markers[i]);
-        }
-        $scope.randomMarkers = markers;
-        
-    });
-    */
 }]);
 
 TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'GoogleMapApi'.ns(), function($scope, Socket, GoogleMapApi) {
@@ -324,6 +307,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
                     id: count,
                     geometry: v.user.coordinates,
                     user_name: v.user.name,
+                    icon: 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-a8a8a8/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/tweet.png',
                     text: v.text,
                     show: false
                 };
