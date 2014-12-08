@@ -26,7 +26,7 @@ router.get('/getAllCollections', function(req, res) {
 router.post('/getAllTweets', function(req, res) {
   var collectionName = req.body.name;
   model = mongoose.model(collectionName, schema, collectionName);
-  model.find({}, 'name user_screen_name created_at geo text', {lean: true}, function(err, tweets) {
+  model.find({}, 'name user_screen_name created_at geo text att', {lean: true}, function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
@@ -37,7 +37,7 @@ router.post('/getAllTweets', function(req, res) {
 });
 
 router.get('/tweetAPI/All', function(req, res) {
-  TweetSchema.find({}, 'user_screen_name created_at', {lean: true}, function(err, tweets) {
+  TweetSchema.find({}, 'user_screen_name created_at att', {lean: true}, function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
@@ -49,7 +49,7 @@ router.get('/tweetAPI/All', function(req, res) {
 
 router.get('/tweetAPI/Map', function(req, res) {
   //Tweet.find({}, 'user_screen_name created_at', function(err, tweets) {
-  TweetSchema.find({}, 'geo', {lean: true})
+  TweetSchema.find({}, 'geo att', {lean: true})
   .limit(3000)
   .exec(function(err, tweets) {
     if(err) {

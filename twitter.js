@@ -8,10 +8,11 @@ var zerorpc = require("zerorpc");
 
 var client = new zerorpc.Client();
 client.connect("tcp://127.0.0.1:4242");
-
+/*
 client.invoke("hello", "RPC", function(error, res, more) {
     console.log(res);
 });
+*/
 
 // then we can use mongoose.model('Collection', schema, 'collection_name'); 
 var TWEETS_BUFFER_SIZE = 1;
@@ -117,6 +118,7 @@ io.sockets.on('connection', function(socket) {
 			}
 
 			//Create message containing tweet + location + username + profile pic
+			/*
 			var msg = {};
 			msg.text = tweet.text;
 			msg.location = tweet.place.full_name;
@@ -125,20 +127,16 @@ io.sockets.on('connection', function(socket) {
 				image: tweet.user.profile_image_url,
 				coordinates: tweet.coordinates
 			};
-
-			console.log(msg);
-			// send valid tweet to python server via zeroRPC
-			client.invoke("analyze", tweet, function(error, res, more) {
-    			console.dir(res);
-    			// we can save this tweet into mongoDB
-    			var tweet = res;
+			*/
+			//console.log(msg);
+			/*
 				var tuple = new model({
 					text: tweet.text,
 					created_at: tweet.created_at,
 					source: tweet.source,
 					name: tweet.user.name, 
-					user_screen_name: tweet.user.screen_name,
-					attitude: tweet.attitude
+					user_screen_name: tweet.user.screen_name
+					//attitude: tweet.attitude
 				});
 				tuple.geo.push({
 					type: tweet.coordinates.type,
@@ -152,8 +150,46 @@ io.sockets.on('connection', function(socket) {
 				tweetsBuffer.push(msg);
 
 				broadcastTweets();
+			*/
+
+			
+			// send valid tweet to python server via zeroRPC
+			client.invoke("classifySingle", tweet, function(error, res, more) {
+    			console.dir(res);
+    			// we can save this tweet into mongoDB
+    			var tweet = res;
+				var tuple = new model({
+					text: tweet.text,
+					created_at: tweet.created_at,
+					source: tweet.source,
+					name: tweet.user.name, 
+					user_screen_name: tweet.user.screen_name,
+					att: tweet.att
+				});
+				tuple.geo.push({
+					type: tweet.coordinates.type,
+					coordinates: tweet.coordinates.coordinates
+				});
+				tuple.save(function(err, doc) {
+					if(err) console.error(err);
+					else console.dir(doc);
+				});
+				//push msg into buffer
+				var msg = {};
+				msg.text = tweet.text;
+				msg.location = tweet.place.full_name;
+				msg.att = tweet.att;
+				msg.user = {
+					name: tweet.user.name, 
+					image: tweet.user.profile_image_url,
+					coordinates: tweet.coordinates
+				};
+				tweetsBuffer.push(msg);
+
+				broadcastTweets();
 			});
 			
+
 		});
 	});
 	

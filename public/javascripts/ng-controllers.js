@@ -52,10 +52,17 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
                 id: 1,
                 longitude: $scope.tweet.geo[0].coordinates[0],
                 latitude: $scope.tweet.geo[0].coordinates[1],
-                icon: 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-a8a8a8/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/tweet.png',
+                //icon: "/images/user.png",
                 tweetId: $scope.tweet._id
             }]
         };
+        if($scope.tweet.att == 'neg') {
+            $scope.map.marker[0].icon = "/images/user_neg.png";
+        } else if($scope.tweet.att == 'pos') {
+            $scope.map.marker[0].icon = "/images/user_pos.png"
+        } else {
+            $scope.map.marker[0].icon = "/images/user_neu.png"
+        }
     });
     
 }]);
@@ -121,12 +128,20 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
             user: tweet.user_screen_name,
             created_at: tweet.created_at,
             text: tweet.text,
-            icon: 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-a8a8a8/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/tweet.png',
+            //icon: "/images/user.png",
             //source: tweet.source,
             show: false,
             tweetId: tweet._id
         };
         
+        if(tweet.att == 'neg') {
+            ret.icon = "/images/user_neg.png";
+        } else if(tweet.att == 'pos') {
+            ret.icon = "/images/user_pos.png"
+        } else {
+            ret.icon = "/images/user_neu.png"
+        }
+
         ret.onClick = function() {
             console.log("Clicked!");
             ret.show = true;
@@ -157,7 +172,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
 
 }]);
 
-TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'GoogleMapApi'.ns(), function($scope, Socket, GoogleMapApi) {
+TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'uiGmapGoogleMapApi', function($scope, Socket, GoogleMapApi) {
     GoogleMapApi.then(function(maps) {
         maps.visualRefresh = true;
         $scope.defaultBounds = new google.maps.LatLngBounds(
@@ -307,10 +322,19 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
                     id: count,
                     geometry: v.user.coordinates,
                     user_name: v.user.name,
-                    icon: 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-a8a8a8/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/tweet.png',
+                    //icon: "/images/user.png",
                     text: v.text,
                     show: false
                 };
+                //console.log(typeof(v.att))
+                //console.log(v.att)
+                if(v.att == 'neg') {
+                    marker.icon = "/images/user_neg.png";
+                } else if(v.att == 'pos') {
+                    marker.icon = "/images/user_pos.png"
+                } else {
+                    marker.icon = "/images/user_neu.png"
+                }
                 marker.onClick = function() {
                     marker.show = !marker.show;
                 };

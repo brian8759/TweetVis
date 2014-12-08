@@ -1,10 +1,10 @@
 var Twit = require('twit');
 
 var T = new Twit({
-    consumer_key:         'z2p5HbalegwbTlhTUh6UT1Fbf',
-    consumer_secret:      '0Mc10MCwZNIxm14CRJBTSEkm5bfoE2gVtHwe6g6ZBOgknhzA2t',
-    access_token:         '491396961-Lo6AgeHKuymTkJ1MVf3Z5bhEP3PfndhBNpeuCSOB',
-    access_token_secret:  '71YWjyxocYhu8VTFJV91H3hhZ36iowTOcnWmj1VOwzrn2'
+    consumer_key:         'sBBsyWD41S7RxyZQYm5PkSv8l',
+    consumer_secret:      'jWx89GtOCUkfsbD6M83BJd4C2u2WoMNLL8yXuyPSkmooWAqZtf',
+    access_token:         '2859539890-Gx8ek68KiQA7237kKxP8G0sOlRTIVO2ojwh95Qf',
+    access_token_secret:  'oXVAAiWl7yiblDFY9vjperCT1tSTYR62SMjxsf8TI2uw3'
 });
 
 module.exports = T;

@@ -1,9 +1,9 @@
 "use strict";
 
 var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 
-  'tweetvis.Controllers', 'tweetvis.Services', 'ui.bootstrap', 'google-maps'.ns()]);
+  'tweetvis.Controllers', 'tweetvis.Services', 'ui.bootstrap', 'uiGmapgoogle-maps']);
 
-tweetvis.config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
+tweetvis.config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
   GoogleMapApi.configure({
 //    key: 'your api key',
     key: 'AIzaSyDCdwlKea2jiNxYLXVlpS9GwGUrUBJPCT4',

@@ -14,7 +14,7 @@ var tweetSchema = new Schema({
 		geo: [geoSchema],
 		name: String,
 		user_screen_name: String,
-		attitude: String
+		att: String
 	});
 
 module.exports = tweetSchema;
