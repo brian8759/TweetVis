@@ -16,10 +16,6 @@ Besides, I have used the angular-google-maps to show the tweets' geo location.
 The markers will be clustered at the first time. Then user can click it and zoom into the detail part.
 If user click the marker, the info window will show the detail part of the tweet.
 
-Bugs:
-1: If I put "saving bandwidth" methods into stream.on('connect'), there will be [Error: socket hang up] code: 'ECONNRESET'.
-If I put it into stream.on('tweet'), no errors!
-
 So far, user can dynamically stream real time Tweets based on keyword and geo location. 
 
 Everytime when user create a new keyword or a new geo location, a new collection will be created in the MongoDB.
@@ -29,3 +25,5 @@ Then when user stop streaming, he can query the DB to retrieve those tweets!
 When the node.js receive a real time tweet, it will check if this tweet contains geo location, if so, then send to server.py via zeroRPC, 
 in server.py, the nltk package will do the basic sentimental analysis via Naive Bayes Classifier, then get an attitude based on the tweet
 text. Then add "attitude" into tweet, and send it back to node.js, then store it into MongoDB, and push it to the frontend.
+
+
