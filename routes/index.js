@@ -9,7 +9,6 @@ var model;
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'TweetVis' });
-  //res.render('googlemap',{});
 });
 
 router.get('/getAllCollections', function(req, res) {
@@ -30,7 +29,6 @@ router.post('/getAllTweets', function(req, res) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
-      //console.log(tweets);
       res.json(tweets);
     }
   });
@@ -41,21 +39,18 @@ router.get('/tweetAPI/All', function(req, res) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
-      //console.log(tweets);
       res.json(tweets);
     }
   });	
 });
 
 router.get('/tweetAPI/Map', function(req, res) {
-  //Tweet.find({}, 'user_screen_name created_at', function(err, tweets) {
   TweetSchema.find({}, 'geo att', {lean: true})
   .limit(3000)
   .exec(function(err, tweets) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
-      //console.log(tweets);
       res.json(tweets);
     }
   });
@@ -67,8 +62,6 @@ router.get('/tweetAPI/:tweetId', function(req, res) {
     if(err) {
       res.status(500).json({ status: 'failure' });
     } else {
-      //console.log(tweet);
-      //res.sendFile(path.join(__dirname, '../public/partials/', 'googlemap.htm'));
       res.json(tweet);
     }
   });

@@ -1,3 +1,6 @@
+/*
+ * For testing real time streaming tweets
+*/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -11,7 +14,6 @@ var tweetSchema = new Schema({
 		created_at: Date,
 		source: String,
 		geo: [geoSchema],
-		//coordinates: [geoSchema],
 		user_screen_name: String
 	}, {collection: 'EbolaGeoLatest'});
 

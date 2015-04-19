@@ -5,7 +5,6 @@ var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource',
 
 tweetvis.config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
   GoogleMapApi.configure({
-//    key: 'your api key',
     key: 'AIzaSyDCdwlKea2jiNxYLXVlpS9GwGUrUBJPCT4',
     v: '3.17',
     libraries: 'places'
@@ -50,7 +49,7 @@ tweetvis.run(['$templateCache', function ($templateCache) {
 
 tweetvis.filter('startFrom', function() {
     return function(input, start) {
-        start = +start; //parse to int
+        start = +start;
         return input.slice(start);
     }
 });

@@ -15,11 +15,7 @@ TweetServices.factory('Tweet', function($resource) {
     render: {
       method: 'GET', params: { tweetId: 'Render' }, isArray: true
     }
-    
-    // we can define more methods here
   });
-  // we can even add more methods to the Service itself, via
-  // ret.prototype.functionName = function(){}
   return ret;
 });
 

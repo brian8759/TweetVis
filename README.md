@@ -1,5 +1,14 @@
 Near real time data visualizaiton of twitter users' reaction on breaking events
 
+HowTo:
+Step 1: install node.js, npm
+Step 2: npm install
+step 3: install zeroRPC
+step 4: python analysis.py
+step 5: node ./bin/www
+step 6: go to localhost:3000
+
+
 Adapt the "MEAN" stack.
 Use MongoDB as the database storage.
 Use Node.js and express.js to make the back end. 
@@ -15,6 +24,14 @@ And I combine the pagination with user defined query and the sorting method.
 Besides, I have used the angular-google-maps to show the tweets' geo location. 
 The markers will be clustered at the first time. Then user can click it and zoom into the detail part.
 If user click the marker, the info window will show the detail part of the tweet.
+
+Caution:
+I found out it had some bugs while installing zeroRPC with latest Node.js (Version: 12.2X).
+Please downgrade Node.js to 10.3X, then everything works well.
+
+Bugs:
+1: If I put "saving bandwidth" methods into stream.on('connect'), there will be [Error: socket hang up] code: 'ECONNRESET'.
+If I put it into stream.on('tweet'), no errors!
 
 So far, user can dynamically stream real time Tweets based on keyword and geo location. 
 

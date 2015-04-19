@@ -3,20 +3,17 @@
 var TweetControllers = angular.module('tweetvis.Controllers', []);
 
 TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filterFilter', function($scope, Tweet, filterFilter) {
-    // async get tweets from DB
     $scope.tweets = Tweet.query();
 
-    //$scope.totalItems = 64;
     $scope.itemsPerPage = 20;
     $scope.currentPage = 1;
 
     $scope.tweets.$promise.then(function () {
     $scope.totalItems = $scope.tweets.length;
-    //$scope.numOfPages = 8;
+    
     $scope.maxSize = 8;
     $scope.$watch('query', function (newQuery, oldQuery) {
         $scope.currentPage = 1;
-        //$scope.filteredTweets = $filter('filter')($scope.tweets, $scope.query);
         $scope.filteredTweets = filterFilter($scope.tweets, {user_screen_name: $scope.query});
         $scope.noOfPages = $scope.filteredTweets.length / $scope.itemsPerPage;
         if(newQuery !== oldQuery) {
@@ -27,7 +24,6 @@ TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filt
 }]);
 
 TweetControllers.controller('ListAllCollections', ['$scope', '$http', function($scope, $http) {
-    // async get tweets from DB
     $http.get('/getAllCollections')
     .success(function(data) {
         $scope.collections = data;
@@ -42,7 +38,6 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
     
     $scope.tweet.$promise.then(function() {
         console.log($scope.tweet);
-        // set up a map
         $scope.map = {
             center: {latitude: 40.1451, longitude: -99.6680 }, 
             zoom: 3, 
@@ -52,7 +47,6 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
                 id: 1,
                 longitude: $scope.tweet.geo[0].coordinates[0],
                 latitude: $scope.tweet.geo[0].coordinates[1],
-                //icon: "/images/user.png",
                 tweetId: $scope.tweet._id
             }]
         };
@@ -69,7 +63,6 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
 
 TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Tweet', '$http', 'filterFilter', function($scope, $routeParams, Tweet, $http, filterFilter) {
     $scope.collectionId = $routeParams.collectionId;
-    // collectionId's format is RealTimeTweets.world, actually, the collection name is world, so we need to parse it
     var collectionName = $scope.collectionId.substring(15);
 
     $scope.itemsPerPage = 10;
@@ -96,13 +89,8 @@ TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Twe
 
 TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'Tweet', '$http', function($scope, $routeParams, Tweet, $http) {
     var collectionId = $routeParams.collectionId;
-    // collectionId's format is RealTimeTweets.world, actually, the collection name is world, so we need to parse it
     var collectionName = collectionId.substring(15);
-    /*
-    // async get tweet info
-    $scope.tweets = Tweet.map();
-    */
-    // set up a map
+
     $scope.map = {
         center: {
             latitude: 40.1451, 
@@ -124,12 +112,9 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
         var ret = {
             longitude: tweet.geo[0].coordinates[0],
             latitude: tweet.geo[0].coordinates[1],
-            //geometry: tweet.geo,
             user: tweet.user_screen_name,
             created_at: tweet.created_at,
             text: tweet.text,
-            //icon: "/images/user.png",
-            //source: tweet.source,
             show: false,
             tweetId: tweet._id
         };
@@ -145,7 +130,6 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
         ret.onClick = function() {
             console.log("Clicked!");
             ret.show = true;
-            //$scope.apply();
         };
         
         ret[idKey] = i;
@@ -160,9 +144,7 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
         var len = $scope.tweets.length;
         for (var i = 0; i < len; i++) {
             var tweet = $scope.tweets[i];
-            //console.dir(tweet);
             markers.push(createMarker(i, tweet));
-            //console.log(markers[i]);
         }
         $scope.map.markers = markers;
     })
@@ -217,9 +199,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             idle: function (map) {
                 var bounds = map.getBounds();
                 var ne = bounds.getNorthEast(); // LatLng of the north-east corner
-                //console.log("ne bounds " + ne.lat() + ", " + ne.lng());
                 var sw = bounds.getSouthWest(); // LatLng of the south-west corder
-                //console.log("sw bounds " + sw.lat() + ", " + sw.lng());
             }
         }
     };
@@ -238,7 +218,6 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
       options: {
         bounds: {} 
       },
-      //parentdiv:'searchBoxParent',
       events: {
         places_changed: function (searchBox) {
           var places = searchBox.getPlaces();
@@ -261,9 +240,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
 
             $scope.btnIsDisabledKeyWord = true;
             $scope.btnIsDisabled = false;
-            // we need to clean tweets and markers
             cleanUp();
-            // set up the map center and zoom level
             $scope.map.center = {
                 longitude: place.geometry.location.lng(),
                 latitude: place.geometry.location.lat()
@@ -281,9 +258,7 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
             Socket.emit('newStreamingParam', $scope.keyWord);
             $scope.btnIsDisabledKeyWord = true;
             $scope.btnIsDisabled = false;
-            // we need to clean tweets and markers
             cleanUp();
-            // reset the map center and zoom level
             $scope.map.center = {
                 latitude: 19.89677,
                 longitude: -155.58278
@@ -315,19 +290,15 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
     Socket.on('tweet-io:tweets', function (data) {
         console.log(data);
         $scope.tweets = $scope.tweets.concat(data);
-        // for each object in data, we check the data[i].user.coordinates
         data.forEach(function(v) {
             if(v.user.coordinates != null) {
                 var marker = {
                     id: count,
                     geometry: v.user.coordinates,
                     user_name: v.user.name,
-                    //icon: "/images/user.png",
                     text: v.text,
                     show: false
                 };
-                //console.log(typeof(v.att))
-                //console.log(v.att)
                 if(v.att == 'neg') {
                     marker.icon = "/images/user_neg.png";
                 } else if(v.att == 'pos') {
@@ -338,7 +309,6 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
                 marker.onClick = function() {
                     marker.show = !marker.show;
                 };
-                //console.log(marker);
                 count++;
                 $scope.map.markers.push(marker);
             }
