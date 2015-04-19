@@ -35,35 +35,35 @@
 		</div>
 	</div>
 	<div class="row">
-            <div class="col-md-5">
-                <button type="button" class="btn btn-primary btn-lg" ng-click="findTweets()" ng-disabled="btnIsDisabled">{{btnText}}</button>
-                <button type="button" class="btn btn-primary btn-lg" ng-click="stopStreaming()" ng-disabled="btnIsDisabledStop">{{btnTextStop}}</button>
-                <span ng-repeat="tweet in tweets | reverse track by $index">
-                    <section class="post">
-    					<header class="post-header">
-        					<img class="post-avatar" alt="{{tweet.user.name}}" height="52" width="52" src="{{tweet.user.image}}" />
-        					<h4 class="post-user"> {{tweet.user.name}} @ {{tweet.location}}</h4>
-        					<h5>{{tweet.text}}</h5>
-    					</header>
-					</section>
-                </span>
-            </div> 
-            <div class="col-md-7">
-            	<div id="geo_canvas">
-    				<ui-gmap-google-map center="map.center" zoom="map.zoom" dragging="map.dragging" bounds="map.bounds" events="map.events" options="map.options" pan="true" control="map.control">
-      
-      					<ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events"></ui-gmap-search-box>
+        <div class="col-md-5">
+            <button type="button" class="btn btn-primary btn-lg" ng-click="findTweets()" ng-disabled="btnIsDisabled">{{btnText}}</button>
+            <button type="button" class="btn btn-primary btn-lg" ng-click="stopStreaming()" ng-disabled="btnIsDisabledStop">{{btnTextStop}}</button>
+            <span ng-repeat="tweet in tweets | reverse track by $index">
+                <section class="post">
+					<header class="post-header">
+    					<img class="post-avatar" alt="{{tweet.user.name}}" height="52" width="52" src="{{tweet.user.image}}" />
+    					<h4 class="post-user"> {{tweet.user.name}} @ {{tweet.location}}</h4>
+    					<h5>{{tweet.text}}</h5>
+					</header>
+				</section>
+            </span>
+        </div> 
+        <div class="col-md-7">
+        	<div id="geo_canvas">
+				<ui-gmap-google-map center="map.center" zoom="map.zoom" dragging="map.dragging" bounds="map.bounds" events="map.events" options="map.options" pan="true" control="map.control">
+  
+  					<ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events"></ui-gmap-search-box>
 
-        				<ui-gmap-markers models="map.markers" coords="'geometry'" icon="'icon'" click="'onClick'" control="map.markersControl">
-        					<ui-gmap-windows show="'show'">
-                				<div ng-non-bindable>
-                    				{{user_name}}<br>
-                    				{{text}}
-                				</div>
-            				</ui-gmap-windows>
-        				</ui-gmap-markers>
-    				</ui-gmap-google-map>
-   			 	</div>
-            </div>           
+    				<ui-gmap-markers models="map.markers" coords="'geometry'" icon="'icon'" click="'onClick'" control="map.markersControl">
+    					<ui-gmap-windows show="'show'">
+            				<div ng-non-bindable>
+                				{{user_name}}<br>
+                				{{text}}
+            				</div>
+        				</ui-gmap-windows>
+    				</ui-gmap-markers>
+				</ui-gmap-google-map>
+			 	</div>
+        </div>           
     </div>
 </section>		

@@ -8,11 +8,6 @@ var zerorpc = require("zerorpc");
 
 var client = new zerorpc.Client();
 client.connect("tcp://127.0.0.1:4242");
-/*
-client.invoke("hello", "RPC", function(error, res, more) {
-    console.log(res);
-});
-*/
 
 // then we can use mongoose.model('Collection', schema, 'collection_name'); 
 var TWEETS_BUFFER_SIZE = 1;
@@ -23,7 +18,7 @@ var SOCKETIO_STOP_EVENT = 'tweet-io:stop';
 var isFirstConnectionToTwitter = true;
 
 console.log("Waiting for client.....");
-//var stream = T.stream('statuses/filter', { locations: [-122.75,36.8,-121.75,37.8] });
+
 var tweetsBuffer = [];
 var stream = null;
 
@@ -73,7 +68,6 @@ io.sockets.on('connection', function(socket) {
 			stream = T.stream('statuses/filter', { track: keyWord });
 		} else {
 			console.log('type:', typeof(data), data);
-			// data = {longitude: lon, latitude: lat}
 			var cityName = data.name;
 			longitude = +data.longitude;
 			latitude = +data.latitude;
@@ -101,8 +95,6 @@ io.sockets.on('connection', function(socket) {
 		});
 
 		stream.on('tweet', function(tweet) {
-			
-			
 			if (tweet.coordinates == null || tweet.place == null) {
 				return ;
 			}
@@ -116,43 +108,6 @@ io.sockets.on('connection', function(socket) {
 				if(tweetLatitude < (latitude-margin) || tweetLatitude > (latitude+margin))
 					return;
 			}
-
-			//Create message containing tweet + location + username + profile pic
-			/*
-			var msg = {};
-			msg.text = tweet.text;
-			msg.location = tweet.place.full_name;
-			msg.user = {
-				name: tweet.user.name, 
-				image: tweet.user.profile_image_url,
-				coordinates: tweet.coordinates
-			};
-			*/
-			//console.log(msg);
-			/*
-				var tuple = new model({
-					text: tweet.text,
-					created_at: tweet.created_at,
-					source: tweet.source,
-					name: tweet.user.name, 
-					user_screen_name: tweet.user.screen_name
-					//attitude: tweet.attitude
-				});
-				tuple.geo.push({
-					type: tweet.coordinates.type,
-					coordinates: tweet.coordinates.coordinates
-				});
-				tuple.save(function(err, doc) {
-					if(err) console.error(err);
-					else console.dir(doc);
-				});
-				//push msg into buffer
-				tweetsBuffer.push(msg);
-
-				broadcastTweets();
-			*/
-
-			
 			// send valid tweet to python server via zeroRPC
 			client.invoke("classifySingle", tweet, function(error, res, more) {
     			console.dir(res);
@@ -188,8 +143,6 @@ io.sockets.on('connection', function(socket) {
 
 				broadcastTweets();
 			});
-			
-
 		});
 	});
 	

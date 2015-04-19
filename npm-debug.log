@@ -1,0 +1,1208 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'zerorpc' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose install zerorpc is installed as 0.9.3
+5 silly cache add args [ 'zerorpc@*', null ]
+6 verbose cache add spec zerorpc@*
+7 silly cache add parsed spec { raw: 'zerorpc@*',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'zerorpc',
+7 silly cache add   rawSpec: '*',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 verbose addNamed zerorpc@*
+9 silly addNamed semver.valid null
+10 silly addNamed semver.validRange *
+11 silly addNameRange { name: 'zerorpc', range: '*', hasData: false }
+12 silly mapToRegistry name zerorpc
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/zerorpc
+16 verbose addNameRange registry:https://registry.npmjs.org/zerorpc not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/zerorpc
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 2:40:03 PM
+20 verbose request id 289011ee29a22e18
+21 verbose etag "3I7IQOFDZ2OZU2TVKZWM51KEB"
+22 http request GET https://registry.npmjs.org/zerorpc
+23 http 304 https://registry.npmjs.org/zerorpc
+24 silly get cb [ 304,
+24 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
+24 silly get     server: 'Apache',
+24 silly get     via: '1.1 varnish',
+24 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
+24 silly get     'cache-control': 'max-age=60',
+24 silly get     etag: '"3I7IQOFDZ2OZU2TVKZWM51KEB"',
+24 silly get     age: '0',
+24 silly get     'x-served-by': 'cache-iad2124-IAD',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1429468803.483361,VS0,VE71',
+24 silly get     vary: 'Accept',
+24 silly get     'content-length': '0',
+24 silly get     'keep-alive': 'timeout=10, max=50',
+24 silly get     connection: 'Keep-Alive' } ]
+25 verbose etag https://registry.npmjs.org/zerorpc from cache
+26 verbose get saving zerorpc to /Users/Baiqian/.npm/registry.npmjs.org/zerorpc/.cache.json
+27 silly addNameRange number 2 { name: 'zerorpc', range: '*', hasData: true }
+28 silly addNameRange versions [ 'zerorpc',
+28 silly addNameRange   [ '0.1.0',
+28 silly addNameRange     '0.2.0',
+28 silly addNameRange     '0.3.0',
+28 silly addNameRange     '0.4.0',
+28 silly addNameRange     '0.5.0',
+28 silly addNameRange     '0.6.0',
+28 silly addNameRange     '0.6.1',
+28 silly addNameRange     '0.7.0',
+28 silly addNameRange     '0.7.1',
+28 silly addNameRange     '0.7.2',
+28 silly addNameRange     '0.7.3',
+28 silly addNameRange     '0.7.4',
+28 silly addNameRange     '0.8.0',
+28 silly addNameRange     '0.8.1',
+28 silly addNameRange     '0.8.2',
+28 silly addNameRange     '0.8.3',
+28 silly addNameRange     '0.8.4',
+28 silly addNameRange     '0.8.5',
+28 silly addNameRange     '0.8.6',
+28 silly addNameRange     '0.8.7',
+28 silly addNameRange     '0.8.8',
+28 silly addNameRange     '0.9.0',
+28 silly addNameRange     '0.9.1',
+28 silly addNameRange     '0.9.2',
+28 silly addNameRange     '0.9.3' ] ]
+29 verbose addNamed zerorpc@0.9.3
+30 silly addNamed semver.valid 0.9.3
+31 silly addNamed semver.validRange 0.9.3
+32 silly cache afterAdd zerorpc@0.9.3
+33 verbose afterAdd /Users/Baiqian/.npm/zerorpc/0.9.3/package/package.json not in flight; writing
+34 verbose afterAdd /Users/Baiqian/.npm/zerorpc/0.9.3/package/package.json written
+35 silly install resolved [ { name: 'zerorpc',
+35 silly install resolved     version: '0.9.3',
+35 silly install resolved     main: './index.js',
+35 silly install resolved     author: { name: 'dotCloud', email: 'opensource@dotcloud.com' },
+35 silly install resolved     description: 'A port of ZeroRPC to node.js',
+35 silly install resolved     contributors: [ [Object], [Object] ],
+35 silly install resolved     repository: { type: 'git', url: 'https://github.com/dotcloud/zerorpc-node' },
+35 silly install resolved     keywords: [ 'zerorpc', 'rpc', 'distributed', 'communication' ],
+35 silly install resolved     dependencies:
+35 silly install resolved      { underscore: '1.3.3',
+35 silly install resolved        msgpack: '0.1.8',
+35 silly install resolved        'node-uuid': '1.3.3',
+35 silly install resolved        zmq: '2.x' },
+35 silly install resolved     devDependencies: { nodeunit: '0.7.4' },
+35 silly install resolved     license: 'MIT',
+35 silly install resolved     readme: 'zerorpc-node\n============\n\nZeroRPC is a communication layer for distributed systems. zerorpc-node is a port of the original [ZeroRPC](https://github.com/dotcloud/zerorpc-python) for node.js. We have full client and server support for version 3 of the protocol, and clients/servers written in the Python version can communicate transparently with those written in node.js. This project is alpha.\n\nTo install the package:\n\n    npm install zerorpc\n\nIf you get the error `Package libzmq was not found`, take a look at [the fix for zeromq.node](https://github.com/JustinTulloss/zeromq.node/issues/55). If you get the error `Unable to load shared library <<path to zeromq.node>>/binding.node`, [make sure you run ldconfig](https://github.com/JustinTulloss/zeromq.node/issues/85). If that still doesn\'t work, check out [this ticket](https://github.com/JustinTulloss/zeromq.node/issues/92).\n\nServers\n-------\n\nTo create a new server:\n\n    var zerorpc = require("zerorpc");\n    var server = new zerorpc.Server(context);\n\nThe constructor takes in a context object with the functions to expose over RPC. Only functions that do not have a leading underscore will be exposed. Each exposed method must take in a callback as the last argument. This callback is called as `callback(error, response, more)` when there is a new update, where error is an error object or string, response is the new update, and more is a boolean specifying whether new updates will be available later. `error`, `response`, and `more` default to falsy values, so e.g. simply calling `callback()` closes an open stream, since `more` is false by default.\n\nEvents:\n\n* `error` - When an error occurs.\n\nMethods:\n\n* `bind(endpoint)` - Binds the server to the specified ZeroMQ endpoint.\n* `connect(endpoint)` - Connects the server to the specified ZeroMQ endpoint.\n* `close()` - Closes the ZeroMQ socket.\n\nFull example:\n\n    var zerorpc = require("zerorpc");\n\n    var server = new zerorpc.Server({\n        addMan: function(sentence, reply) {\n            reply(null, sentence + ", man!");\n        },\n\n        add42: function(n, reply) {\n            reply(null, n + 42);\n        },\n\n        iter: function(from, to, step, reply) {\n            for(i=from; i<to; i+=step) {\n                reply(null, i, true);\n            }\n\n            reply();\n        }\n    });\n\n    server.bind("tcp://0.0.0.0:4242");\n\n    server.on("error", function(error) {\n        console.error("RPC server error:", error);\n    });\n\nClients\n-------\n\nTo create a new client:\n\n    var zerorpc = require("zerorpc");\n    var client = new zerorpc.Client(options);\n\nThe constructor optionally takes in an options object. Allowable options:\n\n* `timeout` (number) - Sets the number of seconds to wait for a response before considering the call timed out. Defaults to 30.\n\nEvents:\n\n* `error` - When an error occurs.\n\nMethods:\n\n* `bind(endpoint)` - Binds the client to the specified ZeroMQ endpoint.\n* `connect(endpoint)` - Connects the client to the specified ZeroMQ endpoint.\n* `close()` - Closes the ZeroMQ socket.\n* `invoke(method, arguments..., callback)` - Invokes a remote method.\n  * `method` is the method name.\n  * `callback` is a method to call when there is an update. This callback is called as `callback(error, response, more)`, where error is an error object, response is the new update, and more is a boolean specifying whether new updates will be available later (i.e. whether the response is streaming).\n\nFull example:\n\n    var zerorpc = require("zerorpc");\n\n    var client = new zerorpc.Client();\n    client.connect("tcp://127.0.0.1:4242");\n\n    client.on("error", function(error) {\n        console.error("RPC client error:", error);\n    });\n\n    client.invoke("iter", 10, 20, 2, function(error, res, more) {\n        if(error) {\n            console.error(error);\n        } else {\n            console.log("UPDATE:", res);\n        }\n\n        if(!more) {\n            console.log("Done.");\n        }\n    });',
+35 silly install resolved     _id: 'zerorpc@0.9.3',
+35 silly install resolved     dist:
+35 silly install resolved      { shasum: '77e0bcfb2aba576ed659b2983230febecf301741',
+35 silly install resolved        tarball: 'http://registry.npmjs.org/zerorpc/-/zerorpc-0.9.3.tgz' },
+35 silly install resolved     maintainers: [ [Object], [Object] ],
+35 silly install resolved     directories: {},
+35 silly install resolved     _shasum: '77e0bcfb2aba576ed659b2983230febecf301741',
+35 silly install resolved     _resolved: 'https://registry.npmjs.org/zerorpc/-/zerorpc-0.9.3.tgz',
+35 silly install resolved     _from: 'zerorpc@*',
+35 silly install resolved     bugs: { url: 'https://github.com/dotcloud/zerorpc-node/issues' },
+35 silly install resolved     homepage: 'https://github.com/dotcloud/zerorpc-node' } ]
+36 info install zerorpc@0.9.3 into /Users/Baiqian/Documents/playground/TweetVis
+37 info installOne zerorpc@0.9.3
+38 verbose installOne of zerorpc to /Users/Baiqian/Documents/playground/TweetVis not in flight; installing
+39 verbose lock using /Users/Baiqian/.npm/_locks/zerorpc-375b99b05195f593.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+40 silly install write writing zerorpc 0.9.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+41 silly cache addNamed cb zerorpc@0.9.3
+42 verbose unbuild node_modules/zerorpc
+43 info preuninstall zerorpc@0.9.3
+44 info uninstall zerorpc@0.9.3
+45 verbose unbuild rmStuff zerorpc@0.9.3 from /Users/Baiqian/Documents/playground/TweetVis/node_modules
+46 info postuninstall zerorpc@0.9.3
+47 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+48 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+49 silly vacuum-fs purging /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+50 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules
+51 verbose tar unpack /Users/Baiqian/.npm/zerorpc/0.9.3/package.tgz
+52 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+53 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc is being purged
+54 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 silly gunzTarPerm extractEntry package.json
+57 silly gunzTarPerm extractEntry .npmignore
+58 silly gunzTarPerm extractEntry README.md
+59 silly gunzTarPerm extractEntry LICENSE
+60 silly gunzTarPerm extractEntry index.js
+61 silly gunzTarPerm extractEntry lib/server.js
+62 silly gunzTarPerm extractEntry lib/buffer.js
+63 silly gunzTarPerm extractEntry lib/channel.js
+64 silly gunzTarPerm extractEntry lib/client.js
+65 silly gunzTarPerm extractEntry lib/util.js
+66 silly gunzTarPerm extractEntry lib/socket.js
+67 silly gunzTarPerm extractEntry lib/middleware.js
+68 silly gunzTarPerm extractEntry lib/events.js
+69 silly gunzTarPerm extractEntry test/timeouts.js
+70 silly gunzTarPerm extractEntry test/repro-10.js
+71 silly gunzTarPerm extractEntry test/invocation.js
+72 silly gunzTarPerm extractEntry test/errors.js
+73 silly gunzTarPerm extractEntry test/buffers.js
+74 silly gunzTarPerm extractEntry test/streams.js
+75 silly gunzTarPerm extractEntry test/heartbeats.js
+76 info preinstall zerorpc@0.9.3
+77 silly prepareForInstallMany adding underscore@1.3.3 from zerorpc dependencies
+78 silly prepareForInstallMany adding msgpack@0.1.8 from zerorpc dependencies
+79 silly prepareForInstallMany adding node-uuid@1.3.3 from zerorpc dependencies
+80 silly prepareForInstallMany adding zmq@2.x from zerorpc dependencies
+81 silly cache add args [ 'underscore@1.3.3', null ]
+82 verbose cache add spec underscore@1.3.3
+83 silly cache add args [ 'msgpack@0.1.8', null ]
+84 verbose cache add spec msgpack@0.1.8
+85 silly cache add parsed spec { raw: 'underscore@1.3.3',
+85 silly cache add   scope: null,
+85 silly cache add   name: 'underscore',
+85 silly cache add   rawSpec: '1.3.3',
+85 silly cache add   spec: '1.3.3',
+85 silly cache add   type: 'version' }
+86 verbose addNamed underscore@1.3.3
+87 silly addNamed semver.valid 1.3.3
+88 silly addNamed semver.validRange 1.3.3
+89 silly mapToRegistry name underscore
+90 silly mapToRegistry using default registry
+91 silly mapToRegistry registry https://registry.npmjs.org/
+92 silly mapToRegistry uri https://registry.npmjs.org/underscore
+93 verbose addNameVersion registry:https://registry.npmjs.org/underscore not in flight; fetching
+94 silly cache add parsed spec { raw: 'msgpack@0.1.8',
+94 silly cache add   scope: null,
+94 silly cache add   name: 'msgpack',
+94 silly cache add   rawSpec: '0.1.8',
+94 silly cache add   spec: '0.1.8',
+94 silly cache add   type: 'version' }
+95 verbose addNamed msgpack@0.1.8
+96 silly addNamed semver.valid 0.1.8
+97 silly addNamed semver.validRange 0.1.8
+98 silly mapToRegistry name msgpack
+99 silly mapToRegistry using default registry
+100 silly mapToRegistry registry https://registry.npmjs.org/
+101 silly mapToRegistry uri https://registry.npmjs.org/msgpack
+102 verbose addNameVersion registry:https://registry.npmjs.org/msgpack not in flight; fetching
+103 silly cache add args [ 'node-uuid@1.3.3', null ]
+104 verbose cache add spec node-uuid@1.3.3
+105 silly cache add parsed spec { raw: 'node-uuid@1.3.3',
+105 silly cache add   scope: null,
+105 silly cache add   name: 'node-uuid',
+105 silly cache add   rawSpec: '1.3.3',
+105 silly cache add   spec: '1.3.3',
+105 silly cache add   type: 'version' }
+106 verbose addNamed node-uuid@1.3.3
+107 silly addNamed semver.valid 1.3.3
+108 silly addNamed semver.validRange 1.3.3
+109 silly mapToRegistry name node-uuid
+110 silly mapToRegistry using default registry
+111 silly mapToRegistry registry https://registry.npmjs.org/
+112 silly mapToRegistry uri https://registry.npmjs.org/node-uuid
+113 verbose addNameVersion registry:https://registry.npmjs.org/node-uuid not in flight; fetching
+114 silly cache add args [ 'zmq@2.x', null ]
+115 verbose cache add spec zmq@2.x
+116 silly cache add parsed spec { raw: 'zmq@2.x',
+116 silly cache add   scope: null,
+116 silly cache add   name: 'zmq',
+116 silly cache add   rawSpec: '2.x',
+116 silly cache add   spec: '>=2.0.0 <3.0.0',
+116 silly cache add   type: 'range' }
+117 verbose addNamed zmq@>=2.0.0 <3.0.0
+118 silly addNamed semver.valid null
+119 silly addNamed semver.validRange >=2.0.0 <3.0.0
+120 silly addNameRange { name: 'zmq', range: '>=2.0.0 <3.0.0', hasData: false }
+121 silly mapToRegistry name zmq
+122 silly mapToRegistry using default registry
+123 silly mapToRegistry registry https://registry.npmjs.org/
+124 silly mapToRegistry uri https://registry.npmjs.org/zmq
+125 verbose addNameRange registry:https://registry.npmjs.org/zmq not in flight; fetching
+126 verbose request uri https://registry.npmjs.org/underscore
+127 verbose request no auth needed
+128 info attempt registry request try #1 at 2:40:03 PM
+129 verbose etag "7C1BRLYGKR5V8HTCKJBBHI6FQ"
+130 http request GET https://registry.npmjs.org/underscore
+131 verbose request uri https://registry.npmjs.org/msgpack
+132 verbose request no auth needed
+133 info attempt registry request try #1 at 2:40:03 PM
+134 verbose etag "60QPCTUDWKH9ZA5CPZJJC9ERE"
+135 http request GET https://registry.npmjs.org/msgpack
+136 verbose request uri https://registry.npmjs.org/node-uuid
+137 verbose request no auth needed
+138 info attempt registry request try #1 at 2:40:03 PM
+139 verbose etag "7CSKSKAH7LDKIQ0DZPVHBFNLW"
+140 http request GET https://registry.npmjs.org/node-uuid
+141 verbose request uri https://registry.npmjs.org/zmq
+142 verbose request no auth needed
+143 info attempt registry request try #1 at 2:40:03 PM
+144 verbose etag "14FLT2EUEFQI6UYYC2PTSFZA2"
+145 http request GET https://registry.npmjs.org/zmq
+146 http 304 https://registry.npmjs.org/underscore
+147 silly get cb [ 304,
+147 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
+147 silly get     server: 'Apache',
+147 silly get     via: '1.1 varnish',
+147 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
+147 silly get     'cache-control': 'max-age=60',
+147 silly get     etag: '"7C1BRLYGKR5V8HTCKJBBHI6FQ"',
+147 silly get     age: '17',
+147 silly get     'x-served-by': 'cache-iad2135-IAD',
+147 silly get     'x-cache': 'HIT',
+147 silly get     'x-cache-hits': '1',
+147 silly get     'x-timer': 'S1429468803.778692,VS0,VE0',
+147 silly get     vary: 'Accept',
+147 silly get     'content-length': '0',
+147 silly get     'keep-alive': 'timeout=10, max=50',
+147 silly get     connection: 'Keep-Alive' } ]
+148 verbose etag https://registry.npmjs.org/underscore from cache
+149 verbose get saving underscore to /Users/Baiqian/.npm/registry.npmjs.org/underscore/.cache.json
+150 silly cache afterAdd underscore@1.3.3
+151 verbose afterAdd /Users/Baiqian/.npm/underscore/1.3.3/package/package.json not in flight; writing
+152 verbose afterAdd /Users/Baiqian/.npm/underscore/1.3.3/package/package.json written
+153 http 304 https://registry.npmjs.org/msgpack
+154 silly get cb [ 304,
+154 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
+154 silly get     server: 'Apache',
+154 silly get     via: '1.1 varnish',
+154 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
+154 silly get     'cache-control': 'max-age=60',
+154 silly get     etag: '"60QPCTUDWKH9ZA5CPZJJC9ERE"',
+154 silly get     age: '0',
+154 silly get     'x-served-by': 'cache-iad2138-IAD',
+154 silly get     'x-cache': 'HIT',
+154 silly get     'x-cache-hits': '1',
+154 silly get     'x-timer': 'S1429468803.775578,VS0,VE56',
+154 silly get     vary: 'Accept',
+154 silly get     'content-length': '0',
+154 silly get     'keep-alive': 'timeout=10, max=50',
+154 silly get     connection: 'Keep-Alive' } ]
+155 verbose etag https://registry.npmjs.org/msgpack from cache
+156 verbose get saving msgpack to /Users/Baiqian/.npm/registry.npmjs.org/msgpack/.cache.json
+157 silly cache afterAdd msgpack@0.1.8
+158 verbose afterAdd /Users/Baiqian/.npm/msgpack/0.1.8/package/package.json not in flight; writing
+159 verbose afterAdd /Users/Baiqian/.npm/msgpack/0.1.8/package/package.json written
+160 http 304 https://registry.npmjs.org/zmq
+161 silly get cb [ 304,
+161 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
+161 silly get     server: 'Apache',
+161 silly get     via: '1.1 varnish',
+161 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
+161 silly get     'cache-control': 'max-age=60',
+161 silly get     etag: '"14FLT2EUEFQI6UYYC2PTSFZA2"',
+161 silly get     age: '0',
+161 silly get     'x-served-by': 'cache-iad2137-IAD',
+161 silly get     'x-cache': 'MISS',
+161 silly get     'x-cache-hits': '0',
+161 silly get     'x-timer': 'S1429468803.782693,VS0,VE56',
+161 silly get     vary: 'Accept',
+161 silly get     'content-length': '0',
+161 silly get     'keep-alive': 'timeout=10, max=50',
+161 silly get     connection: 'Keep-Alive' } ]
+162 verbose etag https://registry.npmjs.org/zmq from cache
+163 verbose get saving zmq to /Users/Baiqian/.npm/registry.npmjs.org/zmq/.cache.json
+164 silly addNameRange number 2 { name: 'zmq', range: '>=2.0.0 <3.0.0', hasData: true }
+165 silly addNameRange versions [ 'zmq',
+165 silly addNameRange   [ '1.0.0',
+165 silly addNameRange     '1.0.1',
+165 silly addNameRange     '1.0.2',
+165 silly addNameRange     '1.0.3',
+165 silly addNameRange     '1.0.4',
+165 silly addNameRange     '2.0.0',
+165 silly addNameRange     '2.0.1',
+165 silly addNameRange     '2.0.2',
+165 silly addNameRange     '2.0.3',
+165 silly addNameRange     '2.1.0',
+165 silly addNameRange     '2.2.0',
+165 silly addNameRange     '2.3.0',
+165 silly addNameRange     '2.4.0',
+165 silly addNameRange     '2.5.0',
+165 silly addNameRange     '2.5.1',
+165 silly addNameRange     '2.6.0',
+165 silly addNameRange     '2.7.0',
+165 silly addNameRange     '2.8.0',
+165 silly addNameRange     '2.9.0',
+165 silly addNameRange     '2.10.0',
+165 silly addNameRange     '2.11.0' ] ]
+166 verbose addNamed zmq@2.11.0
+167 silly addNamed semver.valid 2.11.0
+168 silly addNamed semver.validRange 2.11.0
+169 silly cache afterAdd zmq@2.11.0
+170 verbose afterAdd /Users/Baiqian/.npm/zmq/2.11.0/package/package.json not in flight; writing
+171 verbose afterAdd /Users/Baiqian/.npm/zmq/2.11.0/package/package.json written
+172 http 304 https://registry.npmjs.org/node-uuid
+173 silly get cb [ 304,
+173 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
+173 silly get     server: 'Apache',
+173 silly get     via: '1.1 varnish',
+173 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:04 GMT',
+173 silly get     'cache-control': 'max-age=60',
+173 silly get     etag: '"7CSKSKAH7LDKIQ0DZPVHBFNLW"',
+173 silly get     age: '0',
+173 silly get     'x-served-by': 'cache-iad2121-IAD',
+173 silly get     'x-cache': 'HIT',
+173 silly get     'x-cache-hits': '1',
+173 silly get     'x-timer': 'S1429468803.776641,VS0,VE604',
+173 silly get     vary: 'Accept',
+173 silly get     'content-length': '0',
+173 silly get     'keep-alive': 'timeout=10, max=50',
+173 silly get     connection: 'Keep-Alive' } ]
+174 verbose etag https://registry.npmjs.org/node-uuid from cache
+175 verbose get saving node-uuid to /Users/Baiqian/.npm/registry.npmjs.org/node-uuid/.cache.json
+176 silly cache afterAdd node-uuid@1.3.3
+177 verbose afterAdd /Users/Baiqian/.npm/node-uuid/1.3.3/package/package.json not in flight; writing
+178 verbose afterAdd /Users/Baiqian/.npm/node-uuid/1.3.3/package/package.json written
+179 silly install resolved [ { name: 'underscore',
+179 silly install resolved     description: 'JavaScript\'s functional programming helper library.',
+179 silly install resolved     homepage: 'http://documentcloud.github.com/underscore/',
+179 silly install resolved     keywords: [ 'util', 'functional', 'server', 'client', 'browser' ],
+179 silly install resolved     author: { name: 'Jeremy Ashkenas', email: 'jeremy@documentcloud.org' },
+179 silly install resolved     repository:
+179 silly install resolved      { type: 'git',
+179 silly install resolved        url: 'git://github.com/documentcloud/underscore.git' },
+179 silly install resolved     main: 'underscore.js',
+179 silly install resolved     version: '1.3.3',
+179 silly install resolved     _npmUser: { name: 'jashkenas', email: 'jashkenas@gmail.com' },
+179 silly install resolved     _id: 'underscore@1.3.3',
+179 silly install resolved     dependencies: {},
+179 silly install resolved     devDependencies: {},
+179 silly install resolved     optionalDependencies: {},
+179 silly install resolved     engines: { node: '*' },
+179 silly install resolved     _engineSupported: true,
+179 silly install resolved     _npmVersion: '1.1.1',
+179 silly install resolved     _nodeVersion: 'v0.6.11',
+179 silly install resolved     _defaultsLoaded: true,
+179 silly install resolved     dist:
+179 silly install resolved      { shasum: '47ac53683daf832bfa952e1774417da47817ae42',
+179 silly install resolved        tarball: 'http://registry.npmjs.org/underscore/-/underscore-1.3.3.tgz' },
+179 silly install resolved     maintainers: [ [Object], [Object] ],
+179 silly install resolved     directories: {},
+179 silly install resolved     _shasum: '47ac53683daf832bfa952e1774417da47817ae42',
+179 silly install resolved     _resolved: 'https://registry.npmjs.org/underscore/-/underscore-1.3.3.tgz',
+179 silly install resolved     _from: 'underscore@1.3.3',
+179 silly install resolved     bugs: { url: 'https://github.com/documentcloud/underscore/issues' },
+179 silly install resolved     readme: 'ERROR: No README data found!' },
+179 silly install resolved   { name: 'msgpack',
+179 silly install resolved     description: 'A space-efficient object serialization library for node.js',
+179 silly install resolved     version: '0.1.8',
+179 silly install resolved     homepage: 'https://github.com/pgriess/node-msgpack',
+179 silly install resolved     author: { name: 'Peter Griess', email: 'pg@std.in' },
+179 silly install resolved     contributors: [ [Object], [Object] ],
+179 silly install resolved     repository:
+179 silly install resolved      { type: 'git',
+179 silly install resolved        url: 'https://github.com/pgriess/node-msgpack.git' },
+179 silly install resolved     main: './lib/msgpack',
+179 silly install resolved     directories: { lib: 'lib' },
+179 silly install resolved     engines: { node: '>=0.8.x' },
+179 silly install resolved     bin:
+179 silly install resolved      { json2msgpack: './bin/json2msgpack',
+179 silly install resolved        msgpack2json: './bin/msgpack2json' },
+179 silly install resolved     scripts: { install: 'node-gyp rebuild' },
+179 silly install resolved     gypfile: true,
+179 silly install resolved     _id: 'msgpack@0.1.8',
+179 silly install resolved     dist:
+179 silly install resolved      { shasum: 'cd5c0d2277bf1659a871209ddf59f57ad1124d68',
+179 silly install resolved        tarball: 'http://registry.npmjs.org/msgpack/-/msgpack-0.1.8.tgz' },
+179 silly install resolved     _npmVersion: '1.1.59',
+179 silly install resolved     _npmUser: { name: 'godsflaw', email: 'chris@dod.net' },
+179 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+179 silly install resolved     _shasum: 'cd5c0d2277bf1659a871209ddf59f57ad1124d68',
+179 silly install resolved     _resolved: 'https://registry.npmjs.org/msgpack/-/msgpack-0.1.8.tgz',
+179 silly install resolved     _from: 'msgpack@0.1.8',
+179 silly install resolved     bugs: { url: 'https://github.com/pgriess/node-msgpack/issues' },
+179 silly install resolved     readme: 'ERROR: No README data found!' },
+179 silly install resolved   { name: 'zmq',
+179 silly install resolved     version: '2.11.0',
+179 silly install resolved     description: 'Bindings for node.js and io.js to ZeroMQ',
+179 silly install resolved     main: 'index',
+179 silly install resolved     repository:
+179 silly install resolved      { type: 'git',
+179 silly install resolved        url: 'http://github.com/JustinTulloss/zeromq.node.git' },
+179 silly install resolved     dependencies: { nan: '~1.5.0', bindings: '~1.1.1' },
+179 silly install resolved     devDependencies: { should: '2.1.x', semver: '~4.1.1', mocha: '~1.13.0' },
+179 silly install resolved     engines: { node: '>=0.8' },
+179 silly install resolved     scripts: { test: 'make test', install: 'node-gyp rebuild' },
+179 silly install resolved     keywords:
+179 silly install resolved      [ 'zeromq',
+179 silly install resolved        'zmq',
+179 silly install resolved        '0mq',
+179 silly install resolved        'ømq',
+179 silly install resolved        'libzmq',
+179 silly install resolved        'native',
+179 silly install resolved        'binding',
+179 silly install resolved        'addon' ],
+179 silly install resolved     author:
+179 silly install resolved      { name: 'Justin Tulloss',
+179 silly install resolved        email: 'justin.tulloss@gmail.com',
+179 silly install resolved        url: 'http://justin.harmonize.fm' },
+179 silly install resolved     contributors:
+179 silly install resolved      [ [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object],
+179 silly install resolved        [Object] ],
+179 silly install resolved     gypfile: true,
+179 silly install resolved     gitHead: 'bfd80e374ee85e640e132f39e1e693955d6154ce',
+179 silly install resolved     bugs: { url: 'https://github.com/JustinTulloss/zeromq.node/issues' },
+179 silly install resolved     homepage: 'https://github.com/JustinTulloss/zeromq.node',
+179 silly install resolved     _id: 'zmq@2.11.0',
+179 silly install resolved     _shasum: '4511aee4b57109742eb8c51aa4c170211843e7cd',
+179 silly install resolved     _from: 'zmq@>=2.0.0 <3.0.0',
+179 silly install resolved     _npmVersion: '2.5.1',
+179 silly install resolved     _nodeVersion: '0.12.1',
+179 silly install resolved     _npmUser: { name: 'ronkorving', email: 'ron@ronkorving.nl' },
+179 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+179 silly install resolved     dist:
+179 silly install resolved      { shasum: '4511aee4b57109742eb8c51aa4c170211843e7cd',
+179 silly install resolved        tarball: 'http://registry.npmjs.org/zmq/-/zmq-2.11.0.tgz' },
+179 silly install resolved     directories: {},
+179 silly install resolved     _resolved: 'https://registry.npmjs.org/zmq/-/zmq-2.11.0.tgz',
+179 silly install resolved     readme: 'ERROR: No README data found!' },
+179 silly install resolved   { name: 'node-uuid',
+179 silly install resolved     description: 'Rigorous implementation of RFC4122 (v1 and v4) UUIDs.',
+179 silly install resolved     url: 'http://github.com/broofa/node-uuid',
+179 silly install resolved     keywords: [ 'uuid', 'guid', 'rfc4122' ],
+179 silly install resolved     author: { name: 'Robert Kieffer', email: 'robert@broofa.com' },
+179 silly install resolved     contributors: [ [Object] ],
+179 silly install resolved     lib: '.',
+179 silly install resolved     main: './uuid.js',
+179 silly install resolved     repository: { type: 'git', url: 'git://github.com/broofa/node-uuid.git' },
+179 silly install resolved     version: '1.3.3',
+179 silly install resolved     _npmUser: { name: 'broofa', email: 'robert@broofa.com' },
+179 silly install resolved     _id: 'node-uuid@1.3.3',
+179 silly install resolved     dependencies: {},
+179 silly install resolved     devDependencies: {},
+179 silly install resolved     engines: { node: '*' },
+179 silly install resolved     _engineSupported: true,
+179 silly install resolved     _npmVersion: '1.0.106',
+179 silly install resolved     _nodeVersion: 'v0.4.6',
+179 silly install resolved     _defaultsLoaded: true,
+179 silly install resolved     dist:
+179 silly install resolved      { shasum: 'd3db4d7b56810d9e4032342766282af07391729b',
+179 silly install resolved        tarball: 'http://registry.npmjs.org/node-uuid/-/node-uuid-1.3.3.tgz' },
+179 silly install resolved     maintainers: [ [Object] ],
+179 silly install resolved     directories: {},
+179 silly install resolved     _shasum: 'd3db4d7b56810d9e4032342766282af07391729b',
+179 silly install resolved     _resolved: 'https://registry.npmjs.org/node-uuid/-/node-uuid-1.3.3.tgz',
+179 silly install resolved     _from: 'node-uuid@1.3.3',
+179 silly install resolved     bugs: { url: 'https://github.com/broofa/node-uuid/issues' },
+179 silly install resolved     readme: 'ERROR: No README data found!',
+179 silly install resolved     homepage: 'https://github.com/broofa/node-uuid' } ]
+180 info install underscore@1.3.3 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+181 info install msgpack@0.1.8 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+182 info install zmq@2.11.0 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+183 info install node-uuid@1.3.3 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+184 info installOne underscore@1.3.3
+185 verbose installOne of underscore to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
+186 info installOne msgpack@0.1.8
+187 verbose installOne of msgpack to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
+188 info installOne zmq@2.11.0
+189 verbose installOne of zmq to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
+190 info installOne node-uuid@1.3.3
+191 verbose installOne of node-uuid to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
+192 verbose lock using /Users/Baiqian/.npm/_locks/underscore-3cd3b2f33bd266d3.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+193 verbose lock using /Users/Baiqian/.npm/_locks/msgpack-d9c9130fc4bcd8e4.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+194 silly install write writing underscore 1.3.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+195 silly cache addNamed cb underscore@1.3.3
+196 verbose unbuild node_modules/zerorpc/node_modules/underscore
+197 silly install write writing msgpack 0.1.8 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+198 silly cache addNamed cb msgpack@0.1.8
+199 verbose unbuild node_modules/zerorpc/node_modules/msgpack
+200 verbose lock using /Users/Baiqian/.npm/_locks/zmq-0391c171f1382f7f.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+201 verbose lock using /Users/Baiqian/.npm/_locks/node-uuid-218c81282d6d9faa.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+202 silly install write writing zmq 2.11.0 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+203 silly cache addNamed cb zmq@2.11.0
+204 verbose unbuild node_modules/zerorpc/node_modules/zmq
+205 silly install write writing node-uuid 1.3.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+206 silly cache addNamed cb node-uuid@1.3.3
+207 verbose unbuild node_modules/zerorpc/node_modules/node-uuid
+208 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+209 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+210 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+211 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+212 verbose tar unpack /Users/Baiqian/.npm/underscore/1.3.3/package.tgz
+213 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+214 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore is being purged
+215 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+216 verbose tar unpack /Users/Baiqian/.npm/msgpack/0.1.8/package.tgz
+217 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+218 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack is being purged
+219 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+220 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+221 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+222 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+223 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+224 silly gunzTarPerm modes [ '755', '644' ]
+225 silly gunzTarPerm modes [ '755', '644' ]
+226 verbose tar unpack /Users/Baiqian/.npm/zmq/2.11.0/package.tgz
+227 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+228 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq is being purged
+229 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+230 verbose tar unpack /Users/Baiqian/.npm/node-uuid/1.3.3/package.tgz
+231 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+232 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid is being purged
+233 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+234 silly gunzTarPerm modes [ '755', '644' ]
+235 silly gunzTarPerm modes [ '755', '644' ]
+236 silly gunzTarPerm extractEntry .npmignore
+237 silly gunzTarPerm extractEntry package.json
+238 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+239 silly gunzTarPerm extractEntry package.json
+240 silly gunzTarPerm extractEntry uuid.js
+241 silly gunzTarPerm extractEntry CNAME
+242 silly gunzTarPerm extractEntry favicon.ico
+243 silly gunzTarPerm extractEntry .npmignore
+244 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+245 silly gunzTarPerm extractEntry README.md
+246 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+247 silly gunzTarPerm extractEntry .npmignore
+248 silly gunzTarPerm extractEntry README.md
+249 silly gunzTarPerm extractEntry package.json
+250 silly gunzTarPerm extractEntry LICENSE.md
+251 silly gunzTarPerm extractEntry index.html
+252 silly gunzTarPerm extractEntry index.js
+253 silly gunzTarPerm extractEntry LICENSE
+254 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+255 silly gunzTarPerm extractEntry bench.js
+256 silly gunzTarPerm modified mode [ 'bench.js', 438, 420 ]
+257 silly gunzTarPerm extractEntry LICENSE
+258 silly gunzTarPerm extractEntry index.js
+259 silly gunzTarPerm extractEntry LICENSE
+260 silly gunzTarPerm extractEntry package.json
+261 silly gunzTarPerm extractEntry test/test-stream-disjoint.js
+262 silly gunzTarPerm modified mode [ 'test/test-stream-disjoint.js', 438, 420 ]
+263 silly gunzTarPerm extractEntry test/test-stream.js
+264 silly gunzTarPerm modified mode [ 'test/test-stream.js', 438, 420 ]
+265 silly gunzTarPerm extractEntry binding.gyp
+266 silly gunzTarPerm extractEntry .travis.yml
+267 silly gunzTarPerm extractEntry .gitignore
+268 silly gunzTarPerm extractEntry README.md
+269 silly gunzTarPerm extractEntry raw/
+270 silly gunzTarPerm extractEntry raw/underscore.psd
+271 silly gunzTarPerm extractEntry test/test.js
+272 silly gunzTarPerm extractEntry test/test-unpack-extra.js
+273 silly gunzTarPerm modified mode [ 'test/test-unpack-extra.js', 438, 420 ]
+274 silly gunzTarPerm extractEntry test/test.js
+275 silly gunzTarPerm modified mode [ 'test/test.js', 438, 420 ]
+276 silly gunzTarPerm extractEntry binding.cc
+277 silly gunzTarPerm extractEntry History.md
+278 silly gunzTarPerm extractEntry test/compare_v1.js
+279 silly gunzTarPerm extractEntry test/test.html
+280 silly gunzTarPerm extractEntry examples/dealer_router.js
+281 silly gunzTarPerm extractEntry examples/pub_sub.js
+282 silly gunzTarPerm extractEntry bin/json2msgpack
+283 silly gunzTarPerm modified mode [ 'bin/json2msgpack', 511, 493 ]
+284 silly gunzTarPerm extractEntry bin/msgpack2json
+285 silly gunzTarPerm modified mode [ 'bin/msgpack2json', 511, 493 ]
+286 silly gunzTarPerm extractEntry benchmark/benchmark.js
+287 silly gunzTarPerm extractEntry benchmark/bench.gnu
+288 silly gunzTarPerm extractEntry examples/push_pull.js
+289 silly gunzTarPerm extractEntry examples/rep_req.js
+290 silly gunzTarPerm extractEntry binding.gyp
+291 silly gunzTarPerm modified mode [ 'binding.gyp', 438, 420 ]
+292 silly gunzTarPerm extractEntry deps/msgpack/LICENSE
+293 silly gunzTarPerm modified mode [ 'deps/msgpack/LICENSE', 438, 420 ]
+294 silly gunzTarPerm extractEntry README.md
+295 silly gunzTarPerm extractEntry examples/req_rep.js
+296 silly gunzTarPerm extractEntry examples/router_dealer.js
+297 silly gunzTarPerm extractEntry benchmark/bench.sh
+298 silly gunzTarPerm extractEntry benchmark/README.md
+299 silly gunzTarPerm extractEntry deps/msgpack/msgpack.hpp
+300 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack.hpp', 438, 420 ]
+301 silly gunzTarPerm extractEntry deps/msgpack/gcc_atomic.cpp
+302 silly gunzTarPerm modified mode [ 'deps/msgpack/gcc_atomic.cpp', 438, 420 ]
+303 silly gunzTarPerm extractEntry examples/rpc.js
+304 silly gunzTarPerm extractEntry examples/devices/forwarder.js
+305 silly gunzTarPerm extractEntry examples/devices/queue.js
+306 silly gunzTarPerm extractEntry deps/msgpack/AUTHORS
+307 silly gunzTarPerm modified mode [ 'deps/msgpack/AUTHORS', 438, 420 ]
+308 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack.h
+309 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack.h', 438, 420 ]
+310 silly gunzTarPerm extractEntry underscore-min.js
+311 silly gunzTarPerm extractEntry deps/msgpack/msgpack/object.h
+312 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/object.h', 438, 420 ]
+313 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack.h
+314 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack.h', 438, 420 ]
+315 silly gunzTarPerm extractEntry benchmark/benchmark-native.c
+316 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack.hpp
+317 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack.hpp', 438, 420 ]
+318 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack_define.h
+319 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack_define.h', 438, 420 ]
+320 silly gunzTarPerm extractEntry examples/devices/streamer.js
+321 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack_template.h
+322 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack_template.h', 438, 420 ]
+323 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sbuffer.h
+324 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/sbuffer.h', 438, 420 ]
+325 silly gunzTarPerm extractEntry underscore.js
+326 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sbuffer.hpp
+327 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/sbuffer.hpp', 438, 420 ]
+328 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sysdep.h
+329 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/sysdep.h', 438, 420 ]
+330 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/nil.hpp
+331 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/nil.hpp', 438, 420 ]
+332 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/bool.hpp
+333 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/bool.hpp', 438, 420 ]
+334 silly gunzTarPerm extractEntry examples/workers/producer.js
+335 silly gunzTarPerm extractEntry examples/workers/worker.js
+336 silly gunzTarPerm extractEntry lib/index.js
+337 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/deque.hpp
+338 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/deque.hpp', 438, 420 ]
+339 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/fixint.hpp
+340 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/fixint.hpp', 438, 420 ]
+341 silly gunzTarPerm extractEntry test/context.js
+342 silly gunzTarPerm extractEntry test/socket.monitor.js
+343 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/float.hpp
+344 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/float.hpp', 438, 420 ]
+345 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/int.hpp
+346 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/int.hpp', 438, 420 ]
+347 silly gunzTarPerm extractEntry test/socket.pair.js
+348 silly gunzTarPerm extractEntry test/socket.pub-sub.js
+349 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/list.hpp
+350 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/list.hpp', 438, 420 ]
+351 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/map.hpp
+352 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/map.hpp', 438, 420 ]
+353 info preinstall node-uuid@1.3.3
+354 silly install resolved []
+355 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+356 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+357 verbose linkStuff [ false,
+357 verbose linkStuff   false,
+357 verbose linkStuff   false,
+357 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
+358 info linkStuff node-uuid@1.3.3
+359 verbose linkBins node-uuid@1.3.3
+360 verbose linkMans node-uuid@1.3.3
+361 verbose rebuildBundles node-uuid@1.3.3
+362 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/define.hpp
+363 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/define.hpp', 438, 420 ]
+364 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/pair.hpp
+365 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/pair.hpp', 438, 420 ]
+366 silly gunzTarPerm extractEntry test/socket.push-pull.js
+367 silly gunzTarPerm extractEntry test/socket.messages.js
+368 info install node-uuid@1.3.3
+369 info postinstall node-uuid@1.3.3
+370 verbose unlock done using /Users/Baiqian/.npm/_locks/node-uuid-218c81282d6d9faa.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
+371 silly gunzTarPerm extractEntry test/socket.router.js
+372 silly gunzTarPerm extractEntry test/socket.stream.js
+373 silly gunzTarPerm extractEntry test/socket.unbind.js
+374 silly gunzTarPerm extractEntry test/socket.xpub-xsub.js
+375 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/raw.hpp
+376 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/raw.hpp', 438, 420 ]
+377 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/set.hpp
+378 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/set.hpp', 438, 420 ]
+379 silly gunzTarPerm extractEntry test/socket.zap.js
+380 silly gunzTarPerm extractEntry test/socket.js
+381 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/string.hpp
+382 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/string.hpp', 438, 420 ]
+383 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tr1/unordered_map.hpp
+384 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/tr1/unordered_map.hpp', 438, 420 ]
+385 silly gunzTarPerm extractEntry test/zap.js
+386 silly gunzTarPerm extractEntry test/socket.events.js
+387 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tr1/unordered_set.hpp
+388 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/tr1/unordered_set.hpp', 438, 420 ]
+389 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tuple.hpp
+390 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/tuple.hpp', 438, 420 ]
+391 silly gunzTarPerm extractEntry test/zmq_proxy.js
+392 silly gunzTarPerm extractEntry test/zmq_proxy.xpub-xsub.js
+393 silly gunzTarPerm extractEntry test/zmq_proxy.push-pull.js
+394 silly gunzTarPerm extractEntry test/gc.js
+395 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/vector.hpp
+396 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/vector.hpp', 438, 420 ]
+397 silly gunzTarPerm extractEntry test/zmq_proxy.router-dealer.js
+398 silly gunzTarPerm extractEntry test/exports.js
+399 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type.hpp
+400 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type.hpp', 438, 420 ]
+401 silly gunzTarPerm extractEntry deps/msgpack/msgpack/object.hpp
+402 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/object.hpp', 438, 420 ]
+403 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack.hpp
+404 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack.hpp', 438, 420 ]
+405 silly gunzTarPerm extractEntry test/zmq_proxy.xrep-xreq.js
+406 silly gunzTarPerm extractEntry test/socket.req-rep.js
+407 silly gunzTarPerm extractEntry test/mocha.opts
+408 silly gunzTarPerm extractEntry Makefile
+409 silly gunzTarPerm extractEntry perf/local_lat.js
+410 silly gunzTarPerm extractEntry perf/local_thr.js
+411 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack_define.h
+412 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack_define.h', 438, 420 ]
+413 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack_template.h
+414 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack_template.h', 438, 420 ]
+415 silly gunzTarPerm extractEntry deps/msgpack/msgpack/version.h
+416 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/version.h', 438, 420 ]
+417 silly gunzTarPerm extractEntry deps/msgpack/msgpack/vrefbuffer.h
+418 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/vrefbuffer.h', 438, 420 ]
+419 silly gunzTarPerm extractEntry deps/msgpack/msgpack/vrefbuffer.hpp
+420 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/vrefbuffer.hpp', 438, 420 ]
+421 silly gunzTarPerm extractEntry perf/remote_lat.js
+422 silly gunzTarPerm extractEntry perf/remote_thr.js
+423 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zbuffer.h
+424 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zbuffer.h', 438, 420 ]
+425 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zbuffer.hpp
+426 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zbuffer.hpp', 438, 420 ]
+427 silly gunzTarPerm extractEntry windows/include/zmq.h
+428 silly gunzTarPerm extractEntry windows/include/zmq_utils.h
+429 silly gunzTarPerm extractEntry windows/lib/x64/libzmq-v100-mt-3_2_2.dll
+430 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zone.h
+431 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zone.h', 438, 420 ]
+432 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zone.hpp
+433 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zone.hpp', 438, 420 ]
+434 silly gunzTarPerm extractEntry deps/msgpack/msgpack.gyp
+435 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack.gyp', 438, 420 ]
+436 silly gunzTarPerm extractEntry deps/msgpack/msgpack.h
+437 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack.h', 438, 420 ]
+438 silly gunzTarPerm extractEntry deps/msgpack/COPYING
+439 silly gunzTarPerm modified mode [ 'deps/msgpack/COPYING', 438, 420 ]
+440 silly gunzTarPerm extractEntry deps/msgpack/object.cpp
+441 silly gunzTarPerm modified mode [ 'deps/msgpack/object.cpp', 438, 420 ]
+442 silly gunzTarPerm extractEntry windows/lib/x64/libzmq-v100-mt-3_2_2.lib
+443 silly gunzTarPerm extractEntry windows/lib/x86/libzmq-v100-mt-3_2_2.dll
+444 silly gunzTarPerm extractEntry deps/msgpack/objectc.c
+445 silly gunzTarPerm modified mode [ 'deps/msgpack/objectc.c', 438, 420 ]
+446 silly gunzTarPerm extractEntry deps/msgpack/unpack.c
+447 silly gunzTarPerm modified mode [ 'deps/msgpack/unpack.c', 438, 420 ]
+448 silly gunzTarPerm extractEntry windows/lib/x86/libzmq-v100-mt-3_2_2.lib
+449 silly gunzTarPerm extractEntry deps/msgpack/version.c
+450 silly gunzTarPerm modified mode [ 'deps/msgpack/version.c', 438, 420 ]
+451 silly gunzTarPerm extractEntry deps/msgpack/vrefbuffer.c
+452 silly gunzTarPerm modified mode [ 'deps/msgpack/vrefbuffer.c', 438, 420 ]
+453 silly gunzTarPerm extractEntry deps/msgpack/zone.c
+454 silly gunzTarPerm modified mode [ 'deps/msgpack/zone.c', 438, 420 ]
+455 silly gunzTarPerm extractEntry src/msgpack.cc
+456 silly gunzTarPerm modified mode [ 'src/msgpack.cc', 438, 420 ]
+457 silly gunzTarPerm extractEntry lib/msgpack.js
+458 silly gunzTarPerm modified mode [ 'lib/msgpack.js', 438, 420 ]
+459 info preinstall underscore@1.3.3
+460 silly install resolved []
+461 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+462 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+463 verbose linkStuff [ false,
+463 verbose linkStuff   false,
+463 verbose linkStuff   false,
+463 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
+464 info linkStuff underscore@1.3.3
+465 verbose linkBins underscore@1.3.3
+466 verbose linkMans underscore@1.3.3
+467 verbose rebuildBundles underscore@1.3.3
+468 info install underscore@1.3.3
+469 info postinstall underscore@1.3.3
+470 verbose unlock done using /Users/Baiqian/.npm/_locks/underscore-3cd3b2f33bd266d3.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
+471 info preinstall zmq@2.11.0
+472 silly prepareForInstallMany adding nan@~1.5.0 from zmq dependencies
+473 silly prepareForInstallMany adding bindings@~1.1.1 from zmq dependencies
+474 silly cache add args [ 'nan@~1.5.0', null ]
+475 verbose cache add spec nan@~1.5.0
+476 silly cache add args [ 'bindings@~1.1.1', null ]
+477 verbose cache add spec bindings@~1.1.1
+478 silly cache add parsed spec { raw: 'nan@~1.5.0',
+478 silly cache add   scope: null,
+478 silly cache add   name: 'nan',
+478 silly cache add   rawSpec: '~1.5.0',
+478 silly cache add   spec: '>=1.5.0 <1.6.0',
+478 silly cache add   type: 'range' }
+479 verbose addNamed nan@>=1.5.0 <1.6.0
+480 silly addNamed semver.valid null
+481 silly addNamed semver.validRange >=1.5.0 <1.6.0
+482 silly addNameRange { name: 'nan', range: '>=1.5.0 <1.6.0', hasData: false }
+483 silly mapToRegistry name nan
+484 silly mapToRegistry using default registry
+485 silly mapToRegistry registry https://registry.npmjs.org/
+486 silly mapToRegistry uri https://registry.npmjs.org/nan
+487 verbose addNameRange registry:https://registry.npmjs.org/nan not in flight; fetching
+488 silly cache add parsed spec { raw: 'bindings@~1.1.1',
+488 silly cache add   scope: null,
+488 silly cache add   name: 'bindings',
+488 silly cache add   rawSpec: '~1.1.1',
+488 silly cache add   spec: '>=1.1.1 <1.2.0',
+488 silly cache add   type: 'range' }
+489 verbose addNamed bindings@>=1.1.1 <1.2.0
+490 silly addNamed semver.valid null
+491 silly addNamed semver.validRange >=1.1.1 <1.2.0
+492 silly addNameRange { name: 'bindings', range: '>=1.1.1 <1.2.0', hasData: false }
+493 silly mapToRegistry name bindings
+494 silly mapToRegistry using default registry
+495 silly mapToRegistry registry https://registry.npmjs.org/
+496 silly mapToRegistry uri https://registry.npmjs.org/bindings
+497 verbose addNameRange registry:https://registry.npmjs.org/bindings not in flight; fetching
+498 verbose request uri https://registry.npmjs.org/nan
+499 verbose request no auth needed
+500 info attempt registry request try #1 at 2:40:04 PM
+501 verbose etag "5IOU70T0MNE17LALUE9YPLT5T"
+502 http request GET https://registry.npmjs.org/nan
+503 verbose request uri https://registry.npmjs.org/bindings
+504 verbose request no auth needed
+505 info attempt registry request try #1 at 2:40:04 PM
+506 verbose etag "5997G8NY1OJEMZ1HNHL7VBX5J"
+507 http request GET https://registry.npmjs.org/bindings
+508 info preinstall msgpack@0.1.8
+509 silly install resolved []
+510 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+511 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+512 verbose linkStuff [ false,
+512 verbose linkStuff   false,
+512 verbose linkStuff   false,
+512 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
+513 info linkStuff msgpack@0.1.8
+514 verbose linkBins msgpack@0.1.8
+515 verbose link bins [ { json2msgpack: './bin/json2msgpack',
+515 verbose link bins     msgpack2json: './bin/msgpack2json' },
+515 verbose link bins   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin',
+515 verbose link bins   false ]
+516 verbose linkMans msgpack@0.1.8
+517 verbose rebuildBundles msgpack@0.1.8
+518 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack is being purged
+519 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack
+520 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json is being purged
+521 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json
+522 info install msgpack@0.1.8
+523 verbose unsafe-perm in lifecycle false
+524 http 304 https://registry.npmjs.org/nan
+525 silly get cb [ 304,
+525 silly get   { date: 'Sun, 19 Apr 2015 18:40:04 GMT',
+525 silly get     server: 'Apache',
+525 silly get     via: '1.1 varnish',
+525 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:04 GMT',
+525 silly get     'cache-control': 'max-age=60',
+525 silly get     etag: '"5IOU70T0MNE17LALUE9YPLT5T"',
+525 silly get     age: '37',
+525 silly get     'x-served-by': 'cache-iad2135-IAD',
+525 silly get     'x-cache': 'HIT',
+525 silly get     'x-cache-hits': '1',
+525 silly get     'x-timer': 'S1429468804.757042,VS0,VE0',
+525 silly get     vary: 'Accept',
+525 silly get     'content-length': '0',
+525 silly get     'keep-alive': 'timeout=10, max=50',
+525 silly get     connection: 'Keep-Alive' } ]
+526 verbose etag https://registry.npmjs.org/nan from cache
+527 verbose get saving nan to /Users/Baiqian/.npm/registry.npmjs.org/nan/.cache.json
+528 silly addNameRange number 2 { name: 'nan', range: '>=1.5.0 <1.6.0', hasData: true }
+529 silly addNameRange versions [ 'nan',
+529 silly addNameRange   [ '0.3.0-wip',
+529 silly addNameRange     '0.3.0-wip2',
+529 silly addNameRange     '0.3.0',
+529 silly addNameRange     '0.3.1',
+529 silly addNameRange     '0.3.2',
+529 silly addNameRange     '0.4.0',
+529 silly addNameRange     '0.4.1',
+529 silly addNameRange     '0.4.2',
+529 silly addNameRange     '0.4.3',
+529 silly addNameRange     '0.4.4',
+529 silly addNameRange     '0.5.0',
+529 silly addNameRange     '0.5.1',
+529 silly addNameRange     '0.5.2',
+529 silly addNameRange     '0.6.0',
+529 silly addNameRange     '0.7.0',
+529 silly addNameRange     '0.7.1',
+529 silly addNameRange     '0.8.0',
+529 silly addNameRange     '1.0.0',
+529 silly addNameRange     '1.1.0',
+529 silly addNameRange     '1.1.1',
+529 silly addNameRange     '1.1.2',
+529 silly addNameRange     '1.2.0',
+529 silly addNameRange     '1.3.0',
+529 silly addNameRange     '1.4.0',
+529 silly addNameRange     '1.4.1',
+529 silly addNameRange     '1.5.0',
+529 silly addNameRange     '1.4.2',
+529 silly addNameRange     '1.4.3',
+529 silly addNameRange     '1.5.1',
+529 silly addNameRange     '1.5.2',
+529 silly addNameRange     '1.6.0',
+529 silly addNameRange     '1.5.3',
+529 silly addNameRange     '1.6.1',
+529 silly addNameRange     '1.6.2',
+529 silly addNameRange     '1.7.0' ] ]
+530 verbose addNamed nan@1.5.3
+531 silly addNamed semver.valid 1.5.3
+532 silly addNamed semver.validRange 1.5.3
+533 silly cache afterAdd nan@1.5.3
+534 verbose afterAdd /Users/Baiqian/.npm/nan/1.5.3/package/package.json not in flight; writing
+535 http 304 https://registry.npmjs.org/bindings
+536 silly get cb [ 304,
+536 silly get   { date: 'Sun, 19 Apr 2015 18:40:04 GMT',
+536 silly get     server: 'Apache',
+536 silly get     via: '1.1 varnish',
+536 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:04 GMT',
+536 silly get     'cache-control': 'max-age=60',
+536 silly get     etag: '"5997G8NY1OJEMZ1HNHL7VBX5J"',
+536 silly get     age: '1',
+536 silly get     'x-served-by': 'cache-iad2137-IAD',
+536 silly get     'x-cache': 'HIT',
+536 silly get     'x-cache-hits': '1',
+536 silly get     'x-timer': 'S1429468804.767306,VS0,VE0',
+536 silly get     vary: 'Accept',
+536 silly get     'content-length': '0',
+536 silly get     'keep-alive': 'timeout=10, max=50',
+536 silly get     connection: 'Keep-Alive' } ]
+537 verbose etag https://registry.npmjs.org/bindings from cache
+538 verbose get saving bindings to /Users/Baiqian/.npm/registry.npmjs.org/bindings/.cache.json
+539 verbose afterAdd /Users/Baiqian/.npm/nan/1.5.3/package/package.json written
+540 silly addNameRange number 2 { name: 'bindings', range: '>=1.1.1 <1.2.0', hasData: true }
+541 silly addNameRange versions [ 'bindings',
+541 silly addNameRange   [ '0.0.1',
+541 silly addNameRange     '0.1.0',
+541 silly addNameRange     '0.1.1',
+541 silly addNameRange     '0.2.0',
+541 silly addNameRange     '0.2.1',
+541 silly addNameRange     '0.2.2',
+541 silly addNameRange     '0.2.3',
+541 silly addNameRange     '0.2.4',
+541 silly addNameRange     '0.3.0',
+541 silly addNameRange     '0.4.0',
+541 silly addNameRange     '1.0.0',
+541 silly addNameRange     '1.1.0',
+541 silly addNameRange     '1.1.1',
+541 silly addNameRange     '1.2.0',
+541 silly addNameRange     '1.2.1' ] ]
+542 verbose addNamed bindings@1.1.1
+543 silly addNamed semver.valid 1.1.1
+544 silly addNamed semver.validRange 1.1.1
+545 silly cache afterAdd bindings@1.1.1
+546 verbose afterAdd /Users/Baiqian/.npm/bindings/1.1.1/package/package.json not in flight; writing
+547 verbose afterAdd /Users/Baiqian/.npm/bindings/1.1.1/package/package.json written
+548 silly install resolved [ { name: 'nan',
+548 silly install resolved     version: '1.5.3',
+548 silly install resolved     description: 'Native Abstractions for Node.js: C++ header for Node 0.8->0.12 compatibility',
+548 silly install resolved     main: 'include_dirs.js',
+548 silly install resolved     repository: { type: 'git', url: 'git://github.com/rvagg/nan.git' },
+548 silly install resolved     scripts:
+548 silly install resolved      { test: 'tap --gc test/js/*-test.js',
+548 silly install resolved        'rebuild-tests': 'node-gyp rebuild --directory test' },
+548 silly install resolved     contributors:
+548 silly install resolved      [ [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object] ],
+548 silly install resolved     devDependencies:
+548 silly install resolved      { bindings: '~1.2.1',
+548 silly install resolved        'node-gyp': '~1.0.2',
+548 silly install resolved        tap: '~0.5.0',
+548 silly install resolved        xtend: '~4.0.0' },
+548 silly install resolved     license: 'MIT',
+548 silly install resolved     gitHead: '28ea7e1b769f790c69deaf141b47e4d41e176e8b',
+548 silly install resolved     bugs: { url: 'https://github.com/rvagg/nan/issues' },
+548 silly install resolved     homepage: 'https://github.com/rvagg/nan',
+548 silly install resolved     _id: 'nan@1.5.3',
+548 silly install resolved     _shasum: '4cd0ecc133b7b0700a492a646add427ae8a318eb',
+548 silly install resolved     _from: 'nan@>=1.5.0 <1.6.0',
+548 silly install resolved     _npmVersion: '2.1.18',
+548 silly install resolved     _nodeVersion: '1.0.3',
+548 silly install resolved     _npmUser: { name: 'rvagg', email: 'rod@vagg.org' },
+548 silly install resolved     maintainers: [ [Object], [Object] ],
+548 silly install resolved     dist:
+548 silly install resolved      { shasum: '4cd0ecc133b7b0700a492a646add427ae8a318eb',
+548 silly install resolved        tarball: 'http://registry.npmjs.org/nan/-/nan-1.5.3.tgz' },
+548 silly install resolved     directories: {},
+548 silly install resolved     _resolved: 'https://registry.npmjs.org/nan/-/nan-1.5.3.tgz',
+548 silly install resolved     readme: 'ERROR: No README data found!' },
+548 silly install resolved   { name: 'bindings',
+548 silly install resolved     description: 'Helper module for loading your native module\'s .node file',
+548 silly install resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
+548 silly install resolved     version: '1.1.1',
+548 silly install resolved     author:
+548 silly install resolved      { name: 'Nathan Rajlich',
+548 silly install resolved        email: 'nathan@tootallnate.net',
+548 silly install resolved        url: 'http://tootallnate.net' },
+548 silly install resolved     repository:
+548 silly install resolved      { type: 'git',
+548 silly install resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+548 silly install resolved     main: './bindings.js',
+548 silly install resolved     bugs: { url: 'https://github.com/TooTallNate/node-bindings/issues' },
+548 silly install resolved     _id: 'bindings@1.1.1',
+548 silly install resolved     dist:
+548 silly install resolved      { shasum: '951f7ae010302ffc50b265b124032017ed2bf6f3',
+548 silly install resolved        tarball: 'http://registry.npmjs.org/bindings/-/bindings-1.1.1.tgz' },
+548 silly install resolved     _from: 'bindings@>=1.1.1 <1.2.0',
+548 silly install resolved     _npmVersion: '1.3.2',
+548 silly install resolved     _npmUser: { name: 'tootallnate', email: 'nathan@tootallnate.net' },
+548 silly install resolved     maintainers: [ [Object], [Object] ],
+548 silly install resolved     directories: {},
+548 silly install resolved     _shasum: '951f7ae010302ffc50b265b124032017ed2bf6f3',
+548 silly install resolved     _resolved: 'https://registry.npmjs.org/bindings/-/bindings-1.1.1.tgz',
+548 silly install resolved     readme: 'ERROR: No README data found!',
+548 silly install resolved     homepage: 'https://github.com/TooTallNate/node-bindings' } ]
+549 info install nan@1.5.3 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+550 info install bindings@1.1.1 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+551 info installOne nan@1.5.3
+552 verbose installOne of nan to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq not in flight; installing
+553 info installOne bindings@1.1.1
+554 verbose installOne of bindings to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq not in flight; installing
+555 verbose lock using /Users/Baiqian/.npm/_locks/nan-848d9f560865e85c.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+556 silly install write writing nan 1.5.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+557 silly cache addNamed cb nan@1.5.3
+558 verbose unbuild node_modules/zerorpc/node_modules/zmq/node_modules/nan
+559 verbose lock using /Users/Baiqian/.npm/_locks/bindings-e6e48babfbeb4d98.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+560 silly install write writing bindings 1.1.1 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+561 silly cache addNamed cb bindings@1.1.1
+562 verbose unbuild node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+563 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+564 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+565 verbose tar unpack /Users/Baiqian/.npm/nan/1.5.3/package.tgz
+566 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+567 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan is being purged
+568 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+569 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+570 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+571 silly gunzTarPerm modes [ '755', '644' ]
+572 verbose tar unpack /Users/Baiqian/.npm/bindings/1.1.1/package.tgz
+573 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+574 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings is being purged
+575 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+576 silly gunzTarPerm modes [ '755', '644' ]
+577 silly gunzTarPerm extractEntry package.json
+578 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+579 silly gunzTarPerm extractEntry package.json
+580 silly gunzTarPerm extractEntry README.md
+581 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+582 silly gunzTarPerm extractEntry include_dirs.js
+583 silly gunzTarPerm extractEntry README.md
+584 silly gunzTarPerm extractEntry bindings.js
+585 silly gunzTarPerm extractEntry LICENSE.md
+586 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 420 ]
+587 silly gunzTarPerm extractEntry .dntrc
+588 silly gunzTarPerm modified mode [ '.dntrc', 436, 420 ]
+589 silly gunzTarPerm extractEntry appveyor.yml
+590 silly gunzTarPerm modified mode [ 'appveyor.yml', 436, 420 ]
+591 silly gunzTarPerm extractEntry nan.h
+592 silly gunzTarPerm modified mode [ 'nan.h', 436, 420 ]
+593 info preinstall bindings@1.1.1
+594 silly install resolved []
+595 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+596 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+597 verbose linkStuff [ false,
+597 verbose linkStuff   false,
+597 verbose linkStuff   false,
+597 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules' ]
+598 info linkStuff bindings@1.1.1
+599 verbose linkBins bindings@1.1.1
+600 verbose linkMans bindings@1.1.1
+601 verbose rebuildBundles bindings@1.1.1
+602 info install bindings@1.1.1
+603 info postinstall bindings@1.1.1
+604 verbose unlock done using /Users/Baiqian/.npm/_locks/bindings-e6e48babfbeb4d98.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
+605 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
+606 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 420 ]
+607 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
+608 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 420 ]
+609 silly gunzTarPerm extractEntry nan_new.h
+610 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 420 ]
+611 silly gunzTarPerm extractEntry CHANGELOG.md
+612 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 420 ]
+613 info preinstall nan@1.5.3
+614 silly install resolved []
+615 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+616 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+617 verbose linkStuff [ false,
+617 verbose linkStuff   false,
+617 verbose linkStuff   false,
+617 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules' ]
+618 info linkStuff nan@1.5.3
+619 verbose linkBins nan@1.5.3
+620 verbose linkMans nan@1.5.3
+621 verbose rebuildBundles nan@1.5.3
+622 info install nan@1.5.3
+623 info postinstall nan@1.5.3
+624 verbose unlock done using /Users/Baiqian/.npm/_locks/nan-848d9f560865e85c.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
+625 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+626 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+627 verbose linkStuff [ false,
+627 verbose linkStuff   false,
+627 verbose linkStuff   false,
+627 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
+628 info linkStuff zmq@2.11.0
+629 verbose linkBins zmq@2.11.0
+630 verbose linkMans zmq@2.11.0
+631 verbose rebuildBundles zmq@2.11.0
+632 verbose rebuildBundles [ 'bindings', 'nan' ]
+633 info install zmq@2.11.0
+634 info msgpack@0.1.8 Failed to exec install script
+635 verbose unsafe-perm in lifecycle false
+636 verbose unlock done using /Users/Baiqian/.npm/_locks/msgpack-d9c9130fc4bcd8e4.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+637 info postinstall zmq@2.11.0
+638 verbose unlock done using /Users/Baiqian/.npm/_locks/zmq-0391c171f1382f7f.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
+639 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+640 verbose unlock done using /Users/Baiqian/.npm/_locks/zerorpc-375b99b05195f593.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+641 verbose stack Error: msgpack@0.1.8 install: `node-gyp rebuild`
+641 verbose stack Exit status 1
+641 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+641 verbose stack     at EventEmitter.emit (events.js:110:17)
+641 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+641 verbose stack     at ChildProcess.emit (events.js:110:17)
+641 verbose stack     at maybeClose (child_process.js:1015:16)
+641 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+642 verbose pkgid msgpack@0.1.8
+643 verbose cwd /Users/Baiqian/Documents/playground/TweetVis
+644 error Darwin 14.3.0
+645 error argv "node" "/usr/local/bin/npm" "install" "zerorpc"
+646 error node v0.12.2
+647 error npm  v2.7.4
+648 error code ELIFECYCLE
+649 error msgpack@0.1.8 install: `node-gyp rebuild`
+649 error Exit status 1
+650 error Failed at the msgpack@0.1.8 install script 'node-gyp rebuild'.
+650 error This is most likely a problem with the msgpack package,
+650 error not with npm itself.
+650 error Tell the author that this fails on your system:
+650 error     node-gyp rebuild
+650 error You can get their info via:
+650 error     npm owner ls msgpack
+650 error There is likely additional logging output above.
+651 verbose exit [ 1, true ]
+652 verbose unbuild node_modules/zerorpc/node_modules/msgpack
+653 info preuninstall msgpack@0.1.8
+654 info uninstall msgpack@0.1.8
+655 verbose unbuild rmStuff msgpack@0.1.8 from /Users/Baiqian/Documents/playground/TweetVis/node_modules
+656 verbose unbuild rmStuff in /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules
+657 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack is being gently removed
+658 silly gentlyRm verifying /Users/Baiqian/Documents/playground/TweetVis is an npm working directory
+659 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json is being gently removed
+660 silly gentlyRm verifying /Users/Baiqian/Documents/playground/TweetVis is an npm working directory
+661 silly gentlyRm containing path /Users/Baiqian/Documents/playground/TweetVis is under npm's control, in /Users/Baiqian/Documents/playground/TweetVis
+662 silly gentlyRm deletion target /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack is under /Users/Baiqian/Documents/playground/TweetVis
+663 verbose gentlyRm vacuuming from /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack up to /Users/Baiqian/Documents/playground/TweetVis
+664 silly gentlyRm containing path /Users/Baiqian/Documents/playground/TweetVis is under npm's control, in /Users/Baiqian/Documents/playground/TweetVis
+665 silly gentlyRm deletion target /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json is under /Users/Baiqian/Documents/playground/TweetVis
+666 verbose gentlyRm vacuuming from /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json up to /Users/Baiqian/Documents/playground/TweetVis
+667 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack
+668 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json
+669 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin
+670 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin
+671 silly vacuum-fs quitting because lost the race to remove /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin
+672 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules
+673 info postuninstall msgpack@0.1.8
+674 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+675 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+676 silly vacuum-fs purging /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
+677 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules
+678 verbose unbuild node_modules/zerorpc
+679 info preuninstall zerorpc@0.9.3
+680 info uninstall zerorpc@0.9.3
+681 verbose unbuild rmStuff zerorpc@0.9.3 from /Users/Baiqian/Documents/playground/TweetVis/node_modules
+682 info postuninstall zerorpc@0.9.3
+683 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc is being purged from base /Users/Baiqian/Documents/playground/TweetVis
+684 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+685 silly vacuum-fs purging /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
+686 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules
