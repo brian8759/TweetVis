@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var tweetvis = angular.module('tweetvis', ['ngRoute', 'ngResource', 
   'tweetvis.Controllers', 'tweetvis.Services', 'ui.bootstrap', 'uiGmapgoogle-maps']);

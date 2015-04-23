@@ -1,10 +1,13 @@
+'use strict';
+
 var Twit = require('twit');
+var sensitiveData = require('./sensitiveData');
 
 var T = new Twit({
-    consumer_key:         'sBBsyWD41S7RxyZQYm5PkSv8l',
-    consumer_secret:      'jWx89GtOCUkfsbD6M83BJd4C2u2WoMNLL8yXuyPSkmooWAqZtf',
-    access_token:         '2859539890-Gx8ek68KiQA7237kKxP8G0sOlRTIVO2ojwh95Qf',
-    access_token_secret:  'oXVAAiWl7yiblDFY9vjperCT1tSTYR62SMjxsf8TI2uw3'
+	consumer_key: sensitiveData.consumer_key,
+	consumer_secret: sensitiveData.consumer_secret,
+	access_token: sensitiveData.access_token,
+	access_token_secret: sensitiveData.access_token_secret
 });
 
 module.exports = T;
