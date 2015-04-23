@@ -2,7 +2,8 @@
 
 var TweetControllers = angular.module('tweetvis.Controllers', []);
 
-TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filterFilter', function($scope, Tweet, filterFilter) {
+TweetControllers.controller('ListAllTweetsController', ['$scope', 'Tweet', 'filterFilter', 
+function($scope, Tweet, filterFilter) {
     $scope.tweets = Tweet.query();
 
     $scope.itemsPerPage = 20;
@@ -33,11 +34,11 @@ TweetControllers.controller('ListAllCollections', ['$scope', '$http', function($
     });
 }]);
 
-TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', function($scope, $routeParams, Tweet) {
+TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams', 'Tweet', 
+function($scope, $routeParams, Tweet) {
     $scope.tweet = Tweet.get({ tweetId: $routeParams.tweetId });
     
     $scope.tweet.$promise.then(function() {
-        console.log($scope.tweet);
         $scope.map = {
             center: {latitude: 40.1451, longitude: -99.6680 }, 
             zoom: 3, 
@@ -61,14 +62,12 @@ TweetControllers.controller('ListOneTweetController', ['$scope', '$routeParams',
     
 }]);
 
-TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Tweet', '$http', 'filterFilter', function($scope, $routeParams, Tweet, $http, filterFilter) {
-    $scope.collectionId = $routeParams.collectionId;
-    var collectionName = $scope.collectionId.substring(15);
-
+TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Tweet', '$http', 'filterFilter', 
+function($scope, $routeParams, Tweet, $http, filterFilter) {
     $scope.itemsPerPage = 10;
     $scope.currentPage = 1;
 
-    $http.post('/getAllTweets', {name: collectionName})
+    $http.get('/getAllTweets/' + $routeParams.collectionId)
     .success(function(tweets) {
         $scope.tweets = tweets;
         $scope.totalItems = $scope.tweets.length;
@@ -87,10 +86,8 @@ TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Twe
     });
 }]);
 
-TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'Tweet', '$http', function($scope, $routeParams, Tweet, $http) {
-    var collectionId = $routeParams.collectionId;
-    var collectionName = collectionId.substring(15);
-
+TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'Tweet', '$http', 
+function($scope, $routeParams, Tweet, $http) {
     $scope.map = {
         center: {
             latitude: 40.1451, 
@@ -128,7 +125,6 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
         }
 
         ret.onClick = function() {
-            console.log("Clicked!");
             ret.show = true;
         };
         
@@ -136,10 +132,9 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
         return ret;
     };
 
-    $http.post('/getAllTweets', {name: collectionName})
+    $http.get('/getAllTweets/' + $routeParams.collectionId)
     .success(function(tweets) {
         $scope.tweets = tweets;
-        console.log("total tweets:", $scope.tweets.length);
         var markers = [];
         var len = $scope.tweets.length;
         for (var i = 0; i < len; i++) {
@@ -154,7 +149,8 @@ TweetControllers.controller('GoogleMapController', ['$scope', '$routeParams', 'T
 
 }]);
 
-TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'uiGmapGoogleMapApi', function($scope, Socket, GoogleMapApi) {
+TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 'uiGmapGoogleMapApi', 
+function($scope, Socket, GoogleMapApi) {
     GoogleMapApi.then(function(maps) {
         maps.visualRefresh = true;
         $scope.defaultBounds = new google.maps.LatLngBounds(
@@ -288,7 +284,6 @@ TweetControllers.controller('RealTimeStreamingController', ['$scope', 'Socket', 
     };
 
     Socket.on('tweet-io:tweets', function (data) {
-        console.log(data);
         $scope.tweets = $scope.tweets.concat(data);
         data.forEach(function(v) {
             if(v.user.coordinates != null) {

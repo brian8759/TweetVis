@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-//var path = require('path');
 var mongoose = require('mongoose');
 var schema = require('../schema/schema');
 var TweetSchema = require('../schema/TweetSchema');
@@ -22,8 +21,8 @@ router.get('/getAllCollections', function(req, res) {
   });
 });
 
-router.post('/getAllTweets', function(req, res) {
-  var collectionName = req.body.name;
+router.get('/getAllTweets/:collectionName', function(req, res) {
+  var collectionName = req.params.collectionName.replace('%20', ' ');
   model = mongoose.model(collectionName, schema, collectionName);
   model.find({}, 'name user_screen_name created_at geo text att', {lean: true}, function(err, tweets) {
     if(err) {
