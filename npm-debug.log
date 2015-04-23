@@ -1,1208 +1,1590 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'zerorpc' ]
-2 info using npm@2.7.4
-3 info using node@v0.12.2
-4 verbose install zerorpc is installed as 0.9.3
-5 silly cache add args [ 'zerorpc@*', null ]
-6 verbose cache add spec zerorpc@*
-7 silly cache add parsed spec { raw: 'zerorpc@*',
-7 silly cache add   scope: null,
-7 silly cache add   name: 'zerorpc',
-7 silly cache add   rawSpec: '*',
-7 silly cache add   spec: '*',
-7 silly cache add   type: 'range' }
-8 verbose addNamed zerorpc@*
-9 silly addNamed semver.valid null
-10 silly addNamed semver.validRange *
-11 silly addNameRange { name: 'zerorpc', range: '*', hasData: false }
-12 silly mapToRegistry name zerorpc
-13 silly mapToRegistry using default registry
-14 silly mapToRegistry registry https://registry.npmjs.org/
-15 silly mapToRegistry uri https://registry.npmjs.org/zerorpc
-16 verbose addNameRange registry:https://registry.npmjs.org/zerorpc not in flight; fetching
-17 verbose request uri https://registry.npmjs.org/zerorpc
-18 verbose request no auth needed
-19 info attempt registry request try #1 at 2:40:03 PM
-20 verbose request id 289011ee29a22e18
-21 verbose etag "3I7IQOFDZ2OZU2TVKZWM51KEB"
-22 http request GET https://registry.npmjs.org/zerorpc
-23 http 304 https://registry.npmjs.org/zerorpc
-24 silly get cb [ 304,
-24 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
-24 silly get     server: 'Apache',
-24 silly get     via: '1.1 varnish',
-24 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
-24 silly get     'cache-control': 'max-age=60',
-24 silly get     etag: '"3I7IQOFDZ2OZU2TVKZWM51KEB"',
-24 silly get     age: '0',
-24 silly get     'x-served-by': 'cache-iad2124-IAD',
-24 silly get     'x-cache': 'MISS',
-24 silly get     'x-cache-hits': '0',
-24 silly get     'x-timer': 'S1429468803.483361,VS0,VE71',
-24 silly get     vary: 'Accept',
-24 silly get     'content-length': '0',
-24 silly get     'keep-alive': 'timeout=10, max=50',
-24 silly get     connection: 'Keep-Alive' } ]
-25 verbose etag https://registry.npmjs.org/zerorpc from cache
-26 verbose get saving zerorpc to /Users/Baiqian/.npm/registry.npmjs.org/zerorpc/.cache.json
-27 silly addNameRange number 2 { name: 'zerorpc', range: '*', hasData: true }
-28 silly addNameRange versions [ 'zerorpc',
-28 silly addNameRange   [ '0.1.0',
-28 silly addNameRange     '0.2.0',
-28 silly addNameRange     '0.3.0',
-28 silly addNameRange     '0.4.0',
-28 silly addNameRange     '0.5.0',
-28 silly addNameRange     '0.6.0',
-28 silly addNameRange     '0.6.1',
-28 silly addNameRange     '0.7.0',
-28 silly addNameRange     '0.7.1',
-28 silly addNameRange     '0.7.2',
-28 silly addNameRange     '0.7.3',
-28 silly addNameRange     '0.7.4',
-28 silly addNameRange     '0.8.0',
-28 silly addNameRange     '0.8.1',
-28 silly addNameRange     '0.8.2',
-28 silly addNameRange     '0.8.3',
-28 silly addNameRange     '0.8.4',
-28 silly addNameRange     '0.8.5',
-28 silly addNameRange     '0.8.6',
-28 silly addNameRange     '0.8.7',
-28 silly addNameRange     '0.8.8',
-28 silly addNameRange     '0.9.0',
-28 silly addNameRange     '0.9.1',
-28 silly addNameRange     '0.9.2',
-28 silly addNameRange     '0.9.3' ] ]
-29 verbose addNamed zerorpc@0.9.3
-30 silly addNamed semver.valid 0.9.3
-31 silly addNamed semver.validRange 0.9.3
-32 silly cache afterAdd zerorpc@0.9.3
-33 verbose afterAdd /Users/Baiqian/.npm/zerorpc/0.9.3/package/package.json not in flight; writing
-34 verbose afterAdd /Users/Baiqian/.npm/zerorpc/0.9.3/package/package.json written
-35 silly install resolved [ { name: 'zerorpc',
-35 silly install resolved     version: '0.9.3',
-35 silly install resolved     main: './index.js',
-35 silly install resolved     author: { name: 'dotCloud', email: 'opensource@dotcloud.com' },
-35 silly install resolved     description: 'A port of ZeroRPC to node.js',
-35 silly install resolved     contributors: [ [Object], [Object] ],
-35 silly install resolved     repository: { type: 'git', url: 'https://github.com/dotcloud/zerorpc-node' },
-35 silly install resolved     keywords: [ 'zerorpc', 'rpc', 'distributed', 'communication' ],
-35 silly install resolved     dependencies:
-35 silly install resolved      { underscore: '1.3.3',
-35 silly install resolved        msgpack: '0.1.8',
-35 silly install resolved        'node-uuid': '1.3.3',
-35 silly install resolved        zmq: '2.x' },
-35 silly install resolved     devDependencies: { nodeunit: '0.7.4' },
-35 silly install resolved     license: 'MIT',
-35 silly install resolved     readme: 'zerorpc-node\n============\n\nZeroRPC is a communication layer for distributed systems. zerorpc-node is a port of the original [ZeroRPC](https://github.com/dotcloud/zerorpc-python) for node.js. We have full client and server support for version 3 of the protocol, and clients/servers written in the Python version can communicate transparently with those written in node.js. This project is alpha.\n\nTo install the package:\n\n    npm install zerorpc\n\nIf you get the error `Package libzmq was not found`, take a look at [the fix for zeromq.node](https://github.com/JustinTulloss/zeromq.node/issues/55). If you get the error `Unable to load shared library <<path to zeromq.node>>/binding.node`, [make sure you run ldconfig](https://github.com/JustinTulloss/zeromq.node/issues/85). If that still doesn\'t work, check out [this ticket](https://github.com/JustinTulloss/zeromq.node/issues/92).\n\nServers\n-------\n\nTo create a new server:\n\n    var zerorpc = require("zerorpc");\n    var server = new zerorpc.Server(context);\n\nThe constructor takes in a context object with the functions to expose over RPC. Only functions that do not have a leading underscore will be exposed. Each exposed method must take in a callback as the last argument. This callback is called as `callback(error, response, more)` when there is a new update, where error is an error object or string, response is the new update, and more is a boolean specifying whether new updates will be available later. `error`, `response`, and `more` default to falsy values, so e.g. simply calling `callback()` closes an open stream, since `more` is false by default.\n\nEvents:\n\n* `error` - When an error occurs.\n\nMethods:\n\n* `bind(endpoint)` - Binds the server to the specified ZeroMQ endpoint.\n* `connect(endpoint)` - Connects the server to the specified ZeroMQ endpoint.\n* `close()` - Closes the ZeroMQ socket.\n\nFull example:\n\n    var zerorpc = require("zerorpc");\n\n    var server = new zerorpc.Server({\n        addMan: function(sentence, reply) {\n            reply(null, sentence + ", man!");\n        },\n\n        add42: function(n, reply) {\n            reply(null, n + 42);\n        },\n\n        iter: function(from, to, step, reply) {\n            for(i=from; i<to; i+=step) {\n                reply(null, i, true);\n            }\n\n            reply();\n        }\n    });\n\n    server.bind("tcp://0.0.0.0:4242");\n\n    server.on("error", function(error) {\n        console.error("RPC server error:", error);\n    });\n\nClients\n-------\n\nTo create a new client:\n\n    var zerorpc = require("zerorpc");\n    var client = new zerorpc.Client(options);\n\nThe constructor optionally takes in an options object. Allowable options:\n\n* `timeout` (number) - Sets the number of seconds to wait for a response before considering the call timed out. Defaults to 30.\n\nEvents:\n\n* `error` - When an error occurs.\n\nMethods:\n\n* `bind(endpoint)` - Binds the client to the specified ZeroMQ endpoint.\n* `connect(endpoint)` - Connects the client to the specified ZeroMQ endpoint.\n* `close()` - Closes the ZeroMQ socket.\n* `invoke(method, arguments..., callback)` - Invokes a remote method.\n  * `method` is the method name.\n  * `callback` is a method to call when there is an update. This callback is called as `callback(error, response, more)`, where error is an error object, response is the new update, and more is a boolean specifying whether new updates will be available later (i.e. whether the response is streaming).\n\nFull example:\n\n    var zerorpc = require("zerorpc");\n\n    var client = new zerorpc.Client();\n    client.connect("tcp://127.0.0.1:4242");\n\n    client.on("error", function(error) {\n        console.error("RPC client error:", error);\n    });\n\n    client.invoke("iter", 10, 20, 2, function(error, res, more) {\n        if(error) {\n            console.error(error);\n        } else {\n            console.log("UPDATE:", res);\n        }\n\n        if(!more) {\n            console.log("Done.");\n        }\n    });',
-35 silly install resolved     _id: 'zerorpc@0.9.3',
-35 silly install resolved     dist:
-35 silly install resolved      { shasum: '77e0bcfb2aba576ed659b2983230febecf301741',
-35 silly install resolved        tarball: 'http://registry.npmjs.org/zerorpc/-/zerorpc-0.9.3.tgz' },
-35 silly install resolved     maintainers: [ [Object], [Object] ],
-35 silly install resolved     directories: {},
-35 silly install resolved     _shasum: '77e0bcfb2aba576ed659b2983230febecf301741',
-35 silly install resolved     _resolved: 'https://registry.npmjs.org/zerorpc/-/zerorpc-0.9.3.tgz',
-35 silly install resolved     _from: 'zerorpc@*',
-35 silly install resolved     bugs: { url: 'https://github.com/dotcloud/zerorpc-node/issues' },
-35 silly install resolved     homepage: 'https://github.com/dotcloud/zerorpc-node' } ]
-36 info install zerorpc@0.9.3 into /Users/Baiqian/Documents/playground/TweetVis
-37 info installOne zerorpc@0.9.3
-38 verbose installOne of zerorpc to /Users/Baiqian/Documents/playground/TweetVis not in flight; installing
-39 verbose lock using /Users/Baiqian/.npm/_locks/zerorpc-375b99b05195f593.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-40 silly install write writing zerorpc 0.9.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-41 silly cache addNamed cb zerorpc@0.9.3
-42 verbose unbuild node_modules/zerorpc
-43 info preuninstall zerorpc@0.9.3
-44 info uninstall zerorpc@0.9.3
-45 verbose unbuild rmStuff zerorpc@0.9.3 from /Users/Baiqian/Documents/playground/TweetVis/node_modules
-46 info postuninstall zerorpc@0.9.3
-47 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-48 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-49 silly vacuum-fs purging /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-50 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules
-51 verbose tar unpack /Users/Baiqian/.npm/zerorpc/0.9.3/package.tgz
-52 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-53 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc is being purged
-54 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-55 silly gunzTarPerm modes [ '755', '644' ]
-56 silly gunzTarPerm extractEntry package.json
-57 silly gunzTarPerm extractEntry .npmignore
-58 silly gunzTarPerm extractEntry README.md
-59 silly gunzTarPerm extractEntry LICENSE
-60 silly gunzTarPerm extractEntry index.js
-61 silly gunzTarPerm extractEntry lib/server.js
-62 silly gunzTarPerm extractEntry lib/buffer.js
-63 silly gunzTarPerm extractEntry lib/channel.js
-64 silly gunzTarPerm extractEntry lib/client.js
-65 silly gunzTarPerm extractEntry lib/util.js
-66 silly gunzTarPerm extractEntry lib/socket.js
-67 silly gunzTarPerm extractEntry lib/middleware.js
-68 silly gunzTarPerm extractEntry lib/events.js
-69 silly gunzTarPerm extractEntry test/timeouts.js
-70 silly gunzTarPerm extractEntry test/repro-10.js
-71 silly gunzTarPerm extractEntry test/invocation.js
-72 silly gunzTarPerm extractEntry test/errors.js
-73 silly gunzTarPerm extractEntry test/buffers.js
-74 silly gunzTarPerm extractEntry test/streams.js
-75 silly gunzTarPerm extractEntry test/heartbeats.js
-76 info preinstall zerorpc@0.9.3
-77 silly prepareForInstallMany adding underscore@1.3.3 from zerorpc dependencies
-78 silly prepareForInstallMany adding msgpack@0.1.8 from zerorpc dependencies
-79 silly prepareForInstallMany adding node-uuid@1.3.3 from zerorpc dependencies
-80 silly prepareForInstallMany adding zmq@2.x from zerorpc dependencies
-81 silly cache add args [ 'underscore@1.3.3', null ]
-82 verbose cache add spec underscore@1.3.3
-83 silly cache add args [ 'msgpack@0.1.8', null ]
-84 verbose cache add spec msgpack@0.1.8
-85 silly cache add parsed spec { raw: 'underscore@1.3.3',
-85 silly cache add   scope: null,
-85 silly cache add   name: 'underscore',
-85 silly cache add   rawSpec: '1.3.3',
-85 silly cache add   spec: '1.3.3',
-85 silly cache add   type: 'version' }
-86 verbose addNamed underscore@1.3.3
-87 silly addNamed semver.valid 1.3.3
-88 silly addNamed semver.validRange 1.3.3
-89 silly mapToRegistry name underscore
-90 silly mapToRegistry using default registry
-91 silly mapToRegistry registry https://registry.npmjs.org/
-92 silly mapToRegistry uri https://registry.npmjs.org/underscore
-93 verbose addNameVersion registry:https://registry.npmjs.org/underscore not in flight; fetching
-94 silly cache add parsed spec { raw: 'msgpack@0.1.8',
-94 silly cache add   scope: null,
-94 silly cache add   name: 'msgpack',
-94 silly cache add   rawSpec: '0.1.8',
-94 silly cache add   spec: '0.1.8',
-94 silly cache add   type: 'version' }
-95 verbose addNamed msgpack@0.1.8
-96 silly addNamed semver.valid 0.1.8
-97 silly addNamed semver.validRange 0.1.8
-98 silly mapToRegistry name msgpack
-99 silly mapToRegistry using default registry
-100 silly mapToRegistry registry https://registry.npmjs.org/
-101 silly mapToRegistry uri https://registry.npmjs.org/msgpack
-102 verbose addNameVersion registry:https://registry.npmjs.org/msgpack not in flight; fetching
-103 silly cache add args [ 'node-uuid@1.3.3', null ]
-104 verbose cache add spec node-uuid@1.3.3
-105 silly cache add parsed spec { raw: 'node-uuid@1.3.3',
-105 silly cache add   scope: null,
-105 silly cache add   name: 'node-uuid',
-105 silly cache add   rawSpec: '1.3.3',
-105 silly cache add   spec: '1.3.3',
-105 silly cache add   type: 'version' }
-106 verbose addNamed node-uuid@1.3.3
-107 silly addNamed semver.valid 1.3.3
-108 silly addNamed semver.validRange 1.3.3
-109 silly mapToRegistry name node-uuid
-110 silly mapToRegistry using default registry
-111 silly mapToRegistry registry https://registry.npmjs.org/
-112 silly mapToRegistry uri https://registry.npmjs.org/node-uuid
-113 verbose addNameVersion registry:https://registry.npmjs.org/node-uuid not in flight; fetching
-114 silly cache add args [ 'zmq@2.x', null ]
-115 verbose cache add spec zmq@2.x
-116 silly cache add parsed spec { raw: 'zmq@2.x',
-116 silly cache add   scope: null,
-116 silly cache add   name: 'zmq',
-116 silly cache add   rawSpec: '2.x',
-116 silly cache add   spec: '>=2.0.0 <3.0.0',
-116 silly cache add   type: 'range' }
-117 verbose addNamed zmq@>=2.0.0 <3.0.0
-118 silly addNamed semver.valid null
-119 silly addNamed semver.validRange >=2.0.0 <3.0.0
-120 silly addNameRange { name: 'zmq', range: '>=2.0.0 <3.0.0', hasData: false }
-121 silly mapToRegistry name zmq
-122 silly mapToRegistry using default registry
-123 silly mapToRegistry registry https://registry.npmjs.org/
-124 silly mapToRegistry uri https://registry.npmjs.org/zmq
-125 verbose addNameRange registry:https://registry.npmjs.org/zmq not in flight; fetching
-126 verbose request uri https://registry.npmjs.org/underscore
-127 verbose request no auth needed
-128 info attempt registry request try #1 at 2:40:03 PM
-129 verbose etag "7C1BRLYGKR5V8HTCKJBBHI6FQ"
-130 http request GET https://registry.npmjs.org/underscore
-131 verbose request uri https://registry.npmjs.org/msgpack
-132 verbose request no auth needed
-133 info attempt registry request try #1 at 2:40:03 PM
-134 verbose etag "60QPCTUDWKH9ZA5CPZJJC9ERE"
-135 http request GET https://registry.npmjs.org/msgpack
-136 verbose request uri https://registry.npmjs.org/node-uuid
-137 verbose request no auth needed
-138 info attempt registry request try #1 at 2:40:03 PM
-139 verbose etag "7CSKSKAH7LDKIQ0DZPVHBFNLW"
-140 http request GET https://registry.npmjs.org/node-uuid
-141 verbose request uri https://registry.npmjs.org/zmq
-142 verbose request no auth needed
-143 info attempt registry request try #1 at 2:40:03 PM
-144 verbose etag "14FLT2EUEFQI6UYYC2PTSFZA2"
-145 http request GET https://registry.npmjs.org/zmq
-146 http 304 https://registry.npmjs.org/underscore
-147 silly get cb [ 304,
-147 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
-147 silly get     server: 'Apache',
-147 silly get     via: '1.1 varnish',
-147 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
-147 silly get     'cache-control': 'max-age=60',
-147 silly get     etag: '"7C1BRLYGKR5V8HTCKJBBHI6FQ"',
-147 silly get     age: '17',
-147 silly get     'x-served-by': 'cache-iad2135-IAD',
-147 silly get     'x-cache': 'HIT',
-147 silly get     'x-cache-hits': '1',
-147 silly get     'x-timer': 'S1429468803.778692,VS0,VE0',
-147 silly get     vary: 'Accept',
-147 silly get     'content-length': '0',
-147 silly get     'keep-alive': 'timeout=10, max=50',
-147 silly get     connection: 'Keep-Alive' } ]
-148 verbose etag https://registry.npmjs.org/underscore from cache
-149 verbose get saving underscore to /Users/Baiqian/.npm/registry.npmjs.org/underscore/.cache.json
-150 silly cache afterAdd underscore@1.3.3
-151 verbose afterAdd /Users/Baiqian/.npm/underscore/1.3.3/package/package.json not in flight; writing
-152 verbose afterAdd /Users/Baiqian/.npm/underscore/1.3.3/package/package.json written
-153 http 304 https://registry.npmjs.org/msgpack
-154 silly get cb [ 304,
-154 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
-154 silly get     server: 'Apache',
-154 silly get     via: '1.1 varnish',
-154 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
-154 silly get     'cache-control': 'max-age=60',
-154 silly get     etag: '"60QPCTUDWKH9ZA5CPZJJC9ERE"',
-154 silly get     age: '0',
-154 silly get     'x-served-by': 'cache-iad2138-IAD',
-154 silly get     'x-cache': 'HIT',
-154 silly get     'x-cache-hits': '1',
-154 silly get     'x-timer': 'S1429468803.775578,VS0,VE56',
-154 silly get     vary: 'Accept',
-154 silly get     'content-length': '0',
-154 silly get     'keep-alive': 'timeout=10, max=50',
-154 silly get     connection: 'Keep-Alive' } ]
-155 verbose etag https://registry.npmjs.org/msgpack from cache
-156 verbose get saving msgpack to /Users/Baiqian/.npm/registry.npmjs.org/msgpack/.cache.json
-157 silly cache afterAdd msgpack@0.1.8
-158 verbose afterAdd /Users/Baiqian/.npm/msgpack/0.1.8/package/package.json not in flight; writing
-159 verbose afterAdd /Users/Baiqian/.npm/msgpack/0.1.8/package/package.json written
-160 http 304 https://registry.npmjs.org/zmq
-161 silly get cb [ 304,
-161 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
-161 silly get     server: 'Apache',
-161 silly get     via: '1.1 varnish',
-161 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:03 GMT',
-161 silly get     'cache-control': 'max-age=60',
-161 silly get     etag: '"14FLT2EUEFQI6UYYC2PTSFZA2"',
-161 silly get     age: '0',
-161 silly get     'x-served-by': 'cache-iad2137-IAD',
-161 silly get     'x-cache': 'MISS',
-161 silly get     'x-cache-hits': '0',
-161 silly get     'x-timer': 'S1429468803.782693,VS0,VE56',
-161 silly get     vary: 'Accept',
-161 silly get     'content-length': '0',
-161 silly get     'keep-alive': 'timeout=10, max=50',
-161 silly get     connection: 'Keep-Alive' } ]
-162 verbose etag https://registry.npmjs.org/zmq from cache
-163 verbose get saving zmq to /Users/Baiqian/.npm/registry.npmjs.org/zmq/.cache.json
-164 silly addNameRange number 2 { name: 'zmq', range: '>=2.0.0 <3.0.0', hasData: true }
-165 silly addNameRange versions [ 'zmq',
-165 silly addNameRange   [ '1.0.0',
-165 silly addNameRange     '1.0.1',
-165 silly addNameRange     '1.0.2',
-165 silly addNameRange     '1.0.3',
-165 silly addNameRange     '1.0.4',
-165 silly addNameRange     '2.0.0',
-165 silly addNameRange     '2.0.1',
-165 silly addNameRange     '2.0.2',
-165 silly addNameRange     '2.0.3',
-165 silly addNameRange     '2.1.0',
-165 silly addNameRange     '2.2.0',
-165 silly addNameRange     '2.3.0',
-165 silly addNameRange     '2.4.0',
-165 silly addNameRange     '2.5.0',
-165 silly addNameRange     '2.5.1',
-165 silly addNameRange     '2.6.0',
-165 silly addNameRange     '2.7.0',
-165 silly addNameRange     '2.8.0',
-165 silly addNameRange     '2.9.0',
-165 silly addNameRange     '2.10.0',
-165 silly addNameRange     '2.11.0' ] ]
-166 verbose addNamed zmq@2.11.0
-167 silly addNamed semver.valid 2.11.0
-168 silly addNamed semver.validRange 2.11.0
-169 silly cache afterAdd zmq@2.11.0
-170 verbose afterAdd /Users/Baiqian/.npm/zmq/2.11.0/package/package.json not in flight; writing
-171 verbose afterAdd /Users/Baiqian/.npm/zmq/2.11.0/package/package.json written
-172 http 304 https://registry.npmjs.org/node-uuid
-173 silly get cb [ 304,
-173 silly get   { date: 'Sun, 19 Apr 2015 18:40:03 GMT',
-173 silly get     server: 'Apache',
-173 silly get     via: '1.1 varnish',
-173 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:04 GMT',
-173 silly get     'cache-control': 'max-age=60',
-173 silly get     etag: '"7CSKSKAH7LDKIQ0DZPVHBFNLW"',
-173 silly get     age: '0',
-173 silly get     'x-served-by': 'cache-iad2121-IAD',
-173 silly get     'x-cache': 'HIT',
-173 silly get     'x-cache-hits': '1',
-173 silly get     'x-timer': 'S1429468803.776641,VS0,VE604',
-173 silly get     vary: 'Accept',
-173 silly get     'content-length': '0',
-173 silly get     'keep-alive': 'timeout=10, max=50',
-173 silly get     connection: 'Keep-Alive' } ]
-174 verbose etag https://registry.npmjs.org/node-uuid from cache
-175 verbose get saving node-uuid to /Users/Baiqian/.npm/registry.npmjs.org/node-uuid/.cache.json
-176 silly cache afterAdd node-uuid@1.3.3
-177 verbose afterAdd /Users/Baiqian/.npm/node-uuid/1.3.3/package/package.json not in flight; writing
-178 verbose afterAdd /Users/Baiqian/.npm/node-uuid/1.3.3/package/package.json written
-179 silly install resolved [ { name: 'underscore',
-179 silly install resolved     description: 'JavaScript\'s functional programming helper library.',
-179 silly install resolved     homepage: 'http://documentcloud.github.com/underscore/',
-179 silly install resolved     keywords: [ 'util', 'functional', 'server', 'client', 'browser' ],
-179 silly install resolved     author: { name: 'Jeremy Ashkenas', email: 'jeremy@documentcloud.org' },
-179 silly install resolved     repository:
-179 silly install resolved      { type: 'git',
-179 silly install resolved        url: 'git://github.com/documentcloud/underscore.git' },
-179 silly install resolved     main: 'underscore.js',
-179 silly install resolved     version: '1.3.3',
-179 silly install resolved     _npmUser: { name: 'jashkenas', email: 'jashkenas@gmail.com' },
-179 silly install resolved     _id: 'underscore@1.3.3',
-179 silly install resolved     dependencies: {},
-179 silly install resolved     devDependencies: {},
-179 silly install resolved     optionalDependencies: {},
-179 silly install resolved     engines: { node: '*' },
-179 silly install resolved     _engineSupported: true,
-179 silly install resolved     _npmVersion: '1.1.1',
-179 silly install resolved     _nodeVersion: 'v0.6.11',
-179 silly install resolved     _defaultsLoaded: true,
-179 silly install resolved     dist:
-179 silly install resolved      { shasum: '47ac53683daf832bfa952e1774417da47817ae42',
-179 silly install resolved        tarball: 'http://registry.npmjs.org/underscore/-/underscore-1.3.3.tgz' },
-179 silly install resolved     maintainers: [ [Object], [Object] ],
-179 silly install resolved     directories: {},
-179 silly install resolved     _shasum: '47ac53683daf832bfa952e1774417da47817ae42',
-179 silly install resolved     _resolved: 'https://registry.npmjs.org/underscore/-/underscore-1.3.3.tgz',
-179 silly install resolved     _from: 'underscore@1.3.3',
-179 silly install resolved     bugs: { url: 'https://github.com/documentcloud/underscore/issues' },
-179 silly install resolved     readme: 'ERROR: No README data found!' },
-179 silly install resolved   { name: 'msgpack',
-179 silly install resolved     description: 'A space-efficient object serialization library for node.js',
-179 silly install resolved     version: '0.1.8',
-179 silly install resolved     homepage: 'https://github.com/pgriess/node-msgpack',
-179 silly install resolved     author: { name: 'Peter Griess', email: 'pg@std.in' },
-179 silly install resolved     contributors: [ [Object], [Object] ],
-179 silly install resolved     repository:
-179 silly install resolved      { type: 'git',
-179 silly install resolved        url: 'https://github.com/pgriess/node-msgpack.git' },
-179 silly install resolved     main: './lib/msgpack',
-179 silly install resolved     directories: { lib: 'lib' },
-179 silly install resolved     engines: { node: '>=0.8.x' },
-179 silly install resolved     bin:
-179 silly install resolved      { json2msgpack: './bin/json2msgpack',
-179 silly install resolved        msgpack2json: './bin/msgpack2json' },
-179 silly install resolved     scripts: { install: 'node-gyp rebuild' },
-179 silly install resolved     gypfile: true,
-179 silly install resolved     _id: 'msgpack@0.1.8',
-179 silly install resolved     dist:
-179 silly install resolved      { shasum: 'cd5c0d2277bf1659a871209ddf59f57ad1124d68',
-179 silly install resolved        tarball: 'http://registry.npmjs.org/msgpack/-/msgpack-0.1.8.tgz' },
-179 silly install resolved     _npmVersion: '1.1.59',
-179 silly install resolved     _npmUser: { name: 'godsflaw', email: 'chris@dod.net' },
-179 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
-179 silly install resolved     _shasum: 'cd5c0d2277bf1659a871209ddf59f57ad1124d68',
-179 silly install resolved     _resolved: 'https://registry.npmjs.org/msgpack/-/msgpack-0.1.8.tgz',
-179 silly install resolved     _from: 'msgpack@0.1.8',
-179 silly install resolved     bugs: { url: 'https://github.com/pgriess/node-msgpack/issues' },
-179 silly install resolved     readme: 'ERROR: No README data found!' },
-179 silly install resolved   { name: 'zmq',
-179 silly install resolved     version: '2.11.0',
-179 silly install resolved     description: 'Bindings for node.js and io.js to ZeroMQ',
-179 silly install resolved     main: 'index',
-179 silly install resolved     repository:
-179 silly install resolved      { type: 'git',
-179 silly install resolved        url: 'http://github.com/JustinTulloss/zeromq.node.git' },
-179 silly install resolved     dependencies: { nan: '~1.5.0', bindings: '~1.1.1' },
-179 silly install resolved     devDependencies: { should: '2.1.x', semver: '~4.1.1', mocha: '~1.13.0' },
-179 silly install resolved     engines: { node: '>=0.8' },
-179 silly install resolved     scripts: { test: 'make test', install: 'node-gyp rebuild' },
-179 silly install resolved     keywords:
-179 silly install resolved      [ 'zeromq',
-179 silly install resolved        'zmq',
-179 silly install resolved        '0mq',
-179 silly install resolved        'ømq',
-179 silly install resolved        'libzmq',
-179 silly install resolved        'native',
-179 silly install resolved        'binding',
-179 silly install resolved        'addon' ],
-179 silly install resolved     author:
-179 silly install resolved      { name: 'Justin Tulloss',
-179 silly install resolved        email: 'justin.tulloss@gmail.com',
-179 silly install resolved        url: 'http://justin.harmonize.fm' },
-179 silly install resolved     contributors:
-179 silly install resolved      [ [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object],
-179 silly install resolved        [Object] ],
-179 silly install resolved     gypfile: true,
-179 silly install resolved     gitHead: 'bfd80e374ee85e640e132f39e1e693955d6154ce',
-179 silly install resolved     bugs: { url: 'https://github.com/JustinTulloss/zeromq.node/issues' },
-179 silly install resolved     homepage: 'https://github.com/JustinTulloss/zeromq.node',
-179 silly install resolved     _id: 'zmq@2.11.0',
-179 silly install resolved     _shasum: '4511aee4b57109742eb8c51aa4c170211843e7cd',
-179 silly install resolved     _from: 'zmq@>=2.0.0 <3.0.0',
-179 silly install resolved     _npmVersion: '2.5.1',
-179 silly install resolved     _nodeVersion: '0.12.1',
-179 silly install resolved     _npmUser: { name: 'ronkorving', email: 'ron@ronkorving.nl' },
-179 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
-179 silly install resolved     dist:
-179 silly install resolved      { shasum: '4511aee4b57109742eb8c51aa4c170211843e7cd',
-179 silly install resolved        tarball: 'http://registry.npmjs.org/zmq/-/zmq-2.11.0.tgz' },
-179 silly install resolved     directories: {},
-179 silly install resolved     _resolved: 'https://registry.npmjs.org/zmq/-/zmq-2.11.0.tgz',
-179 silly install resolved     readme: 'ERROR: No README data found!' },
-179 silly install resolved   { name: 'node-uuid',
-179 silly install resolved     description: 'Rigorous implementation of RFC4122 (v1 and v4) UUIDs.',
-179 silly install resolved     url: 'http://github.com/broofa/node-uuid',
-179 silly install resolved     keywords: [ 'uuid', 'guid', 'rfc4122' ],
-179 silly install resolved     author: { name: 'Robert Kieffer', email: 'robert@broofa.com' },
-179 silly install resolved     contributors: [ [Object] ],
-179 silly install resolved     lib: '.',
-179 silly install resolved     main: './uuid.js',
-179 silly install resolved     repository: { type: 'git', url: 'git://github.com/broofa/node-uuid.git' },
-179 silly install resolved     version: '1.3.3',
-179 silly install resolved     _npmUser: { name: 'broofa', email: 'robert@broofa.com' },
-179 silly install resolved     _id: 'node-uuid@1.3.3',
-179 silly install resolved     dependencies: {},
-179 silly install resolved     devDependencies: {},
-179 silly install resolved     engines: { node: '*' },
-179 silly install resolved     _engineSupported: true,
-179 silly install resolved     _npmVersion: '1.0.106',
-179 silly install resolved     _nodeVersion: 'v0.4.6',
-179 silly install resolved     _defaultsLoaded: true,
-179 silly install resolved     dist:
-179 silly install resolved      { shasum: 'd3db4d7b56810d9e4032342766282af07391729b',
-179 silly install resolved        tarball: 'http://registry.npmjs.org/node-uuid/-/node-uuid-1.3.3.tgz' },
-179 silly install resolved     maintainers: [ [Object] ],
-179 silly install resolved     directories: {},
-179 silly install resolved     _shasum: 'd3db4d7b56810d9e4032342766282af07391729b',
-179 silly install resolved     _resolved: 'https://registry.npmjs.org/node-uuid/-/node-uuid-1.3.3.tgz',
-179 silly install resolved     _from: 'node-uuid@1.3.3',
-179 silly install resolved     bugs: { url: 'https://github.com/broofa/node-uuid/issues' },
-179 silly install resolved     readme: 'ERROR: No README data found!',
-179 silly install resolved     homepage: 'https://github.com/broofa/node-uuid' } ]
-180 info install underscore@1.3.3 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-181 info install msgpack@0.1.8 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-182 info install zmq@2.11.0 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-183 info install node-uuid@1.3.3 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-184 info installOne underscore@1.3.3
-185 verbose installOne of underscore to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
-186 info installOne msgpack@0.1.8
-187 verbose installOne of msgpack to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
-188 info installOne zmq@2.11.0
-189 verbose installOne of zmq to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
-190 info installOne node-uuid@1.3.3
-191 verbose installOne of node-uuid to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc not in flight; installing
-192 verbose lock using /Users/Baiqian/.npm/_locks/underscore-3cd3b2f33bd266d3.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-193 verbose lock using /Users/Baiqian/.npm/_locks/msgpack-d9c9130fc4bcd8e4.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-194 silly install write writing underscore 1.3.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-195 silly cache addNamed cb underscore@1.3.3
-196 verbose unbuild node_modules/zerorpc/node_modules/underscore
-197 silly install write writing msgpack 0.1.8 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-198 silly cache addNamed cb msgpack@0.1.8
-199 verbose unbuild node_modules/zerorpc/node_modules/msgpack
-200 verbose lock using /Users/Baiqian/.npm/_locks/zmq-0391c171f1382f7f.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-201 verbose lock using /Users/Baiqian/.npm/_locks/node-uuid-218c81282d6d9faa.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-202 silly install write writing zmq 2.11.0 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-203 silly cache addNamed cb zmq@2.11.0
-204 verbose unbuild node_modules/zerorpc/node_modules/zmq
-205 silly install write writing node-uuid 1.3.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-206 silly cache addNamed cb node-uuid@1.3.3
-207 verbose unbuild node_modules/zerorpc/node_modules/node-uuid
-208 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-209 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-210 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-211 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-212 verbose tar unpack /Users/Baiqian/.npm/underscore/1.3.3/package.tgz
-213 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-214 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore is being purged
-215 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-216 verbose tar unpack /Users/Baiqian/.npm/msgpack/0.1.8/package.tgz
-217 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-218 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack is being purged
-219 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-220 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-221 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-222 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-223 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-224 silly gunzTarPerm modes [ '755', '644' ]
-225 silly gunzTarPerm modes [ '755', '644' ]
-226 verbose tar unpack /Users/Baiqian/.npm/zmq/2.11.0/package.tgz
-227 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-228 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq is being purged
-229 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-230 verbose tar unpack /Users/Baiqian/.npm/node-uuid/1.3.3/package.tgz
-231 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-232 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid is being purged
-233 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-234 silly gunzTarPerm modes [ '755', '644' ]
-235 silly gunzTarPerm modes [ '755', '644' ]
-236 silly gunzTarPerm extractEntry .npmignore
-237 silly gunzTarPerm extractEntry package.json
-238 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
-239 silly gunzTarPerm extractEntry package.json
-240 silly gunzTarPerm extractEntry uuid.js
-241 silly gunzTarPerm extractEntry CNAME
-242 silly gunzTarPerm extractEntry favicon.ico
-243 silly gunzTarPerm extractEntry .npmignore
-244 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
-245 silly gunzTarPerm extractEntry README.md
-246 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
-247 silly gunzTarPerm extractEntry .npmignore
-248 silly gunzTarPerm extractEntry README.md
-249 silly gunzTarPerm extractEntry package.json
-250 silly gunzTarPerm extractEntry LICENSE.md
-251 silly gunzTarPerm extractEntry index.html
-252 silly gunzTarPerm extractEntry index.js
-253 silly gunzTarPerm extractEntry LICENSE
-254 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
-255 silly gunzTarPerm extractEntry bench.js
-256 silly gunzTarPerm modified mode [ 'bench.js', 438, 420 ]
-257 silly gunzTarPerm extractEntry LICENSE
-258 silly gunzTarPerm extractEntry index.js
-259 silly gunzTarPerm extractEntry LICENSE
-260 silly gunzTarPerm extractEntry package.json
-261 silly gunzTarPerm extractEntry test/test-stream-disjoint.js
-262 silly gunzTarPerm modified mode [ 'test/test-stream-disjoint.js', 438, 420 ]
-263 silly gunzTarPerm extractEntry test/test-stream.js
-264 silly gunzTarPerm modified mode [ 'test/test-stream.js', 438, 420 ]
-265 silly gunzTarPerm extractEntry binding.gyp
-266 silly gunzTarPerm extractEntry .travis.yml
-267 silly gunzTarPerm extractEntry .gitignore
-268 silly gunzTarPerm extractEntry README.md
-269 silly gunzTarPerm extractEntry raw/
-270 silly gunzTarPerm extractEntry raw/underscore.psd
-271 silly gunzTarPerm extractEntry test/test.js
-272 silly gunzTarPerm extractEntry test/test-unpack-extra.js
-273 silly gunzTarPerm modified mode [ 'test/test-unpack-extra.js', 438, 420 ]
-274 silly gunzTarPerm extractEntry test/test.js
-275 silly gunzTarPerm modified mode [ 'test/test.js', 438, 420 ]
-276 silly gunzTarPerm extractEntry binding.cc
-277 silly gunzTarPerm extractEntry History.md
-278 silly gunzTarPerm extractEntry test/compare_v1.js
-279 silly gunzTarPerm extractEntry test/test.html
-280 silly gunzTarPerm extractEntry examples/dealer_router.js
-281 silly gunzTarPerm extractEntry examples/pub_sub.js
-282 silly gunzTarPerm extractEntry bin/json2msgpack
-283 silly gunzTarPerm modified mode [ 'bin/json2msgpack', 511, 493 ]
-284 silly gunzTarPerm extractEntry bin/msgpack2json
-285 silly gunzTarPerm modified mode [ 'bin/msgpack2json', 511, 493 ]
-286 silly gunzTarPerm extractEntry benchmark/benchmark.js
-287 silly gunzTarPerm extractEntry benchmark/bench.gnu
-288 silly gunzTarPerm extractEntry examples/push_pull.js
-289 silly gunzTarPerm extractEntry examples/rep_req.js
-290 silly gunzTarPerm extractEntry binding.gyp
-291 silly gunzTarPerm modified mode [ 'binding.gyp', 438, 420 ]
-292 silly gunzTarPerm extractEntry deps/msgpack/LICENSE
-293 silly gunzTarPerm modified mode [ 'deps/msgpack/LICENSE', 438, 420 ]
-294 silly gunzTarPerm extractEntry README.md
-295 silly gunzTarPerm extractEntry examples/req_rep.js
-296 silly gunzTarPerm extractEntry examples/router_dealer.js
-297 silly gunzTarPerm extractEntry benchmark/bench.sh
-298 silly gunzTarPerm extractEntry benchmark/README.md
-299 silly gunzTarPerm extractEntry deps/msgpack/msgpack.hpp
-300 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack.hpp', 438, 420 ]
-301 silly gunzTarPerm extractEntry deps/msgpack/gcc_atomic.cpp
-302 silly gunzTarPerm modified mode [ 'deps/msgpack/gcc_atomic.cpp', 438, 420 ]
-303 silly gunzTarPerm extractEntry examples/rpc.js
-304 silly gunzTarPerm extractEntry examples/devices/forwarder.js
-305 silly gunzTarPerm extractEntry examples/devices/queue.js
-306 silly gunzTarPerm extractEntry deps/msgpack/AUTHORS
-307 silly gunzTarPerm modified mode [ 'deps/msgpack/AUTHORS', 438, 420 ]
-308 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack.h
-309 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack.h', 438, 420 ]
-310 silly gunzTarPerm extractEntry underscore-min.js
-311 silly gunzTarPerm extractEntry deps/msgpack/msgpack/object.h
-312 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/object.h', 438, 420 ]
-313 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack.h
-314 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack.h', 438, 420 ]
-315 silly gunzTarPerm extractEntry benchmark/benchmark-native.c
-316 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack.hpp
-317 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack.hpp', 438, 420 ]
-318 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack_define.h
-319 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack_define.h', 438, 420 ]
-320 silly gunzTarPerm extractEntry examples/devices/streamer.js
-321 silly gunzTarPerm extractEntry deps/msgpack/msgpack/pack_template.h
-322 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/pack_template.h', 438, 420 ]
-323 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sbuffer.h
-324 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/sbuffer.h', 438, 420 ]
-325 silly gunzTarPerm extractEntry underscore.js
-326 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sbuffer.hpp
-327 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/sbuffer.hpp', 438, 420 ]
-328 silly gunzTarPerm extractEntry deps/msgpack/msgpack/sysdep.h
-329 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/sysdep.h', 438, 420 ]
-330 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/nil.hpp
-331 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/nil.hpp', 438, 420 ]
-332 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/bool.hpp
-333 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/bool.hpp', 438, 420 ]
-334 silly gunzTarPerm extractEntry examples/workers/producer.js
-335 silly gunzTarPerm extractEntry examples/workers/worker.js
-336 silly gunzTarPerm extractEntry lib/index.js
-337 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/deque.hpp
-338 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/deque.hpp', 438, 420 ]
-339 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/fixint.hpp
-340 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/fixint.hpp', 438, 420 ]
-341 silly gunzTarPerm extractEntry test/context.js
-342 silly gunzTarPerm extractEntry test/socket.monitor.js
-343 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/float.hpp
-344 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/float.hpp', 438, 420 ]
-345 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/int.hpp
-346 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/int.hpp', 438, 420 ]
-347 silly gunzTarPerm extractEntry test/socket.pair.js
-348 silly gunzTarPerm extractEntry test/socket.pub-sub.js
-349 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/list.hpp
-350 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/list.hpp', 438, 420 ]
-351 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/map.hpp
-352 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/map.hpp', 438, 420 ]
-353 info preinstall node-uuid@1.3.3
-354 silly install resolved []
-355 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-356 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-357 verbose linkStuff [ false,
-357 verbose linkStuff   false,
-357 verbose linkStuff   false,
-357 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
-358 info linkStuff node-uuid@1.3.3
-359 verbose linkBins node-uuid@1.3.3
-360 verbose linkMans node-uuid@1.3.3
-361 verbose rebuildBundles node-uuid@1.3.3
-362 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/define.hpp
-363 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/define.hpp', 438, 420 ]
-364 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/pair.hpp
-365 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/pair.hpp', 438, 420 ]
-366 silly gunzTarPerm extractEntry test/socket.push-pull.js
-367 silly gunzTarPerm extractEntry test/socket.messages.js
-368 info install node-uuid@1.3.3
-369 info postinstall node-uuid@1.3.3
-370 verbose unlock done using /Users/Baiqian/.npm/_locks/node-uuid-218c81282d6d9faa.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/node-uuid
-371 silly gunzTarPerm extractEntry test/socket.router.js
-372 silly gunzTarPerm extractEntry test/socket.stream.js
-373 silly gunzTarPerm extractEntry test/socket.unbind.js
-374 silly gunzTarPerm extractEntry test/socket.xpub-xsub.js
-375 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/raw.hpp
-376 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/raw.hpp', 438, 420 ]
-377 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/set.hpp
-378 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/set.hpp', 438, 420 ]
-379 silly gunzTarPerm extractEntry test/socket.zap.js
-380 silly gunzTarPerm extractEntry test/socket.js
-381 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/string.hpp
-382 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/string.hpp', 438, 420 ]
-383 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tr1/unordered_map.hpp
-384 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/tr1/unordered_map.hpp', 438, 420 ]
-385 silly gunzTarPerm extractEntry test/zap.js
-386 silly gunzTarPerm extractEntry test/socket.events.js
-387 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tr1/unordered_set.hpp
-388 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/tr1/unordered_set.hpp', 438, 420 ]
-389 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/tuple.hpp
-390 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/tuple.hpp', 438, 420 ]
-391 silly gunzTarPerm extractEntry test/zmq_proxy.js
-392 silly gunzTarPerm extractEntry test/zmq_proxy.xpub-xsub.js
-393 silly gunzTarPerm extractEntry test/zmq_proxy.push-pull.js
-394 silly gunzTarPerm extractEntry test/gc.js
-395 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type/vector.hpp
-396 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type/vector.hpp', 438, 420 ]
-397 silly gunzTarPerm extractEntry test/zmq_proxy.router-dealer.js
-398 silly gunzTarPerm extractEntry test/exports.js
-399 silly gunzTarPerm extractEntry deps/msgpack/msgpack/type.hpp
-400 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/type.hpp', 438, 420 ]
-401 silly gunzTarPerm extractEntry deps/msgpack/msgpack/object.hpp
-402 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/object.hpp', 438, 420 ]
-403 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack.hpp
-404 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack.hpp', 438, 420 ]
-405 silly gunzTarPerm extractEntry test/zmq_proxy.xrep-xreq.js
-406 silly gunzTarPerm extractEntry test/socket.req-rep.js
-407 silly gunzTarPerm extractEntry test/mocha.opts
-408 silly gunzTarPerm extractEntry Makefile
-409 silly gunzTarPerm extractEntry perf/local_lat.js
-410 silly gunzTarPerm extractEntry perf/local_thr.js
-411 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack_define.h
-412 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack_define.h', 438, 420 ]
-413 silly gunzTarPerm extractEntry deps/msgpack/msgpack/unpack_template.h
-414 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/unpack_template.h', 438, 420 ]
-415 silly gunzTarPerm extractEntry deps/msgpack/msgpack/version.h
-416 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/version.h', 438, 420 ]
-417 silly gunzTarPerm extractEntry deps/msgpack/msgpack/vrefbuffer.h
-418 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/vrefbuffer.h', 438, 420 ]
-419 silly gunzTarPerm extractEntry deps/msgpack/msgpack/vrefbuffer.hpp
-420 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/vrefbuffer.hpp', 438, 420 ]
-421 silly gunzTarPerm extractEntry perf/remote_lat.js
-422 silly gunzTarPerm extractEntry perf/remote_thr.js
-423 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zbuffer.h
-424 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zbuffer.h', 438, 420 ]
-425 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zbuffer.hpp
-426 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zbuffer.hpp', 438, 420 ]
-427 silly gunzTarPerm extractEntry windows/include/zmq.h
-428 silly gunzTarPerm extractEntry windows/include/zmq_utils.h
-429 silly gunzTarPerm extractEntry windows/lib/x64/libzmq-v100-mt-3_2_2.dll
-430 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zone.h
-431 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zone.h', 438, 420 ]
-432 silly gunzTarPerm extractEntry deps/msgpack/msgpack/zone.hpp
-433 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack/zone.hpp', 438, 420 ]
-434 silly gunzTarPerm extractEntry deps/msgpack/msgpack.gyp
-435 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack.gyp', 438, 420 ]
-436 silly gunzTarPerm extractEntry deps/msgpack/msgpack.h
-437 silly gunzTarPerm modified mode [ 'deps/msgpack/msgpack.h', 438, 420 ]
-438 silly gunzTarPerm extractEntry deps/msgpack/COPYING
-439 silly gunzTarPerm modified mode [ 'deps/msgpack/COPYING', 438, 420 ]
-440 silly gunzTarPerm extractEntry deps/msgpack/object.cpp
-441 silly gunzTarPerm modified mode [ 'deps/msgpack/object.cpp', 438, 420 ]
-442 silly gunzTarPerm extractEntry windows/lib/x64/libzmq-v100-mt-3_2_2.lib
-443 silly gunzTarPerm extractEntry windows/lib/x86/libzmq-v100-mt-3_2_2.dll
-444 silly gunzTarPerm extractEntry deps/msgpack/objectc.c
-445 silly gunzTarPerm modified mode [ 'deps/msgpack/objectc.c', 438, 420 ]
-446 silly gunzTarPerm extractEntry deps/msgpack/unpack.c
-447 silly gunzTarPerm modified mode [ 'deps/msgpack/unpack.c', 438, 420 ]
-448 silly gunzTarPerm extractEntry windows/lib/x86/libzmq-v100-mt-3_2_2.lib
-449 silly gunzTarPerm extractEntry deps/msgpack/version.c
-450 silly gunzTarPerm modified mode [ 'deps/msgpack/version.c', 438, 420 ]
-451 silly gunzTarPerm extractEntry deps/msgpack/vrefbuffer.c
-452 silly gunzTarPerm modified mode [ 'deps/msgpack/vrefbuffer.c', 438, 420 ]
-453 silly gunzTarPerm extractEntry deps/msgpack/zone.c
-454 silly gunzTarPerm modified mode [ 'deps/msgpack/zone.c', 438, 420 ]
-455 silly gunzTarPerm extractEntry src/msgpack.cc
-456 silly gunzTarPerm modified mode [ 'src/msgpack.cc', 438, 420 ]
-457 silly gunzTarPerm extractEntry lib/msgpack.js
-458 silly gunzTarPerm modified mode [ 'lib/msgpack.js', 438, 420 ]
-459 info preinstall underscore@1.3.3
-460 silly install resolved []
-461 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-462 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-463 verbose linkStuff [ false,
-463 verbose linkStuff   false,
-463 verbose linkStuff   false,
-463 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
-464 info linkStuff underscore@1.3.3
-465 verbose linkBins underscore@1.3.3
-466 verbose linkMans underscore@1.3.3
-467 verbose rebuildBundles underscore@1.3.3
-468 info install underscore@1.3.3
-469 info postinstall underscore@1.3.3
-470 verbose unlock done using /Users/Baiqian/.npm/_locks/underscore-3cd3b2f33bd266d3.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/underscore
-471 info preinstall zmq@2.11.0
-472 silly prepareForInstallMany adding nan@~1.5.0 from zmq dependencies
-473 silly prepareForInstallMany adding bindings@~1.1.1 from zmq dependencies
-474 silly cache add args [ 'nan@~1.5.0', null ]
-475 verbose cache add spec nan@~1.5.0
-476 silly cache add args [ 'bindings@~1.1.1', null ]
-477 verbose cache add spec bindings@~1.1.1
-478 silly cache add parsed spec { raw: 'nan@~1.5.0',
-478 silly cache add   scope: null,
-478 silly cache add   name: 'nan',
-478 silly cache add   rawSpec: '~1.5.0',
-478 silly cache add   spec: '>=1.5.0 <1.6.0',
-478 silly cache add   type: 'range' }
-479 verbose addNamed nan@>=1.5.0 <1.6.0
-480 silly addNamed semver.valid null
-481 silly addNamed semver.validRange >=1.5.0 <1.6.0
-482 silly addNameRange { name: 'nan', range: '>=1.5.0 <1.6.0', hasData: false }
-483 silly mapToRegistry name nan
-484 silly mapToRegistry using default registry
-485 silly mapToRegistry registry https://registry.npmjs.org/
-486 silly mapToRegistry uri https://registry.npmjs.org/nan
-487 verbose addNameRange registry:https://registry.npmjs.org/nan not in flight; fetching
-488 silly cache add parsed spec { raw: 'bindings@~1.1.1',
-488 silly cache add   scope: null,
-488 silly cache add   name: 'bindings',
-488 silly cache add   rawSpec: '~1.1.1',
-488 silly cache add   spec: '>=1.1.1 <1.2.0',
-488 silly cache add   type: 'range' }
-489 verbose addNamed bindings@>=1.1.1 <1.2.0
-490 silly addNamed semver.valid null
-491 silly addNamed semver.validRange >=1.1.1 <1.2.0
-492 silly addNameRange { name: 'bindings', range: '>=1.1.1 <1.2.0', hasData: false }
-493 silly mapToRegistry name bindings
-494 silly mapToRegistry using default registry
-495 silly mapToRegistry registry https://registry.npmjs.org/
-496 silly mapToRegistry uri https://registry.npmjs.org/bindings
-497 verbose addNameRange registry:https://registry.npmjs.org/bindings not in flight; fetching
-498 verbose request uri https://registry.npmjs.org/nan
-499 verbose request no auth needed
-500 info attempt registry request try #1 at 2:40:04 PM
-501 verbose etag "5IOU70T0MNE17LALUE9YPLT5T"
-502 http request GET https://registry.npmjs.org/nan
-503 verbose request uri https://registry.npmjs.org/bindings
-504 verbose request no auth needed
-505 info attempt registry request try #1 at 2:40:04 PM
-506 verbose etag "5997G8NY1OJEMZ1HNHL7VBX5J"
-507 http request GET https://registry.npmjs.org/bindings
-508 info preinstall msgpack@0.1.8
-509 silly install resolved []
-510 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-511 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-512 verbose linkStuff [ false,
-512 verbose linkStuff   false,
-512 verbose linkStuff   false,
-512 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
-513 info linkStuff msgpack@0.1.8
-514 verbose linkBins msgpack@0.1.8
-515 verbose link bins [ { json2msgpack: './bin/json2msgpack',
-515 verbose link bins     msgpack2json: './bin/msgpack2json' },
-515 verbose link bins   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin',
-515 verbose link bins   false ]
-516 verbose linkMans msgpack@0.1.8
-517 verbose rebuildBundles msgpack@0.1.8
-518 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack is being purged
-519 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack
-520 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json is being purged
-521 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json
-522 info install msgpack@0.1.8
-523 verbose unsafe-perm in lifecycle false
-524 http 304 https://registry.npmjs.org/nan
-525 silly get cb [ 304,
-525 silly get   { date: 'Sun, 19 Apr 2015 18:40:04 GMT',
-525 silly get     server: 'Apache',
-525 silly get     via: '1.1 varnish',
-525 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:04 GMT',
-525 silly get     'cache-control': 'max-age=60',
-525 silly get     etag: '"5IOU70T0MNE17LALUE9YPLT5T"',
-525 silly get     age: '37',
-525 silly get     'x-served-by': 'cache-iad2135-IAD',
-525 silly get     'x-cache': 'HIT',
-525 silly get     'x-cache-hits': '1',
-525 silly get     'x-timer': 'S1429468804.757042,VS0,VE0',
-525 silly get     vary: 'Accept',
-525 silly get     'content-length': '0',
-525 silly get     'keep-alive': 'timeout=10, max=50',
-525 silly get     connection: 'Keep-Alive' } ]
-526 verbose etag https://registry.npmjs.org/nan from cache
-527 verbose get saving nan to /Users/Baiqian/.npm/registry.npmjs.org/nan/.cache.json
-528 silly addNameRange number 2 { name: 'nan', range: '>=1.5.0 <1.6.0', hasData: true }
-529 silly addNameRange versions [ 'nan',
-529 silly addNameRange   [ '0.3.0-wip',
-529 silly addNameRange     '0.3.0-wip2',
-529 silly addNameRange     '0.3.0',
-529 silly addNameRange     '0.3.1',
-529 silly addNameRange     '0.3.2',
-529 silly addNameRange     '0.4.0',
-529 silly addNameRange     '0.4.1',
-529 silly addNameRange     '0.4.2',
-529 silly addNameRange     '0.4.3',
-529 silly addNameRange     '0.4.4',
-529 silly addNameRange     '0.5.0',
-529 silly addNameRange     '0.5.1',
-529 silly addNameRange     '0.5.2',
-529 silly addNameRange     '0.6.0',
-529 silly addNameRange     '0.7.0',
-529 silly addNameRange     '0.7.1',
-529 silly addNameRange     '0.8.0',
-529 silly addNameRange     '1.0.0',
-529 silly addNameRange     '1.1.0',
-529 silly addNameRange     '1.1.1',
-529 silly addNameRange     '1.1.2',
-529 silly addNameRange     '1.2.0',
-529 silly addNameRange     '1.3.0',
-529 silly addNameRange     '1.4.0',
-529 silly addNameRange     '1.4.1',
-529 silly addNameRange     '1.5.0',
-529 silly addNameRange     '1.4.2',
-529 silly addNameRange     '1.4.3',
-529 silly addNameRange     '1.5.1',
-529 silly addNameRange     '1.5.2',
-529 silly addNameRange     '1.6.0',
-529 silly addNameRange     '1.5.3',
-529 silly addNameRange     '1.6.1',
-529 silly addNameRange     '1.6.2',
-529 silly addNameRange     '1.7.0' ] ]
-530 verbose addNamed nan@1.5.3
-531 silly addNamed semver.valid 1.5.3
-532 silly addNamed semver.validRange 1.5.3
-533 silly cache afterAdd nan@1.5.3
-534 verbose afterAdd /Users/Baiqian/.npm/nan/1.5.3/package/package.json not in flight; writing
-535 http 304 https://registry.npmjs.org/bindings
-536 silly get cb [ 304,
-536 silly get   { date: 'Sun, 19 Apr 2015 18:40:04 GMT',
-536 silly get     server: 'Apache',
-536 silly get     via: '1.1 varnish',
-536 silly get     'last-modified': 'Sun, 19 Apr 2015 18:40:04 GMT',
-536 silly get     'cache-control': 'max-age=60',
-536 silly get     etag: '"5997G8NY1OJEMZ1HNHL7VBX5J"',
-536 silly get     age: '1',
-536 silly get     'x-served-by': 'cache-iad2137-IAD',
-536 silly get     'x-cache': 'HIT',
-536 silly get     'x-cache-hits': '1',
-536 silly get     'x-timer': 'S1429468804.767306,VS0,VE0',
-536 silly get     vary: 'Accept',
-536 silly get     'content-length': '0',
-536 silly get     'keep-alive': 'timeout=10, max=50',
-536 silly get     connection: 'Keep-Alive' } ]
-537 verbose etag https://registry.npmjs.org/bindings from cache
-538 verbose get saving bindings to /Users/Baiqian/.npm/registry.npmjs.org/bindings/.cache.json
-539 verbose afterAdd /Users/Baiqian/.npm/nan/1.5.3/package/package.json written
-540 silly addNameRange number 2 { name: 'bindings', range: '>=1.1.1 <1.2.0', hasData: true }
-541 silly addNameRange versions [ 'bindings',
-541 silly addNameRange   [ '0.0.1',
-541 silly addNameRange     '0.1.0',
-541 silly addNameRange     '0.1.1',
-541 silly addNameRange     '0.2.0',
-541 silly addNameRange     '0.2.1',
-541 silly addNameRange     '0.2.2',
-541 silly addNameRange     '0.2.3',
-541 silly addNameRange     '0.2.4',
-541 silly addNameRange     '0.3.0',
-541 silly addNameRange     '0.4.0',
-541 silly addNameRange     '1.0.0',
-541 silly addNameRange     '1.1.0',
-541 silly addNameRange     '1.1.1',
-541 silly addNameRange     '1.2.0',
-541 silly addNameRange     '1.2.1' ] ]
-542 verbose addNamed bindings@1.1.1
-543 silly addNamed semver.valid 1.1.1
-544 silly addNamed semver.validRange 1.1.1
-545 silly cache afterAdd bindings@1.1.1
-546 verbose afterAdd /Users/Baiqian/.npm/bindings/1.1.1/package/package.json not in flight; writing
-547 verbose afterAdd /Users/Baiqian/.npm/bindings/1.1.1/package/package.json written
-548 silly install resolved [ { name: 'nan',
-548 silly install resolved     version: '1.5.3',
-548 silly install resolved     description: 'Native Abstractions for Node.js: C++ header for Node 0.8->0.12 compatibility',
-548 silly install resolved     main: 'include_dirs.js',
-548 silly install resolved     repository: { type: 'git', url: 'git://github.com/rvagg/nan.git' },
-548 silly install resolved     scripts:
-548 silly install resolved      { test: 'tap --gc test/js/*-test.js',
-548 silly install resolved        'rebuild-tests': 'node-gyp rebuild --directory test' },
-548 silly install resolved     contributors:
-548 silly install resolved      [ [Object],
-548 silly install resolved        [Object],
-548 silly install resolved        [Object],
-548 silly install resolved        [Object],
-548 silly install resolved        [Object],
-548 silly install resolved        [Object],
-548 silly install resolved        [Object] ],
-548 silly install resolved     devDependencies:
-548 silly install resolved      { bindings: '~1.2.1',
-548 silly install resolved        'node-gyp': '~1.0.2',
-548 silly install resolved        tap: '~0.5.0',
-548 silly install resolved        xtend: '~4.0.0' },
-548 silly install resolved     license: 'MIT',
-548 silly install resolved     gitHead: '28ea7e1b769f790c69deaf141b47e4d41e176e8b',
-548 silly install resolved     bugs: { url: 'https://github.com/rvagg/nan/issues' },
-548 silly install resolved     homepage: 'https://github.com/rvagg/nan',
-548 silly install resolved     _id: 'nan@1.5.3',
-548 silly install resolved     _shasum: '4cd0ecc133b7b0700a492a646add427ae8a318eb',
-548 silly install resolved     _from: 'nan@>=1.5.0 <1.6.0',
-548 silly install resolved     _npmVersion: '2.1.18',
-548 silly install resolved     _nodeVersion: '1.0.3',
-548 silly install resolved     _npmUser: { name: 'rvagg', email: 'rod@vagg.org' },
-548 silly install resolved     maintainers: [ [Object], [Object] ],
-548 silly install resolved     dist:
-548 silly install resolved      { shasum: '4cd0ecc133b7b0700a492a646add427ae8a318eb',
-548 silly install resolved        tarball: 'http://registry.npmjs.org/nan/-/nan-1.5.3.tgz' },
-548 silly install resolved     directories: {},
-548 silly install resolved     _resolved: 'https://registry.npmjs.org/nan/-/nan-1.5.3.tgz',
-548 silly install resolved     readme: 'ERROR: No README data found!' },
-548 silly install resolved   { name: 'bindings',
-548 silly install resolved     description: 'Helper module for loading your native module\'s .node file',
-548 silly install resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
-548 silly install resolved     version: '1.1.1',
-548 silly install resolved     author:
-548 silly install resolved      { name: 'Nathan Rajlich',
-548 silly install resolved        email: 'nathan@tootallnate.net',
-548 silly install resolved        url: 'http://tootallnate.net' },
-548 silly install resolved     repository:
-548 silly install resolved      { type: 'git',
-548 silly install resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
-548 silly install resolved     main: './bindings.js',
-548 silly install resolved     bugs: { url: 'https://github.com/TooTallNate/node-bindings/issues' },
-548 silly install resolved     _id: 'bindings@1.1.1',
-548 silly install resolved     dist:
-548 silly install resolved      { shasum: '951f7ae010302ffc50b265b124032017ed2bf6f3',
-548 silly install resolved        tarball: 'http://registry.npmjs.org/bindings/-/bindings-1.1.1.tgz' },
-548 silly install resolved     _from: 'bindings@>=1.1.1 <1.2.0',
-548 silly install resolved     _npmVersion: '1.3.2',
-548 silly install resolved     _npmUser: { name: 'tootallnate', email: 'nathan@tootallnate.net' },
-548 silly install resolved     maintainers: [ [Object], [Object] ],
-548 silly install resolved     directories: {},
-548 silly install resolved     _shasum: '951f7ae010302ffc50b265b124032017ed2bf6f3',
-548 silly install resolved     _resolved: 'https://registry.npmjs.org/bindings/-/bindings-1.1.1.tgz',
-548 silly install resolved     readme: 'ERROR: No README data found!',
-548 silly install resolved     homepage: 'https://github.com/TooTallNate/node-bindings' } ]
-549 info install nan@1.5.3 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-550 info install bindings@1.1.1 into /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-551 info installOne nan@1.5.3
-552 verbose installOne of nan to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq not in flight; installing
-553 info installOne bindings@1.1.1
-554 verbose installOne of bindings to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq not in flight; installing
-555 verbose lock using /Users/Baiqian/.npm/_locks/nan-848d9f560865e85c.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-556 silly install write writing nan 1.5.3 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-557 silly cache addNamed cb nan@1.5.3
-558 verbose unbuild node_modules/zerorpc/node_modules/zmq/node_modules/nan
-559 verbose lock using /Users/Baiqian/.npm/_locks/bindings-e6e48babfbeb4d98.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-560 silly install write writing bindings 1.1.1 to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-561 silly cache addNamed cb bindings@1.1.1
-562 verbose unbuild node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-563 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-564 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-565 verbose tar unpack /Users/Baiqian/.npm/nan/1.5.3/package.tgz
-566 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-567 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan is being purged
-568 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-569 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-570 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-571 silly gunzTarPerm modes [ '755', '644' ]
-572 verbose tar unpack /Users/Baiqian/.npm/bindings/1.1.1/package.tgz
-573 verbose tar unpacking to /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-574 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings is being purged
-575 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-576 silly gunzTarPerm modes [ '755', '644' ]
-577 silly gunzTarPerm extractEntry package.json
-578 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
-579 silly gunzTarPerm extractEntry package.json
-580 silly gunzTarPerm extractEntry README.md
-581 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
-582 silly gunzTarPerm extractEntry include_dirs.js
-583 silly gunzTarPerm extractEntry README.md
-584 silly gunzTarPerm extractEntry bindings.js
-585 silly gunzTarPerm extractEntry LICENSE.md
-586 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 420 ]
-587 silly gunzTarPerm extractEntry .dntrc
-588 silly gunzTarPerm modified mode [ '.dntrc', 436, 420 ]
-589 silly gunzTarPerm extractEntry appveyor.yml
-590 silly gunzTarPerm modified mode [ 'appveyor.yml', 436, 420 ]
-591 silly gunzTarPerm extractEntry nan.h
-592 silly gunzTarPerm modified mode [ 'nan.h', 436, 420 ]
-593 info preinstall bindings@1.1.1
-594 silly install resolved []
-595 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-596 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-597 verbose linkStuff [ false,
-597 verbose linkStuff   false,
-597 verbose linkStuff   false,
-597 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules' ]
-598 info linkStuff bindings@1.1.1
-599 verbose linkBins bindings@1.1.1
-600 verbose linkMans bindings@1.1.1
-601 verbose rebuildBundles bindings@1.1.1
-602 info install bindings@1.1.1
-603 info postinstall bindings@1.1.1
-604 verbose unlock done using /Users/Baiqian/.npm/_locks/bindings-e6e48babfbeb4d98.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/bindings
-605 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
-606 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 420 ]
-607 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
-608 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 420 ]
-609 silly gunzTarPerm extractEntry nan_new.h
-610 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 420 ]
-611 silly gunzTarPerm extractEntry CHANGELOG.md
-612 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 420 ]
-613 info preinstall nan@1.5.3
-614 silly install resolved []
-615 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-616 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-617 verbose linkStuff [ false,
-617 verbose linkStuff   false,
-617 verbose linkStuff   false,
-617 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules' ]
-618 info linkStuff nan@1.5.3
-619 verbose linkBins nan@1.5.3
-620 verbose linkMans nan@1.5.3
-621 verbose rebuildBundles nan@1.5.3
-622 info install nan@1.5.3
-623 info postinstall nan@1.5.3
-624 verbose unlock done using /Users/Baiqian/.npm/_locks/nan-848d9f560865e85c.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq/node_modules/nan
-625 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-626 info build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-627 verbose linkStuff [ false,
-627 verbose linkStuff   false,
-627 verbose linkStuff   false,
-627 verbose linkStuff   '/Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules' ]
-628 info linkStuff zmq@2.11.0
-629 verbose linkBins zmq@2.11.0
-630 verbose linkMans zmq@2.11.0
-631 verbose rebuildBundles zmq@2.11.0
-632 verbose rebuildBundles [ 'bindings', 'nan' ]
-633 info install zmq@2.11.0
-634 info msgpack@0.1.8 Failed to exec install script
-635 verbose unsafe-perm in lifecycle false
-636 verbose unlock done using /Users/Baiqian/.npm/_locks/msgpack-d9c9130fc4bcd8e4.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-637 info postinstall zmq@2.11.0
-638 verbose unlock done using /Users/Baiqian/.npm/_locks/zmq-0391c171f1382f7f.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/zmq
-639 verbose about to build /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-640 verbose unlock done using /Users/Baiqian/.npm/_locks/zerorpc-375b99b05195f593.lock for /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-641 verbose stack Error: msgpack@0.1.8 install: `node-gyp rebuild`
-641 verbose stack Exit status 1
-641 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
-641 verbose stack     at EventEmitter.emit (events.js:110:17)
-641 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
-641 verbose stack     at ChildProcess.emit (events.js:110:17)
-641 verbose stack     at maybeClose (child_process.js:1015:16)
-641 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
-642 verbose pkgid msgpack@0.1.8
-643 verbose cwd /Users/Baiqian/Documents/playground/TweetVis
-644 error Darwin 14.3.0
-645 error argv "node" "/usr/local/bin/npm" "install" "zerorpc"
-646 error node v0.12.2
-647 error npm  v2.7.4
-648 error code ELIFECYCLE
-649 error msgpack@0.1.8 install: `node-gyp rebuild`
-649 error Exit status 1
-650 error Failed at the msgpack@0.1.8 install script 'node-gyp rebuild'.
-650 error This is most likely a problem with the msgpack package,
-650 error not with npm itself.
-650 error Tell the author that this fails on your system:
-650 error     node-gyp rebuild
-650 error You can get their info via:
-650 error     npm owner ls msgpack
-650 error There is likely additional logging output above.
-651 verbose exit [ 1, true ]
-652 verbose unbuild node_modules/zerorpc/node_modules/msgpack
-653 info preuninstall msgpack@0.1.8
-654 info uninstall msgpack@0.1.8
-655 verbose unbuild rmStuff msgpack@0.1.8 from /Users/Baiqian/Documents/playground/TweetVis/node_modules
-656 verbose unbuild rmStuff in /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules
-657 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack is being gently removed
-658 silly gentlyRm verifying /Users/Baiqian/Documents/playground/TweetVis is an npm working directory
-659 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json is being gently removed
-660 silly gentlyRm verifying /Users/Baiqian/Documents/playground/TweetVis is an npm working directory
-661 silly gentlyRm containing path /Users/Baiqian/Documents/playground/TweetVis is under npm's control, in /Users/Baiqian/Documents/playground/TweetVis
-662 silly gentlyRm deletion target /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack is under /Users/Baiqian/Documents/playground/TweetVis
-663 verbose gentlyRm vacuuming from /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack up to /Users/Baiqian/Documents/playground/TweetVis
-664 silly gentlyRm containing path /Users/Baiqian/Documents/playground/TweetVis is under npm's control, in /Users/Baiqian/Documents/playground/TweetVis
-665 silly gentlyRm deletion target /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json is under /Users/Baiqian/Documents/playground/TweetVis
-666 verbose gentlyRm vacuuming from /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json up to /Users/Baiqian/Documents/playground/TweetVis
-667 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/json2msgpack
-668 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin/msgpack2json
-669 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin
-670 silly vacuum-fs removing /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin
-671 silly vacuum-fs quitting because lost the race to remove /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/.bin
-672 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules
-673 info postuninstall msgpack@0.1.8
-674 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-675 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-676 silly vacuum-fs purging /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules/msgpack
-677 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc/node_modules
-678 verbose unbuild node_modules/zerorpc
-679 info preuninstall zerorpc@0.9.3
-680 info uninstall zerorpc@0.9.3
-681 verbose unbuild rmStuff zerorpc@0.9.3 from /Users/Baiqian/Documents/playground/TweetVis/node_modules
-682 info postuninstall zerorpc@0.9.3
-683 silly gentlyRm /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc is being purged from base /Users/Baiqian/Documents/playground/TweetVis
-684 verbose gentlyRm don't care about contents; nuking /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-685 silly vacuum-fs purging /Users/Baiqian/Documents/playground/TweetVis/node_modules/zerorpc
-686 silly vacuum-fs quitting because other entries in /Users/Baiqian/Documents/playground/TweetVis/node_modules
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/Baiqian/Documents/playground/TweetVis',
+5 verbose install   [ 'express',
+5 verbose install     'body-parser',
+5 verbose install     'cookie-parser',
+5 verbose install     'morgan',
+5 verbose install     'debug',
+5 verbose install     'jade',
+5 verbose install     'mongoose',
+5 verbose install     'socket.io',
+5 verbose install     'twit',
+5 verbose install     'zerorpc' ] ]
+6 info preinstall TweetVis@0.0.0
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'morgan@~1.3.0', null ]
+9 verbose cache add name=undefined spec="morgan@~1.3.0" args=["morgan@~1.3.0",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'morgan@~1.3.0',
+10 verbose parsed url   path: 'morgan@~1.3.0',
+10 verbose parsed url   href: 'morgan@~1.3.0' }
+11 verbose cache add [ 'debug@~2.0.0', null ]
+12 verbose cache add name=undefined spec="debug@~2.0.0" args=["debug@~2.0.0",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'debug@~2.0.0',
+13 verbose parsed url   path: 'debug@~2.0.0',
+13 verbose parsed url   href: 'debug@~2.0.0' }
+14 verbose cache add [ 'jade@~1.6.0', null ]
+15 verbose cache add name=undefined spec="jade@~1.6.0" args=["jade@~1.6.0",null]
+16 verbose parsed url { protocol: null,
+16 verbose parsed url   slashes: null,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: null,
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: null,
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: 'jade@~1.6.0',
+16 verbose parsed url   path: 'jade@~1.6.0',
+16 verbose parsed url   href: 'jade@~1.6.0' }
+17 verbose cache add [ 'mongoose@~3.8.21', null ]
+18 verbose cache add name=undefined spec="mongoose@~3.8.21" args=["mongoose@~3.8.21",null]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'mongoose@~3.8.21',
+19 verbose parsed url   path: 'mongoose@~3.8.21',
+19 verbose parsed url   href: 'mongoose@~3.8.21' }
+20 verbose cache add name="morgan" spec="~1.3.0" args=["morgan","~1.3.0"]
+21 verbose parsed url { protocol: null,
+21 verbose parsed url   slashes: null,
+21 verbose parsed url   auth: null,
+21 verbose parsed url   host: null,
+21 verbose parsed url   port: null,
+21 verbose parsed url   hostname: null,
+21 verbose parsed url   hash: null,
+21 verbose parsed url   search: null,
+21 verbose parsed url   query: null,
+21 verbose parsed url   pathname: '~1.3.0',
+21 verbose parsed url   path: '~1.3.0',
+21 verbose parsed url   href: '~1.3.0' }
+22 verbose addNamed [ 'morgan', '~1.3.0' ]
+23 verbose addNamed [ null, '>=1.3.0-0 <1.4.0-0' ]
+24 verbose cache add name="debug" spec="~2.0.0" args=["debug","~2.0.0"]
+25 verbose parsed url { protocol: null,
+25 verbose parsed url   slashes: null,
+25 verbose parsed url   auth: null,
+25 verbose parsed url   host: null,
+25 verbose parsed url   port: null,
+25 verbose parsed url   hostname: null,
+25 verbose parsed url   hash: null,
+25 verbose parsed url   search: null,
+25 verbose parsed url   query: null,
+25 verbose parsed url   pathname: '~2.0.0',
+25 verbose parsed url   path: '~2.0.0',
+25 verbose parsed url   href: '~2.0.0' }
+26 verbose addNamed [ 'debug', '~2.0.0' ]
+27 verbose addNamed [ null, '>=2.0.0-0 <2.1.0-0' ]
+28 verbose cache add name="jade" spec="~1.6.0" args=["jade","~1.6.0"]
+29 verbose parsed url { protocol: null,
+29 verbose parsed url   slashes: null,
+29 verbose parsed url   auth: null,
+29 verbose parsed url   host: null,
+29 verbose parsed url   port: null,
+29 verbose parsed url   hostname: null,
+29 verbose parsed url   hash: null,
+29 verbose parsed url   search: null,
+29 verbose parsed url   query: null,
+29 verbose parsed url   pathname: '~1.6.0',
+29 verbose parsed url   path: '~1.6.0',
+29 verbose parsed url   href: '~1.6.0' }
+30 verbose addNamed [ 'jade', '~1.6.0' ]
+31 verbose addNamed [ null, '>=1.6.0-0 <1.7.0-0' ]
+32 verbose cache add [ 'socket.io@~1.3.5', null ]
+33 verbose cache add name=undefined spec="socket.io@~1.3.5" args=["socket.io@~1.3.5",null]
+34 verbose parsed url { protocol: null,
+34 verbose parsed url   slashes: null,
+34 verbose parsed url   auth: null,
+34 verbose parsed url   host: null,
+34 verbose parsed url   port: null,
+34 verbose parsed url   hostname: null,
+34 verbose parsed url   hash: null,
+34 verbose parsed url   search: null,
+34 verbose parsed url   query: null,
+34 verbose parsed url   pathname: 'socket.io@~1.3.5',
+34 verbose parsed url   path: 'socket.io@~1.3.5',
+34 verbose parsed url   href: 'socket.io@~1.3.5' }
+35 verbose cache add [ 'twit@*', null ]
+36 verbose cache add name=undefined spec="twit@*" args=["twit@*",null]
+37 verbose parsed url { protocol: null,
+37 verbose parsed url   slashes: null,
+37 verbose parsed url   auth: null,
+37 verbose parsed url   host: null,
+37 verbose parsed url   port: null,
+37 verbose parsed url   hostname: null,
+37 verbose parsed url   hash: null,
+37 verbose parsed url   search: null,
+37 verbose parsed url   query: null,
+37 verbose parsed url   pathname: 'twit@*',
+37 verbose parsed url   path: 'twit@*',
+37 verbose parsed url   href: 'twit@*' }
+38 verbose cache add [ 'zerorpc@*', null ]
+39 verbose cache add name=undefined spec="zerorpc@*" args=["zerorpc@*",null]
+40 verbose parsed url { protocol: null,
+40 verbose parsed url   slashes: null,
+40 verbose parsed url   auth: null,
+40 verbose parsed url   host: null,
+40 verbose parsed url   port: null,
+40 verbose parsed url   hostname: null,
+40 verbose parsed url   hash: null,
+40 verbose parsed url   search: null,
+40 verbose parsed url   query: null,
+40 verbose parsed url   pathname: 'zerorpc@*',
+40 verbose parsed url   path: 'zerorpc@*',
+40 verbose parsed url   href: 'zerorpc@*' }
+41 verbose cache add name="mongoose" spec="~3.8.21" args=["mongoose","~3.8.21"]
+42 verbose parsed url { protocol: null,
+42 verbose parsed url   slashes: null,
+42 verbose parsed url   auth: null,
+42 verbose parsed url   host: null,
+42 verbose parsed url   port: null,
+42 verbose parsed url   hostname: null,
+42 verbose parsed url   hash: null,
+42 verbose parsed url   search: null,
+42 verbose parsed url   query: null,
+42 verbose parsed url   pathname: '~3.8.21',
+42 verbose parsed url   path: '~3.8.21',
+42 verbose parsed url   href: '~3.8.21' }
+43 verbose addNamed [ 'mongoose', '~3.8.21' ]
+44 verbose addNamed [ null, '>=3.8.21-0 <3.9.0-0' ]
+45 silly lockFile a4a9bdf4-morgan-1-3-0 morgan@~1.3.0
+46 verbose lock morgan@~1.3.0 /Users/Baiqian/.npm/a4a9bdf4-morgan-1-3-0.lock
+47 silly lockFile 12b6356d-debug-2-0-0 debug@~2.0.0
+48 verbose lock debug@~2.0.0 /Users/Baiqian/.npm/12b6356d-debug-2-0-0.lock
+49 silly lockFile ad8c17a8-jade-1-6-0 jade@~1.6.0
+50 verbose lock jade@~1.6.0 /Users/Baiqian/.npm/ad8c17a8-jade-1-6-0.lock
+51 silly lockFile 3ec00dd8-mongoose-3-8-21 mongoose@~3.8.21
+52 verbose lock mongoose@~3.8.21 /Users/Baiqian/.npm/3ec00dd8-mongoose-3-8-21.lock
+53 verbose cache add name="socket.io" spec="~1.3.5" args=["socket.io","~1.3.5"]
+54 verbose parsed url { protocol: null,
+54 verbose parsed url   slashes: null,
+54 verbose parsed url   auth: null,
+54 verbose parsed url   host: null,
+54 verbose parsed url   port: null,
+54 verbose parsed url   hostname: null,
+54 verbose parsed url   hash: null,
+54 verbose parsed url   search: null,
+54 verbose parsed url   query: null,
+54 verbose parsed url   pathname: '~1.3.5',
+54 verbose parsed url   path: '~1.3.5',
+54 verbose parsed url   href: '~1.3.5' }
+55 verbose addNamed [ 'socket.io', '~1.3.5' ]
+56 verbose addNamed [ null, '>=1.3.5-0 <1.4.0-0' ]
+57 silly lockFile 539bff42-socket-io-1-3-5 socket.io@~1.3.5
+58 verbose lock socket.io@~1.3.5 /Users/Baiqian/.npm/539bff42-socket-io-1-3-5.lock
+59 verbose cache add name="twit" spec="*" args=["twit","*"]
+60 verbose parsed url { protocol: null,
+60 verbose parsed url   slashes: null,
+60 verbose parsed url   auth: null,
+60 verbose parsed url   host: null,
+60 verbose parsed url   port: null,
+60 verbose parsed url   hostname: null,
+60 verbose parsed url   hash: null,
+60 verbose parsed url   search: null,
+60 verbose parsed url   query: null,
+60 verbose parsed url   pathname: '*',
+60 verbose parsed url   path: '*',
+60 verbose parsed url   href: '*' }
+61 verbose addNamed [ 'twit', '*' ]
+62 verbose addNamed [ null, '*' ]
+63 silly lockFile a8fcd749-twit twit@*
+64 verbose lock twit@* /Users/Baiqian/.npm/a8fcd749-twit.lock
+65 verbose cache add [ 'express@~4.9.0', null ]
+66 verbose cache add name=undefined spec="express@~4.9.0" args=["express@~4.9.0",null]
+67 verbose parsed url { protocol: null,
+67 verbose parsed url   slashes: null,
+67 verbose parsed url   auth: null,
+67 verbose parsed url   host: null,
+67 verbose parsed url   port: null,
+67 verbose parsed url   hostname: null,
+67 verbose parsed url   hash: null,
+67 verbose parsed url   search: null,
+67 verbose parsed url   query: null,
+67 verbose parsed url   pathname: 'express@~4.9.0',
+67 verbose parsed url   path: 'express@~4.9.0',
+67 verbose parsed url   href: 'express@~4.9.0' }
+68 verbose cache add [ 'body-parser@~1.8.1', null ]
+69 verbose cache add name=undefined spec="body-parser@~1.8.1" args=["body-parser@~1.8.1",null]
+70 verbose parsed url { protocol: null,
+70 verbose parsed url   slashes: null,
+70 verbose parsed url   auth: null,
+70 verbose parsed url   host: null,
+70 verbose parsed url   port: null,
+70 verbose parsed url   hostname: null,
+70 verbose parsed url   hash: null,
+70 verbose parsed url   search: null,
+70 verbose parsed url   query: null,
+70 verbose parsed url   pathname: 'body-parser@~1.8.1',
+70 verbose parsed url   path: 'body-parser@~1.8.1',
+70 verbose parsed url   href: 'body-parser@~1.8.1' }
+71 verbose cache add name="zerorpc" spec="*" args=["zerorpc","*"]
+72 verbose parsed url { protocol: null,
+72 verbose parsed url   slashes: null,
+72 verbose parsed url   auth: null,
+72 verbose parsed url   host: null,
+72 verbose parsed url   port: null,
+72 verbose parsed url   hostname: null,
+72 verbose parsed url   hash: null,
+72 verbose parsed url   search: null,
+72 verbose parsed url   query: null,
+72 verbose parsed url   pathname: '*',
+72 verbose parsed url   path: '*',
+72 verbose parsed url   href: '*' }
+73 verbose addNamed [ 'zerorpc', '*' ]
+74 verbose addNamed [ null, '*' ]
+75 silly lockFile b4a13cf4-zerorpc zerorpc@*
+76 verbose lock zerorpc@* /Users/Baiqian/.npm/b4a13cf4-zerorpc.lock
+77 verbose cache add [ 'cookie-parser@~1.3.3', null ]
+78 verbose cache add name=undefined spec="cookie-parser@~1.3.3" args=["cookie-parser@~1.3.3",null]
+79 verbose parsed url { protocol: null,
+79 verbose parsed url   slashes: null,
+79 verbose parsed url   auth: null,
+79 verbose parsed url   host: null,
+79 verbose parsed url   port: null,
+79 verbose parsed url   hostname: null,
+79 verbose parsed url   hash: null,
+79 verbose parsed url   search: null,
+79 verbose parsed url   query: null,
+79 verbose parsed url   pathname: 'cookie-parser@~1.3.3',
+79 verbose parsed url   path: 'cookie-parser@~1.3.3',
+79 verbose parsed url   href: 'cookie-parser@~1.3.3' }
+80 verbose cache add name="express" spec="~4.9.0" args=["express","~4.9.0"]
+81 verbose parsed url { protocol: null,
+81 verbose parsed url   slashes: null,
+81 verbose parsed url   auth: null,
+81 verbose parsed url   host: null,
+81 verbose parsed url   port: null,
+81 verbose parsed url   hostname: null,
+81 verbose parsed url   hash: null,
+81 verbose parsed url   search: null,
+81 verbose parsed url   query: null,
+81 verbose parsed url   pathname: '~4.9.0',
+81 verbose parsed url   path: '~4.9.0',
+81 verbose parsed url   href: '~4.9.0' }
+82 verbose addNamed [ 'express', '~4.9.0' ]
+83 verbose addNamed [ null, '>=4.9.0-0 <4.10.0-0' ]
+84 silly lockFile 6ae7fa08-express-4-9-0 express@~4.9.0
+85 verbose lock express@~4.9.0 /Users/Baiqian/.npm/6ae7fa08-express-4-9-0.lock
+86 verbose cache add name="body-parser" spec="~1.8.1" args=["body-parser","~1.8.1"]
+87 verbose parsed url { protocol: null,
+87 verbose parsed url   slashes: null,
+87 verbose parsed url   auth: null,
+87 verbose parsed url   host: null,
+87 verbose parsed url   port: null,
+87 verbose parsed url   hostname: null,
+87 verbose parsed url   hash: null,
+87 verbose parsed url   search: null,
+87 verbose parsed url   query: null,
+87 verbose parsed url   pathname: '~1.8.1',
+87 verbose parsed url   path: '~1.8.1',
+87 verbose parsed url   href: '~1.8.1' }
+88 verbose addNamed [ 'body-parser', '~1.8.1' ]
+89 verbose addNamed [ null, '>=1.8.1-0 <1.9.0-0' ]
+90 silly lockFile a49948c1-body-parser-1-8-1 body-parser@~1.8.1
+91 verbose lock body-parser@~1.8.1 /Users/Baiqian/.npm/a49948c1-body-parser-1-8-1.lock
+92 verbose cache add name="cookie-parser" spec="~1.3.3" args=["cookie-parser","~1.3.3"]
+93 verbose parsed url { protocol: null,
+93 verbose parsed url   slashes: null,
+93 verbose parsed url   auth: null,
+93 verbose parsed url   host: null,
+93 verbose parsed url   port: null,
+93 verbose parsed url   hostname: null,
+93 verbose parsed url   hash: null,
+93 verbose parsed url   search: null,
+93 verbose parsed url   query: null,
+93 verbose parsed url   pathname: '~1.3.3',
+93 verbose parsed url   path: '~1.3.3',
+93 verbose parsed url   href: '~1.3.3' }
+94 verbose addNamed [ 'cookie-parser', '~1.3.3' ]
+95 verbose addNamed [ null, '>=1.3.3-0 <1.4.0-0' ]
+96 silly lockFile bf5babd8-cookie-parser-1-3-3 cookie-parser@~1.3.3
+97 verbose lock cookie-parser@~1.3.3 /Users/Baiqian/.npm/bf5babd8-cookie-parser-1-3-3.lock
+98 silly addNameRange { name: 'morgan', range: '>=1.3.0-0 <1.4.0-0', hasData: false }
+99 silly addNameRange { name: 'debug', range: '>=2.0.0-0 <2.1.0-0', hasData: false }
+100 silly addNameRange { name: 'jade', range: '>=1.6.0-0 <1.7.0-0', hasData: false }
+101 silly addNameRange { name: 'twit', range: '*', hasData: false }
+102 silly addNameRange { name: 'socket.io',
+102 silly addNameRange   range: '>=1.3.5-0 <1.4.0-0',
+102 silly addNameRange   hasData: false }
+103 silly addNameRange { name: 'mongoose',
+103 silly addNameRange   range: '>=3.8.21-0 <3.9.0-0',
+103 silly addNameRange   hasData: false }
+104 silly addNameRange { name: 'zerorpc', range: '*', hasData: false }
+105 silly addNameRange { name: 'express', range: '>=4.9.0-0 <4.10.0-0', hasData: false }
+106 silly addNameRange { name: 'body-parser',
+106 silly addNameRange   range: '>=1.8.1-0 <1.9.0-0',
+106 silly addNameRange   hasData: false }
+107 silly addNameRange { name: 'cookie-parser',
+107 silly addNameRange   range: '>=1.3.3-0 <1.4.0-0',
+107 silly addNameRange   hasData: false }
+108 verbose request where is /morgan
+109 verbose request registry https://registry.npmjs.org/
+110 verbose request id ece22e5284099bdc
+111 verbose url raw /morgan
+112 verbose url resolving [ 'https://registry.npmjs.org/', './morgan' ]
+113 verbose url resolved https://registry.npmjs.org/morgan
+114 verbose request where is https://registry.npmjs.org/morgan
+115 info trying registry request attempt 1 at 14:32:36
+116 verbose etag "BU45IZBTGCMBXPOZKQ8FXEPJS"
+117 http GET https://registry.npmjs.org/morgan
+118 verbose request where is /debug
+119 verbose request registry https://registry.npmjs.org/
+120 verbose url raw /debug
+121 verbose url resolving [ 'https://registry.npmjs.org/', './debug' ]
+122 verbose url resolved https://registry.npmjs.org/debug
+123 verbose request where is https://registry.npmjs.org/debug
+124 info trying registry request attempt 1 at 14:32:36
+125 verbose etag "D1YYJACBRBXEKW639MMZV2PGM"
+126 http GET https://registry.npmjs.org/debug
+127 verbose request where is /twit
+128 verbose request registry https://registry.npmjs.org/
+129 verbose url raw /twit
+130 verbose url resolving [ 'https://registry.npmjs.org/', './twit' ]
+131 verbose url resolved https://registry.npmjs.org/twit
+132 verbose request where is https://registry.npmjs.org/twit
+133 info trying registry request attempt 1 at 14:32:36
+134 verbose etag "464DJHOCYX7MBZ3N00YDA9FCM"
+135 http GET https://registry.npmjs.org/twit
+136 verbose request where is /jade
+137 verbose request registry https://registry.npmjs.org/
+138 verbose url raw /jade
+139 verbose url resolving [ 'https://registry.npmjs.org/', './jade' ]
+140 verbose url resolved https://registry.npmjs.org/jade
+141 verbose request where is https://registry.npmjs.org/jade
+142 info trying registry request attempt 1 at 14:32:36
+143 verbose etag "AB3QMCNXQCYPS7Y245INX3DHO"
+144 http GET https://registry.npmjs.org/jade
+145 verbose request where is /socket.io
+146 verbose request registry https://registry.npmjs.org/
+147 verbose url raw /socket.io
+148 verbose url resolving [ 'https://registry.npmjs.org/', './socket.io' ]
+149 verbose url resolved https://registry.npmjs.org/socket.io
+150 verbose request where is https://registry.npmjs.org/socket.io
+151 info trying registry request attempt 1 at 14:32:36
+152 verbose etag "U3NL5HWOTJJX5QMHFQLTB5Z1"
+153 http GET https://registry.npmjs.org/socket.io
+154 verbose request where is /mongoose
+155 verbose request registry https://registry.npmjs.org/
+156 verbose url raw /mongoose
+157 verbose url resolving [ 'https://registry.npmjs.org/', './mongoose' ]
+158 verbose url resolved https://registry.npmjs.org/mongoose
+159 verbose request where is https://registry.npmjs.org/mongoose
+160 info trying registry request attempt 1 at 14:32:36
+161 verbose etag "A11IDB6DOOBRRQJVCJYGMY3SH"
+162 http GET https://registry.npmjs.org/mongoose
+163 verbose request where is /zerorpc
+164 verbose request registry https://registry.npmjs.org/
+165 verbose url raw /zerorpc
+166 verbose url resolving [ 'https://registry.npmjs.org/', './zerorpc' ]
+167 verbose url resolved https://registry.npmjs.org/zerorpc
+168 verbose request where is https://registry.npmjs.org/zerorpc
+169 info trying registry request attempt 1 at 14:32:36
+170 verbose etag "3I7IQOFDZ2OZU2TVKZWM51KEB"
+171 http GET https://registry.npmjs.org/zerorpc
+172 verbose request where is /express
+173 verbose request registry https://registry.npmjs.org/
+174 verbose url raw /express
+175 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+176 verbose url resolved https://registry.npmjs.org/express
+177 verbose request where is https://registry.npmjs.org/express
+178 info trying registry request attempt 1 at 14:32:36
+179 verbose etag "35QG0PN7GDKXOV4NNMOC7NXC4"
+180 http GET https://registry.npmjs.org/express
+181 verbose request where is /body-parser
+182 verbose request registry https://registry.npmjs.org/
+183 verbose url raw /body-parser
+184 verbose url resolving [ 'https://registry.npmjs.org/', './body-parser' ]
+185 verbose url resolved https://registry.npmjs.org/body-parser
+186 verbose request where is https://registry.npmjs.org/body-parser
+187 info trying registry request attempt 1 at 14:32:36
+188 verbose etag "3U8UY57957XNL6RKGHWS9I4EO"
+189 http GET https://registry.npmjs.org/body-parser
+190 verbose request where is /cookie-parser
+191 verbose request registry https://registry.npmjs.org/
+192 verbose url raw /cookie-parser
+193 verbose url resolving [ 'https://registry.npmjs.org/', './cookie-parser' ]
+194 verbose url resolved https://registry.npmjs.org/cookie-parser
+195 verbose request where is https://registry.npmjs.org/cookie-parser
+196 info trying registry request attempt 1 at 14:32:36
+197 verbose etag "CV9BVYAHFMTHCAIT3Z3TNUF41"
+198 http GET https://registry.npmjs.org/cookie-parser
+199 http 304 https://registry.npmjs.org/twit
+200 silly registry.get cb [ 304,
+200 silly registry.get   { date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+200 silly registry.get     via: '1.1 varnish',
+200 silly registry.get     'last-modified': 'Thu, 23 Apr 2015 18:32:37 GMT',
+200 silly registry.get     'cache-control': 'max-age=60',
+200 silly registry.get     etag: '"464DJHOCYX7MBZ3N00YDA9FCM"',
+200 silly registry.get     age: '37',
+200 silly registry.get     connection: 'keep-alive',
+200 silly registry.get     'x-served-by': 'cache-atl6233-ATL',
+200 silly registry.get     'x-cache': 'HIT',
+200 silly registry.get     'x-cache-hits': '1',
+200 silly registry.get     'x-timer': 'S1429813957.380171,VS0,VE1',
+200 silly registry.get     vary: 'Accept' } ]
+201 verbose etag https://registry.npmjs.org/twit from cache
+202 http 200 https://registry.npmjs.org/debug
+203 silly registry.get cb [ 200,
+203 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+203 silly registry.get     etag: '"9UGFCKTLQW9DOGUV5W8AV0W6S"',
+203 silly registry.get     'content-type': 'application/json',
+203 silly registry.get     'cache-control': 'max-age=60',
+203 silly registry.get     'content-length': '32953',
+203 silly registry.get     'accept-ranges': 'bytes',
+203 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+203 silly registry.get     via: '1.1 varnish',
+203 silly registry.get     age: '17',
+203 silly registry.get     connection: 'keep-alive',
+203 silly registry.get     'x-served-by': 'cache-atl6231-ATL',
+203 silly registry.get     'x-cache': 'HIT',
+203 silly registry.get     'x-cache-hits': '230',
+203 silly registry.get     'x-timer': 'S1429813957.368926,VS0,VE0',
+203 silly registry.get     vary: 'Accept' } ]
+204 http 200 https://registry.npmjs.org/morgan
+205 silly registry.get cb [ 200,
+205 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+205 silly registry.get     etag: '"ATERZF9JVGEOGU7A7CSOMAPGI"',
+205 silly registry.get     'content-type': 'application/json',
+205 silly registry.get     'cache-control': 'max-age=60',
+205 silly registry.get     'content-length': '34621',
+205 silly registry.get     'accept-ranges': 'bytes',
+205 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+205 silly registry.get     via: '1.1 varnish',
+205 silly registry.get     age: '48',
+205 silly registry.get     connection: 'keep-alive',
+205 silly registry.get     'x-served-by': 'cache-atl6227-ATL',
+205 silly registry.get     'x-cache': 'HIT',
+205 silly registry.get     'x-cache-hits': '3',
+205 silly registry.get     'x-timer': 'S1429813957.366207,VS0,VE0',
+205 silly registry.get     vary: 'Accept' } ]
+206 silly addNameRange number 2 { name: 'debug', range: '>=2.0.0-0 <2.1.0-0', hasData: true }
+207 silly addNameRange versions [ 'debug',
+207 silly addNameRange   [ '0.0.1',
+207 silly addNameRange     '0.1.0',
+207 silly addNameRange     '0.2.0',
+207 silly addNameRange     '0.3.0',
+207 silly addNameRange     '0.4.0',
+207 silly addNameRange     '0.4.1',
+207 silly addNameRange     '0.5.0',
+207 silly addNameRange     '0.6.0',
+207 silly addNameRange     '0.7.0',
+207 silly addNameRange     '0.7.1',
+207 silly addNameRange     '0.7.2',
+207 silly addNameRange     '0.7.3',
+207 silly addNameRange     '0.7.4',
+207 silly addNameRange     '0.8.0',
+207 silly addNameRange     '0.8.1',
+207 silly addNameRange     '1.0.0',
+207 silly addNameRange     '1.0.1',
+207 silly addNameRange     '1.0.2',
+207 silly addNameRange     '1.0.3',
+207 silly addNameRange     '1.0.4',
+207 silly addNameRange     '2.0.0',
+207 silly addNameRange     '2.1.0',
+207 silly addNameRange     '2.1.1',
+207 silly addNameRange     '2.1.2',
+207 silly addNameRange     '2.1.3' ] ]
+208 verbose addNamed [ 'debug', '2.0.0' ]
+209 verbose addNamed [ '2.0.0', '2.0.0' ]
+210 silly lockFile 095bd820-debug-2-0-0 debug@2.0.0
+211 verbose lock debug@2.0.0 /Users/Baiqian/.npm/095bd820-debug-2-0-0.lock
+212 silly addNameRange number 2 { name: 'twit', range: '*', hasData: true }
+213 silly addNameRange versions [ 'twit',
+213 silly addNameRange   [ '0.1.0',
+213 silly addNameRange     '0.1.1',
+213 silly addNameRange     '0.1.2',
+213 silly addNameRange     '0.1.3',
+213 silly addNameRange     '0.1.5',
+213 silly addNameRange     '0.1.6',
+213 silly addNameRange     '0.1.7',
+213 silly addNameRange     '0.1.8',
+213 silly addNameRange     '0.2.0',
+213 silly addNameRange     '1.0.0',
+213 silly addNameRange     '1.0.1',
+213 silly addNameRange     '1.0.2',
+213 silly addNameRange     '1.0.3',
+213 silly addNameRange     '1.0.4',
+213 silly addNameRange     '1.0.5',
+213 silly addNameRange     '1.0.6',
+213 silly addNameRange     '1.0.7',
+213 silly addNameRange     '1.0.8',
+213 silly addNameRange     '1.0.9',
+213 silly addNameRange     '1.0.10',
+213 silly addNameRange     '1.0.11',
+213 silly addNameRange     '1.0.12',
+213 silly addNameRange     '1.1.0',
+213 silly addNameRange     '1.1.1',
+213 silly addNameRange     '1.1.2',
+213 silly addNameRange     '1.1.3',
+213 silly addNameRange     '1.1.4',
+213 silly addNameRange     '1.1.5',
+213 silly addNameRange     '1.1.6',
+213 silly addNameRange     '1.1.7',
+213 silly addNameRange     '1.1.8',
+213 silly addNameRange     '1.1.9',
+213 silly addNameRange     '1.1.10',
+213 silly addNameRange     '1.1.11',
+213 silly addNameRange     '1.1.12',
+213 silly addNameRange     '1.1.13',
+213 silly addNameRange     '1.1.14',
+213 silly addNameRange     '1.1.15',
+213 silly addNameRange     '1.1.16',
+213 silly addNameRange     '1.1.17',
+213 silly addNameRange     '1.1.18',
+213 silly addNameRange     '1.1.19',
+213 silly addNameRange     '1.1.20' ] ]
+214 verbose addNamed [ 'twit', '1.1.20' ]
+215 verbose addNamed [ '1.1.20', '1.1.20' ]
+216 silly lockFile cf2e222d-twit-1-1-20 twit@1.1.20
+217 verbose lock twit@1.1.20 /Users/Baiqian/.npm/cf2e222d-twit-1-1-20.lock
+218 silly addNameRange number 2 { name: 'morgan', range: '>=1.3.0-0 <1.4.0-0', hasData: true }
+219 silly addNameRange versions [ 'morgan',
+219 silly addNameRange   [ '1.0.0',
+219 silly addNameRange     '1.0.1',
+219 silly addNameRange     '1.1.0',
+219 silly addNameRange     '1.1.1',
+219 silly addNameRange     '1.2.0',
+219 silly addNameRange     '1.2.1',
+219 silly addNameRange     '1.2.2',
+219 silly addNameRange     '1.2.3',
+219 silly addNameRange     '1.3.0',
+219 silly addNameRange     '1.3.1',
+219 silly addNameRange     '1.3.2',
+219 silly addNameRange     '1.4.0',
+219 silly addNameRange     '1.4.1',
+219 silly addNameRange     '1.5.0',
+219 silly addNameRange     '1.5.1',
+219 silly addNameRange     '1.5.2' ] ]
+220 verbose addNamed [ 'morgan', '1.3.2' ]
+221 verbose addNamed [ '1.3.2', '1.3.2' ]
+222 silly lockFile 7e2b41c6-morgan-1-3-2 morgan@1.3.2
+223 verbose lock morgan@1.3.2 /Users/Baiqian/.npm/7e2b41c6-morgan-1-3-2.lock
+224 silly lockFile 095bd820-debug-2-0-0 debug@2.0.0
+225 silly lockFile 095bd820-debug-2-0-0 debug@2.0.0
+226 silly lockFile 12b6356d-debug-2-0-0 debug@~2.0.0
+227 silly lockFile 12b6356d-debug-2-0-0 debug@~2.0.0
+228 silly lockFile cf2e222d-twit-1-1-20 twit@1.1.20
+229 silly lockFile cf2e222d-twit-1-1-20 twit@1.1.20
+230 silly lockFile a8fcd749-twit twit@*
+231 silly lockFile a8fcd749-twit twit@*
+232 silly lockFile 7e2b41c6-morgan-1-3-2 morgan@1.3.2
+233 silly lockFile 7e2b41c6-morgan-1-3-2 morgan@1.3.2
+234 silly lockFile a4a9bdf4-morgan-1-3-0 morgan@~1.3.0
+235 silly lockFile a4a9bdf4-morgan-1-3-0 morgan@~1.3.0
+236 http 200 https://registry.npmjs.org/socket.io
+237 silly registry.get cb [ 200,
+237 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+237 silly registry.get     etag: '"E9BZ8V4ZC1UO3CLE9P95JX3SK"',
+237 silly registry.get     'content-type': 'application/json',
+237 silly registry.get     'cache-control': 'max-age=60',
+237 silly registry.get     'content-length': '111173',
+237 silly registry.get     'accept-ranges': 'bytes',
+237 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+237 silly registry.get     via: '1.1 varnish',
+237 silly registry.get     age: '9',
+237 silly registry.get     connection: 'keep-alive',
+237 silly registry.get     'x-served-by': 'cache-atl6229-ATL',
+237 silly registry.get     'x-cache': 'HIT',
+237 silly registry.get     'x-cache-hits': '1',
+237 silly registry.get     'x-timer': 'S1429813957.391652,VS0,VE2',
+237 silly registry.get     vary: 'Accept' } ]
+238 silly addNameRange number 2 { name: 'socket.io', range: '>=1.3.5-0 <1.4.0-0', hasData: true }
+239 silly addNameRange versions [ 'socket.io',
+239 silly addNameRange   [ '0.3.8',
+239 silly addNameRange     '0.4.0',
+239 silly addNameRange     '0.4.1',
+239 silly addNameRange     '0.5.1',
+239 silly addNameRange     '0.5.3',
+239 silly addNameRange     '0.6.0',
+239 silly addNameRange     '0.6.1',
+239 silly addNameRange     '0.6.3',
+239 silly addNameRange     '0.6.4',
+239 silly addNameRange     '0.6.5',
+239 silly addNameRange     '0.6.6',
+239 silly addNameRange     '0.6.7',
+239 silly addNameRange     '0.6.8',
+239 silly addNameRange     '0.6.9',
+239 silly addNameRange     '0.6.10',
+239 silly addNameRange     '0.6.11',
+239 silly addNameRange     '0.6.12',
+239 silly addNameRange     '0.6.14',
+239 silly addNameRange     '0.6.15',
+239 silly addNameRange     '0.6.16',
+239 silly addNameRange     '0.6.17',
+239 silly addNameRange     '0.6.18',
+239 silly addNameRange     '0.7.0',
+239 silly addNameRange     '0.7.1',
+239 silly addNameRange     '0.7.2',
+239 silly addNameRange     '0.7.3',
+239 silly addNameRange     '0.7.4',
+239 silly addNameRange     '0.7.5',
+239 silly addNameRange     '0.7.6',
+239 silly addNameRange     '0.7.7',
+239 silly addNameRange     '0.7.8',
+239 silly addNameRange     '0.7.9',
+239 silly addNameRange     '0.7.10',
+239 silly addNameRange     '0.7.11',
+239 silly addNameRange     '0.8.0',
+239 silly addNameRange     '0.8.1',
+239 silly addNameRange     '0.8.2',
+239 silly addNameRange     '0.8.3',
+239 silly addNameRange     '0.8.4',
+239 silly addNameRange     '0.8.5',
+239 silly addNameRange     '0.8.6',
+239 silly addNameRange     '0.8.7',
+239 silly addNameRange     '0.9.0',
+239 silly addNameRange     '0.9.1',
+239 silly addNameRange     '0.9.1-1',
+239 silly addNameRange     '0.9.2',
+239 silly addNameRange     '0.9.3',
+239 silly addNameRange     '0.9.4',
+239 silly addNameRange     '0.9.5',
+239 silly addNameRange     '0.9.6',
+239 silly addNameRange     '0.9.7',
+239 silly addNameRange     '0.9.8',
+239 silly addNameRange     '0.9.9',
+239 silly addNameRange     '0.9.10',
+239 silly addNameRange     '0.9.11',
+239 silly addNameRange     '0.9.12',
+239 silly addNameRange     '0.9.13',
+239 silly addNameRange     '0.9.14',
+239 silly addNameRange     '0.9.15',
+239 silly addNameRange     '0.9.16',
+239 silly addNameRange     '1.0.0-pre',
+239 silly addNameRange     '1.0.0-pre2',
+239 silly addNameRange     '1.0.0-pre3',
+239 silly addNameRange     '1.0.0-pre4',
+239 silly addNameRange     '1.0.0-pre5',
+239 silly addNameRange     '0.9.17',
+239 silly addNameRange     '1.0.0',
+239 silly addNameRange     '1.0.1',
+239 silly addNameRange     '1.0.2',
+239 silly addNameRange     '1.0.3',
+239 silly addNameRange     '1.0.4',
+239 silly addNameRange     '1.0.5',
+239 silly addNameRange     '1.0.6',
+239 silly addNameRange     '1.1.0',
+239 silly addNameRange     '1.2.0',
+239 silly addNameRange     '1.2.1',
+239 silly addNameRange     '1.3.0',
+239 silly addNameRange     '1.3.1',
+239 silly addNameRange     '1.3.2',
+239 silly addNameRange     '1.3.3',
+239 silly addNameRange     '1.3.4',
+239 silly addNameRange     '1.3.5' ] ]
+240 verbose addNamed [ 'socket.io', '1.3.5' ]
+241 verbose addNamed [ '1.3.5', '1.3.5' ]
+242 silly lockFile e27f34ff-socket-io-1-3-5 socket.io@1.3.5
+243 verbose lock socket.io@1.3.5 /Users/Baiqian/.npm/e27f34ff-socket-io-1-3-5.lock
+244 silly lockFile e27f34ff-socket-io-1-3-5 socket.io@1.3.5
+245 silly lockFile e27f34ff-socket-io-1-3-5 socket.io@1.3.5
+246 silly lockFile 539bff42-socket-io-1-3-5 socket.io@~1.3.5
+247 silly lockFile 539bff42-socket-io-1-3-5 socket.io@~1.3.5
+248 http 200 https://registry.npmjs.org/jade
+249 silly registry.get cb [ 200,
+249 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+249 silly registry.get     etag: '"6KSJJE8Z5MKTHW9IWAEP99MGY"',
+249 silly registry.get     'content-type': 'application/json',
+249 silly registry.get     'cache-control': 'max-age=60',
+249 silly registry.get     'content-length': '141476',
+249 silly registry.get     'accept-ranges': 'bytes',
+249 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+249 silly registry.get     via: '1.1 varnish',
+249 silly registry.get     age: '38',
+249 silly registry.get     connection: 'keep-alive',
+249 silly registry.get     'x-served-by': 'cache-atl6235-ATL',
+249 silly registry.get     'x-cache': 'HIT',
+249 silly registry.get     'x-cache-hits': '3',
+249 silly registry.get     'x-timer': 'S1429813957.379153,VS0,VE0',
+249 silly registry.get     vary: 'Accept' } ]
+250 silly addNameRange number 2 { name: 'jade', range: '>=1.6.0-0 <1.7.0-0', hasData: true }
+251 silly addNameRange versions [ 'jade',
+251 silly addNameRange   [ '0.0.1',
+251 silly addNameRange     '0.0.2',
+251 silly addNameRange     '0.1.0',
+251 silly addNameRange     '0.2.0',
+251 silly addNameRange     '0.2.1',
+251 silly addNameRange     '0.2.2',
+251 silly addNameRange     '0.2.3',
+251 silly addNameRange     '0.2.4',
+251 silly addNameRange     '0.3.0',
+251 silly addNameRange     '0.4.0',
+251 silly addNameRange     '0.4.1',
+251 silly addNameRange     '0.5.0',
+251 silly addNameRange     '0.5.1',
+251 silly addNameRange     '0.5.2',
+251 silly addNameRange     '0.5.3',
+251 silly addNameRange     '0.5.4',
+251 silly addNameRange     '0.5.5',
+251 silly addNameRange     '0.5.6',
+251 silly addNameRange     '0.5.7',
+251 silly addNameRange     '0.6.0',
+251 silly addNameRange     '0.6.1',
+251 silly addNameRange     '0.6.3',
+251 silly addNameRange     '0.7.0',
+251 silly addNameRange     '0.7.1',
+251 silly addNameRange     '0.8.0',
+251 silly addNameRange     '0.8.1',
+251 silly addNameRange     '0.8.2',
+251 silly addNameRange     '0.8.3',
+251 silly addNameRange     '0.8.4',
+251 silly addNameRange     '0.8.5',
+251 silly addNameRange     '0.8.6',
+251 silly addNameRange     '0.8.7',
+251 silly addNameRange     '0.8.8',
+251 silly addNameRange     '0.8.9',
+251 silly addNameRange     '0.9.0',
+251 silly addNameRange     '0.9.1',
+251 silly addNameRange     '0.9.2',
+251 silly addNameRange     '0.9.3',
+251 silly addNameRange     '0.10.0',
+251 silly addNameRange     '0.10.1',
+251 silly addNameRange     '0.10.2',
+251 silly addNameRange     '0.10.3',
+251 silly addNameRange     '0.10.4',
+251 silly addNameRange     '0.10.5',
+251 silly addNameRange     '0.10.6',
+251 silly addNameRange     '0.10.7',
+251 silly addNameRange     '0.11.0',
+251 silly addNameRange     '0.11.1',
+251 silly addNameRange     '0.12.0',
+251 silly addNameRange     '0.12.1',
+251 silly addNameRange     '0.12.2',
+251 silly addNameRange     '0.12.3',
+251 silly addNameRange     '0.12.4',
+251 silly addNameRange     '0.13.0',
+251 silly addNameRange     '0.14.0',
+251 silly addNameRange     '0.14.1',
+251 silly addNameRange     '0.14.2',
+251 silly addNameRange     '0.15.0',
+251 silly addNameRange     '0.15.1',
+251 silly addNameRange     '0.15.2',
+251 silly addNameRange     '0.15.3',
+251 silly addNameRange     '0.15.4',
+251 silly addNameRange     '0.16.0',
+251 silly addNameRange     '0.16.1',
+251 silly addNameRange     '0.16.2',
+251 silly addNameRange     '0.16.3',
+251 silly addNameRange     '0.16.4',
+251 silly addNameRange     '0.17.0',
+251 silly addNameRange     '0.18.0',
+251 silly addNameRange     '0.19.0',
+251 silly addNameRange     '0.20.0',
+251 silly addNameRange     '0.20.1',
+251 silly addNameRange     '0.20.2',
+251 silly addNameRange     '0.20.3',
+251 silly addNameRange     '0.21.0',
+251 silly addNameRange     '0.22.0',
+251 silly addNameRange     '0.22.1',
+251 silly addNameRange     '0.23.0',
+251 silly addNameRange     '0.24.0',
+251 silly addNameRange     '0.25.0',
+251 silly addNameRange     '0.26.0',
+251 silly addNameRange     '0.26.1',
+251 silly addNameRange     '0.26.2',
+251 silly addNameRange     '0.26.3',
+251 silly addNameRange     '0.27.0',
+251 silly addNameRange     '0.27.1',
+251 silly addNameRange     '0.27.2',
+251 silly addNameRange     '0.27.3',
+251 silly addNameRange     '0.27.4',
+251 silly addNameRange     '0.27.5',
+251 silly addNameRange     '0.27.6',
+251 silly addNameRange     '0.27.7',
+251 silly addNameRange     '0.28.0',
+251 silly addNameRange     '0.28.1',
+251 silly addNameRange     '0.28.2',
+251 silly addNameRange     '0.29.0',
+251 silly addNameRange     '0.30.0',
+251 silly addNameRange     '0.31.0',
+251 silly addNameRange     '0.31.1',
+251 silly addNameRange     '0.31.2',
+251 silly addNameRange     '0.32.0',
+251 silly addNameRange     '0.33.0',
+251 silly addNameRange     '0.34.0',
+251 silly addNameRange     '0.34.1',
+251 silly addNameRange     '0.35.0',
+251 silly addNameRange     '1.0.0',
+251 silly addNameRange     '1.0.1',
+251 silly addNameRange     '1.0.2',
+251 silly addNameRange     '1.1.0',
+251 silly addNameRange     '1.1.1',
+251 silly addNameRange     '1.1.2',
+251 silly addNameRange     '1.1.3',
+251 silly addNameRange     '1.1.4',
+251 silly addNameRange     '1.1.5',
+251 silly addNameRange     '1.2.0',
+251 silly addNameRange     '1.3.0',
+251 silly addNameRange     '1.3.1',
+251 silly addNameRange     '1.4.0',
+251 silly addNameRange     '1.4.1',
+251 silly addNameRange     '1.4.2',
+251 silly addNameRange     '1.5.0',
+251 silly addNameRange     '1.6.0',
+251 silly addNameRange     '1.7.0',
+251 silly addNameRange     '1.8.0',
+251 silly addNameRange     '1.8.1',
+251 silly addNameRange     '1.8.2',
+251 silly addNameRange     '1.9.0',
+251 silly addNameRange     '1.9.1',
+251 silly addNameRange     '1.9.2' ] ]
+252 verbose addNamed [ 'jade', '1.6.0' ]
+253 verbose addNamed [ '1.6.0', '1.6.0' ]
+254 silly lockFile c06071bd-jade-1-6-0 jade@1.6.0
+255 verbose lock jade@1.6.0 /Users/Baiqian/.npm/c06071bd-jade-1-6-0.lock
+256 silly lockFile c06071bd-jade-1-6-0 jade@1.6.0
+257 silly lockFile c06071bd-jade-1-6-0 jade@1.6.0
+258 silly lockFile ad8c17a8-jade-1-6-0 jade@~1.6.0
+259 silly lockFile ad8c17a8-jade-1-6-0 jade@~1.6.0
+260 http 304 https://registry.npmjs.org/cookie-parser
+261 silly registry.get cb [ 304,
+261 silly registry.get   { date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+261 silly registry.get     via: '1.1 varnish',
+261 silly registry.get     'last-modified': 'Thu, 23 Apr 2015 18:31:49 GMT',
+261 silly registry.get     'cache-control': 'max-age=60',
+261 silly registry.get     etag: '"CV9BVYAHFMTHCAIT3Z3TNUF41"',
+261 silly registry.get     age: '48',
+261 silly registry.get     connection: 'keep-alive',
+261 silly registry.get     'x-served-by': 'cache-atl6235-ATL',
+261 silly registry.get     'x-cache': 'HIT',
+261 silly registry.get     'x-cache-hits': '3',
+261 silly registry.get     'x-timer': 'S1429813957.563695,VS0,VE0',
+261 silly registry.get     vary: 'Accept' } ]
+262 verbose etag https://registry.npmjs.org/cookie-parser from cache
+263 silly addNameRange number 2 { name: 'cookie-parser',
+263 silly addNameRange   range: '>=1.3.3-0 <1.4.0-0',
+263 silly addNameRange   hasData: true }
+264 silly addNameRange versions [ 'cookie-parser',
+264 silly addNameRange   [ '1.0.0',
+264 silly addNameRange     '1.0.1',
+264 silly addNameRange     '1.1.0',
+264 silly addNameRange     '1.2.0',
+264 silly addNameRange     '1.3.0',
+264 silly addNameRange     '1.3.1',
+264 silly addNameRange     '1.3.2',
+264 silly addNameRange     '1.3.3',
+264 silly addNameRange     '1.3.4' ] ]
+265 verbose addNamed [ 'cookie-parser', '1.3.4' ]
+266 verbose addNamed [ '1.3.4', '1.3.4' ]
+267 silly lockFile db8a9715-cookie-parser-1-3-4 cookie-parser@1.3.4
+268 verbose lock cookie-parser@1.3.4 /Users/Baiqian/.npm/db8a9715-cookie-parser-1-3-4.lock
+269 silly lockFile db8a9715-cookie-parser-1-3-4 cookie-parser@1.3.4
+270 silly lockFile db8a9715-cookie-parser-1-3-4 cookie-parser@1.3.4
+271 silly lockFile bf5babd8-cookie-parser-1-3-3 cookie-parser@~1.3.3
+272 silly lockFile bf5babd8-cookie-parser-1-3-3 cookie-parser@~1.3.3
+273 http 200 https://registry.npmjs.org/body-parser
+274 silly registry.get cb [ 200,
+274 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+274 silly registry.get     etag: '"4G98EU7AUYVB9BCPCY2CI2RYD"',
+274 silly registry.get     'content-type': 'application/json',
+274 silly registry.get     'cache-control': 'max-age=60',
+274 silly registry.get     'content-length': '95465',
+274 silly registry.get     'accept-ranges': 'bytes',
+274 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+274 silly registry.get     via: '1.1 varnish',
+274 silly registry.get     age: '24',
+274 silly registry.get     connection: 'keep-alive',
+274 silly registry.get     'x-served-by': 'cache-atl6229-ATL',
+274 silly registry.get     'x-cache': 'HIT',
+274 silly registry.get     'x-cache-hits': '1',
+274 silly registry.get     'x-timer': 'S1429813957.524576,VS0,VE1',
+274 silly registry.get     vary: 'Accept' } ]
+275 silly addNameRange number 2 { name: 'body-parser',
+275 silly addNameRange   range: '>=1.8.1-0 <1.9.0-0',
+275 silly addNameRange   hasData: true }
+276 silly addNameRange versions [ 'body-parser',
+276 silly addNameRange   [ '1.0.0',
+276 silly addNameRange     '1.0.1',
+276 silly addNameRange     '1.0.2',
+276 silly addNameRange     '1.1.0',
+276 silly addNameRange     '1.1.1',
+276 silly addNameRange     '1.1.2',
+276 silly addNameRange     '1.2.0',
+276 silly addNameRange     '1.2.1',
+276 silly addNameRange     '1.2.2',
+276 silly addNameRange     '1.3.0',
+276 silly addNameRange     '1.3.1',
+276 silly addNameRange     '1.4.0',
+276 silly addNameRange     '1.4.1',
+276 silly addNameRange     '1.4.2',
+276 silly addNameRange     '1.4.3',
+276 silly addNameRange     '1.5.0',
+276 silly addNameRange     '1.5.1',
+276 silly addNameRange     '1.5.2',
+276 silly addNameRange     '1.6.0',
+276 silly addNameRange     '1.6.1',
+276 silly addNameRange     '1.6.2',
+276 silly addNameRange     '1.6.3',
+276 silly addNameRange     '1.6.4',
+276 silly addNameRange     '1.6.5',
+276 silly addNameRange     '1.6.6',
+276 silly addNameRange     '1.6.7',
+276 silly addNameRange     '1.7.0',
+276 silly addNameRange     '1.8.0',
+276 silly addNameRange     '1.8.1',
+276 silly addNameRange     '1.8.2',
+276 silly addNameRange     '1.8.3',
+276 silly addNameRange     '1.8.4',
+276 silly addNameRange     '1.9.0',
+276 silly addNameRange     '1.9.1',
+276 silly addNameRange     '1.9.2',
+276 silly addNameRange     '1.9.3',
+276 silly addNameRange     '1.10.0',
+276 silly addNameRange     '1.10.1',
+276 silly addNameRange     '1.10.2',
+276 silly addNameRange     '1.11.0',
+276 silly addNameRange     '1.12.0',
+276 silly addNameRange     '1.12.1',
+276 silly addNameRange     '1.12.2',
+276 silly addNameRange     '1.12.3' ] ]
+277 verbose addNamed [ 'body-parser', '1.8.4' ]
+278 verbose addNamed [ '1.8.4', '1.8.4' ]
+279 silly lockFile 5cba912c-body-parser-1-8-4 body-parser@1.8.4
+280 verbose lock body-parser@1.8.4 /Users/Baiqian/.npm/5cba912c-body-parser-1-8-4.lock
+281 silly lockFile 5cba912c-body-parser-1-8-4 body-parser@1.8.4
+282 silly lockFile 5cba912c-body-parser-1-8-4 body-parser@1.8.4
+283 silly lockFile a49948c1-body-parser-1-8-1 body-parser@~1.8.1
+284 silly lockFile a49948c1-body-parser-1-8-1 body-parser@~1.8.1
+285 http 304 https://registry.npmjs.org/zerorpc
+286 silly registry.get cb [ 304,
+286 silly registry.get   { date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+286 silly registry.get     via: '1.1 varnish',
+286 silly registry.get     'last-modified': 'Thu, 23 Apr 2015 18:32:37 GMT',
+286 silly registry.get     'cache-control': 'max-age=60',
+286 silly registry.get     etag: '"3I7IQOFDZ2OZU2TVKZWM51KEB"',
+286 silly registry.get     age: '0',
+286 silly registry.get     connection: 'keep-alive',
+286 silly registry.get     'x-served-by': 'cache-atl6231-ATL',
+286 silly registry.get     'x-cache': 'MISS',
+286 silly registry.get     'x-cache-hits': '0',
+286 silly registry.get     'x-timer': 'S1429813957.421344,VS0,VE224',
+286 silly registry.get     vary: 'Accept' } ]
+287 verbose etag https://registry.npmjs.org/zerorpc from cache
+288 silly addNameRange number 2 { name: 'zerorpc', range: '*', hasData: true }
+289 silly addNameRange versions [ 'zerorpc',
+289 silly addNameRange   [ '0.1.0',
+289 silly addNameRange     '0.2.0',
+289 silly addNameRange     '0.3.0',
+289 silly addNameRange     '0.4.0',
+289 silly addNameRange     '0.5.0',
+289 silly addNameRange     '0.6.0',
+289 silly addNameRange     '0.6.1',
+289 silly addNameRange     '0.7.0',
+289 silly addNameRange     '0.7.1',
+289 silly addNameRange     '0.7.2',
+289 silly addNameRange     '0.7.3',
+289 silly addNameRange     '0.7.4',
+289 silly addNameRange     '0.8.0',
+289 silly addNameRange     '0.8.1',
+289 silly addNameRange     '0.8.2',
+289 silly addNameRange     '0.8.3',
+289 silly addNameRange     '0.8.4',
+289 silly addNameRange     '0.8.5',
+289 silly addNameRange     '0.8.6',
+289 silly addNameRange     '0.8.7',
+289 silly addNameRange     '0.8.8',
+289 silly addNameRange     '0.9.0',
+289 silly addNameRange     '0.9.1',
+289 silly addNameRange     '0.9.2',
+289 silly addNameRange     '0.9.3' ] ]
+290 verbose addNamed [ 'zerorpc', '0.9.3' ]
+291 verbose addNamed [ '0.9.3', '0.9.3' ]
+292 silly lockFile 5245d2b3-zerorpc-0-9-3 zerorpc@0.9.3
+293 verbose lock zerorpc@0.9.3 /Users/Baiqian/.npm/5245d2b3-zerorpc-0-9-3.lock
+294 silly lockFile 5245d2b3-zerorpc-0-9-3 zerorpc@0.9.3
+295 silly lockFile 5245d2b3-zerorpc-0-9-3 zerorpc@0.9.3
+296 silly lockFile b4a13cf4-zerorpc zerorpc@*
+297 silly lockFile b4a13cf4-zerorpc zerorpc@*
+298 http 200 https://registry.npmjs.org/mongoose
+299 silly registry.get cb [ 200,
+299 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+299 silly registry.get     etag: '"B8J5B7M65E6BVHVEWG3XKUFSB"',
+299 silly registry.get     'content-type': 'application/json',
+299 silly registry.get     'cache-control': 'max-age=60',
+299 silly registry.get     'content-length': '313881',
+299 silly registry.get     'accept-ranges': 'bytes',
+299 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+299 silly registry.get     via: '1.1 varnish',
+299 silly registry.get     age: '56',
+299 silly registry.get     connection: 'keep-alive',
+299 silly registry.get     'x-served-by': 'cache-atl6233-ATL',
+299 silly registry.get     'x-cache': 'HIT',
+299 silly registry.get     'x-cache-hits': '1',
+299 silly registry.get     'x-timer': 'S1429813957.415537,VS0,VE3',
+299 silly registry.get     vary: 'Accept' } ]
+300 silly addNameRange number 2 { name: 'mongoose', range: '>=3.8.21-0 <3.9.0-0', hasData: true }
+301 silly addNameRange versions [ 'mongoose',
+301 silly addNameRange   [ '0.0.1',
+301 silly addNameRange     '0.0.2',
+301 silly addNameRange     '0.0.3',
+301 silly addNameRange     '0.0.4',
+301 silly addNameRange     '0.0.5',
+301 silly addNameRange     '1.0.0',
+301 silly addNameRange     '1.0.1',
+301 silly addNameRange     '1.0.2',
+301 silly addNameRange     '0.0.6',
+301 silly addNameRange     '1.0.3',
+301 silly addNameRange     '1.0.4',
+301 silly addNameRange     '1.0.5',
+301 silly addNameRange     '1.0.6',
+301 silly addNameRange     '1.0.7',
+301 silly addNameRange     '1.0.8',
+301 silly addNameRange     '1.0.10',
+301 silly addNameRange     '1.0.11',
+301 silly addNameRange     '1.0.12',
+301 silly addNameRange     '1.0.13',
+301 silly addNameRange     '1.0.14',
+301 silly addNameRange     '1.0.15',
+301 silly addNameRange     '1.0.16',
+301 silly addNameRange     '1.1.0',
+301 silly addNameRange     '1.1.1',
+301 silly addNameRange     '1.1.2',
+301 silly addNameRange     '1.1.3',
+301 silly addNameRange     '1.1.4',
+301 silly addNameRange     '1.1.5',
+301 silly addNameRange     '1.1.6',
+301 silly addNameRange     '1.1.7',
+301 silly addNameRange     '1.1.8',
+301 silly addNameRange     '1.1.9',
+301 silly addNameRange     '1.1.10',
+301 silly addNameRange     '1.1.11',
+301 silly addNameRange     '1.1.12',
+301 silly addNameRange     '1.1.13',
+301 silly addNameRange     '1.1.14',
+301 silly addNameRange     '1.1.15',
+301 silly addNameRange     '1.1.16',
+301 silly addNameRange     '1.1.17',
+301 silly addNameRange     '1.1.18',
+301 silly addNameRange     '1.1.19',
+301 silly addNameRange     '1.1.20',
+301 silly addNameRange     '1.1.21',
+301 silly addNameRange     '1.1.22',
+301 silly addNameRange     '1.1.23',
+301 silly addNameRange     '1.1.24',
+301 silly addNameRange     '1.1.25',
+301 silly addNameRange     '1.2.0',
+301 silly addNameRange     '1.3.0',
+301 silly addNameRange     '1.3.1',
+301 silly addNameRange     '1.3.2',
+301 silly addNameRange     '1.3.3',
+301 silly addNameRange     '1.3.4',
+301 silly addNameRange     '1.3.5',
+301 silly addNameRange     '1.3.6',
+301 silly addNameRange     '1.3.7',
+301 silly addNameRange     '1.4.0',
+301 silly addNameRange     '1.5.0',
+301 silly addNameRange     '1.6.0',
+301 silly addNameRange     '1.7.2',
+301 silly addNameRange     '1.7.3',
+301 silly addNameRange     '1.7.4',
+301 silly addNameRange     '1.8.0',
+301 silly addNameRange     '1.8.1',
+301 silly addNameRange     '1.8.2',
+301 silly addNameRange     '1.8.3',
+301 silly addNameRange     '1.8.4',
+301 silly addNameRange     '2.0.0',
+301 silly addNameRange     '2.0.1',
+301 silly addNameRange     '2.0.2',
+301 silly addNameRange     '2.0.3',
+301 silly addNameRange     '2.0.4',
+301 silly addNameRange     '2.1.0',
+301 silly addNameRange     '2.1.1',
+301 silly addNameRange     '2.1.2',
+301 silly addNameRange     '2.1.3',
+301 silly addNameRange     '2.1.4',
+301 silly addNameRange     '2.2.0',
+301 silly addNameRange     '2.2.1',
+301 silly addNameRange     '2.2.2',
+301 silly addNameRange     '2.2.3',
+301 silly addNameRange     '2.2.4',
+301 silly addNameRange     '2.3.0',
+301 silly addNameRange     '2.3.1',
+301 silly addNameRange     '2.3.2',
+301 silly addNameRange     '2.3.3',
+301 silly addNameRange     '2.3.4',
+301 silly addNameRange     '2.3.5',
+301 silly addNameRange     '2.3.6',
+301 silly addNameRange     '2.3.7',
+301 silly addNameRange     '2.3.8',
+301 silly addNameRange     '2.3.9',
+301 silly addNameRange     '2.3.10',
+301 silly addNameRange     '2.3.11',
+301 silly addNameRange     '2.3.12',
+301 silly addNameRange     '2.3.13',
+301 silly addNameRange     '2.4.0',
+301 silly addNameRange     '2.4.1',
+301 silly addNameRange     '2.4.2',
+301 silly addNameRange     '2.4.3',
+301 silly addNameRange     '2.4.4',
+301 silly addNameRange     '2.4.5',
+301 silly addNameRange     '2.4.6',
+301 silly addNameRange     '2.4.7',
+301 silly addNameRange     '2.4.8',
+301 silly addNameRange     '2.4.9',
+301 silly addNameRange     '2.4.10',
+301 silly addNameRange     '2.5.0',
+301 silly addNameRange     '2.5.1',
+301 silly addNameRange     '2.5.2',
+301 silly addNameRange     '2.5.3',
+301 silly addNameRange     '2.5.4',
+301 silly addNameRange     '2.5.5',
+301 silly addNameRange     '2.5.6',
+301 silly addNameRange     '2.5.7',
+301 silly addNameRange     '2.5.8',
+301 silly addNameRange     '2.5.9',
+301 silly addNameRange     '2.5.10',
+301 silly addNameRange     '2.5.11',
+301 silly addNameRange     '2.5.12',
+301 silly addNameRange     '2.5.13',
+301 silly addNameRange     '2.5.14',
+301 silly addNameRange     '2.6.0',
+301 silly addNameRange     '2.6.1',
+301 silly addNameRange     '2.6.2',
+301 silly addNameRange     '2.6.3',
+301 silly addNameRange     '2.6.4',
+301 silly addNameRange     '2.6.5',
+301 silly addNameRange     '2.6.6',
+301 silly addNameRange     '2.6.7',
+301 silly addNameRange     '2.6.8',
+301 silly addNameRange     '2.7.0',
+301 silly addNameRange     '2.7.1',
+301 silly addNameRange     '2.7.2',
+301 silly addNameRange     '2.7.4',
+301 silly addNameRange     '2.7.3',
+301 silly addNameRange     '3.0.0',
+301 silly addNameRange     '3.0.1',
+301 silly addNameRange     '3.0.2',
+301 silly addNameRange     '2.8.0',
+301 silly addNameRange     '3.0.3',
+301 silly addNameRange     '3.1.0',
+301 silly addNameRange     '2.8.1',
+301 silly addNameRange     '3.1.1',
+301 silly addNameRange     '2.8.2',
+301 silly addNameRange     '2.8.3',
+301 silly addNameRange     '2.9.0',
+301 silly addNameRange     '3.2.0',
+301 silly addNameRange     '2.9.1',
+301 silly addNameRange     '3.2.1',
+301 silly addNameRange     '2.9.2',
+301 silly addNameRange     '3.2.2',
+301 silly addNameRange     '3.3.0',
+301 silly addNameRange     '3.3.1',
+301 silly addNameRange     '2.9.3',
+301 silly addNameRange     '3.4.0',
+301 silly addNameRange     '2.9.4',
+301 silly addNameRange     '2.9.5',
+301 silly addNameRange     '3.5.0',
+301 silly addNameRange     '3.5.1',
+301 silly addNameRange     '3.5.2',
+301 silly addNameRange     '3.5.3',
+301 silly addNameRange     '2.9.6',
+301 silly addNameRange     '2.9.7',
+301 silly addNameRange     '3.5.4',
+301 silly addNameRange     '3.5.5',
+301 silly addNameRange     '2.9.8',
+301 silly addNameRange     '2.9.9',
+301 silly addNameRange     '3.5.6',
+301 silly addNameRange     '3.5.7',
+301 silly addNameRange     '3.5.8',
+301 silly addNameRange     '2.9.10',
+301 silly addNameRange     '3.5.9',
+301 silly addNameRange     '3.6.2',
+301 silly addNameRange     '3.5.10',
+301 silly addNameRange     '3.6.3',
+301 silly addNameRange     '3.5.11',
+301 silly addNameRange     '3.6.4',
+301 silly addNameRange     '3.6.5',
+301 silly addNameRange     '3.6.6',
+301 silly addNameRange     '3.6.7',
+301 silly addNameRange     '3.5.12',
+301 silly addNameRange     '3.6.8',
+301 silly addNameRange     '3.6.9',
+301 silly addNameRange     '3.6.10',
+301 silly addNameRange     '3.5.13',
+301 silly addNameRange     '3.5.14',
+301 silly addNameRange     '3.6.11',
+301 silly addNameRange     '3.6.12',
+301 silly addNameRange     '3.6.13',
+301 silly addNameRange     '3.6.14',
+301 silly addNameRange     '3.6.15',
+301 silly addNameRange     '3.5.15',
+301 silly addNameRange     '3.7.0',
+301 silly addNameRange     '3.6.16',
+301 silly addNameRange     '3.5.16',
+301 silly addNameRange     '3.6.17',
+301 silly addNameRange     '3.7.2',
+301 silly addNameRange     '3.0.0-alpha1',
+301 silly addNameRange     '3.0.0-alpha2',
+301 silly addNameRange     '3.0.0-rc0',
+301 silly addNameRange     '3.6.0-rc0',
+301 silly addNameRange     '3.6.0-rc1',
+301 silly addNameRange     '3.6.18',
+301 silly addNameRange     '3.7.3',
+301 silly addNameRange     '3.6.19',
+301 silly addNameRange     '3.6.20',
+301 silly addNameRange     '3.7.4',
+301 silly addNameRange     '3.8.0',
+301 silly addNameRange     '3.8.1',
+301 silly addNameRange     '3.8.2',
+301 silly addNameRange     '3.8.3',
+301 silly addNameRange     '3.8.4',
+301 silly addNameRange     '3.8.5',
+301 silly addNameRange     '3.8.6',
+301 silly addNameRange     '3.8.7',
+301 silly addNameRange     '3.8.8',
+301 silly addNameRange     '3.8.9',
+301 silly addNameRange     '3.8.10',
+301 silly addNameRange     '3.8.11',
+301 silly addNameRange     '3.9.0',
+301 silly addNameRange     '3.8.12',
+301 silly addNameRange     '3.8.13',
+301 silly addNameRange     '3.8.14',
+301 silly addNameRange     '3.8.15',
+301 silly addNameRange     '3.9.1',
+301 silly addNameRange     '3.8.16',
+301 silly addNameRange     '3.9.2',
+301 silly addNameRange     '3.8.17',
+301 silly addNameRange     '3.9.3',
+301 silly addNameRange     '3.8.18',
+301 silly addNameRange     '3.9.4',
+301 silly addNameRange     '3.8.19',
+301 silly addNameRange     '3.9.5',
+301 silly addNameRange     '3.8.20',
+301 silly addNameRange     '3.9.6',
+301 silly addNameRange     '3.8.21',
+301 silly addNameRange     '3.9.7',
+301 silly addNameRange     '3.8.22',
+301 silly addNameRange     '4.0.0-rc0',
+301 silly addNameRange     '4.0.0-rc1',
+301 silly addNameRange     '3.8.23',
+301 silly addNameRange     '4.0.0-rc2',
+301 silly addNameRange     '3.8.24',
+301 silly addNameRange     '4.0.0-rc3',
+301 silly addNameRange     '3.8.25',
+301 silly addNameRange     '4.0.0-rc4',
+301 silly addNameRange     '4.0.0',
+301 silly addNameRange     '4.0.1',
+301 silly addNameRange     '3.8.26',
+301 silly addNameRange     '3.8.27',
+301 silly addNameRange     '4.0.2' ] ]
+302 verbose addNamed [ 'mongoose', '3.8.27' ]
+303 verbose addNamed [ '3.8.27', '3.8.27' ]
+304 silly lockFile f2a31ed2-mongoose-3-8-27 mongoose@3.8.27
+305 verbose lock mongoose@3.8.27 /Users/Baiqian/.npm/f2a31ed2-mongoose-3-8-27.lock
+306 http 200 https://registry.npmjs.org/express
+307 silly registry.get cb [ 200,
+307 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+307 silly registry.get     etag: '"1D0OJC61TAMCOY716VOK2CS6W"',
+307 silly registry.get     'content-type': 'application/json',
+307 silly registry.get     'cache-control': 'max-age=60',
+307 silly registry.get     'content-length': '492574',
+307 silly registry.get     'accept-ranges': 'bytes',
+307 silly registry.get     date: 'Thu, 23 Apr 2015 18:32:37 GMT',
+307 silly registry.get     via: '1.1 varnish',
+307 silly registry.get     age: '54',
+307 silly registry.get     connection: 'keep-alive',
+307 silly registry.get     'x-served-by': 'cache-atl6227-ATL',
+307 silly registry.get     'x-cache': 'HIT',
+307 silly registry.get     'x-cache-hits': '2',
+307 silly registry.get     'x-timer': 'S1429813957.423334,VS0,VE0',
+307 silly registry.get     vary: 'Accept' } ]
+308 silly lockFile 50c6e0c2-org-mongoose-mongoose-3-8-27-tgz https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz
+309 verbose lock https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz /Users/Baiqian/.npm/50c6e0c2-org-mongoose-mongoose-3-8-27-tgz.lock
+310 verbose addRemoteTarball [ 'https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz',
+310 verbose addRemoteTarball   '52abe2daf313c525d9cb920a7a9b6cfc7c0a281a' ]
+311 silly addNameRange number 2 { name: 'express', range: '>=4.9.0-0 <4.10.0-0', hasData: true }
+312 silly addNameRange versions [ 'express',
+312 silly addNameRange   [ '0.14.0',
+312 silly addNameRange     '0.14.1',
+312 silly addNameRange     '1.0.0',
+312 silly addNameRange     '1.0.1',
+312 silly addNameRange     '1.0.2',
+312 silly addNameRange     '1.0.3',
+312 silly addNameRange     '1.0.4',
+312 silly addNameRange     '1.0.5',
+312 silly addNameRange     '1.0.6',
+312 silly addNameRange     '1.0.7',
+312 silly addNameRange     '1.0.8',
+312 silly addNameRange     '2.0.0',
+312 silly addNameRange     '2.1.0',
+312 silly addNameRange     '2.1.1',
+312 silly addNameRange     '2.2.0',
+312 silly addNameRange     '2.2.1',
+312 silly addNameRange     '2.2.2',
+312 silly addNameRange     '2.3.0',
+312 silly addNameRange     '2.3.1',
+312 silly addNameRange     '2.3.2',
+312 silly addNameRange     '2.3.3',
+312 silly addNameRange     '2.3.4',
+312 silly addNameRange     '2.3.5',
+312 silly addNameRange     '2.3.6',
+312 silly addNameRange     '2.3.7',
+312 silly addNameRange     '2.3.8',
+312 silly addNameRange     '2.3.9',
+312 silly addNameRange     '2.3.10',
+312 silly addNameRange     '2.3.11',
+312 silly addNameRange     '2.3.12',
+312 silly addNameRange     '2.4.0',
+312 silly addNameRange     '2.4.1',
+312 silly addNameRange     '2.4.2',
+312 silly addNameRange     '2.4.3',
+312 silly addNameRange     '2.4.4',
+312 silly addNameRange     '2.4.5',
+312 silly addNameRange     '2.4.6',
+312 silly addNameRange     '2.4.7',
+312 silly addNameRange     '2.5.0',
+312 silly addNameRange     '2.5.1',
+312 silly addNameRange     '2.5.2',
+312 silly addNameRange     '2.5.3',
+312 silly addNameRange     '2.5.4',
+312 silly addNameRange     '2.5.5',
+312 silly addNameRange     '2.5.6',
+312 silly addNameRange     '2.5.7',
+312 silly addNameRange     '2.5.8',
+312 silly addNameRange     '2.5.9',
+312 silly addNameRange     '2.5.10',
+312 silly addNameRange     '2.5.11',
+312 silly addNameRange     '3.0.0',
+312 silly addNameRange     '3.0.1',
+312 silly addNameRange     '3.0.2',
+312 silly addNameRange     '3.0.3',
+312 silly addNameRange     '3.0.4',
+312 silly addNameRange     '3.0.5',
+312 silly addNameRange     '3.0.6',
+312 silly addNameRange     '3.1.0',
+312 silly addNameRange     '3.1.1',
+312 silly addNameRange     '3.1.2',
+312 silly addNameRange     '3.2.0',
+312 silly addNameRange     '3.2.1',
+312 silly addNameRange     '3.2.2',
+312 silly addNameRange     '3.2.3',
+312 silly addNameRange     '3.2.4',
+312 silly addNameRange     '3.2.5',
+312 silly addNameRange     '3.2.6',
+312 silly addNameRange     '3.3.0',
+312 silly addNameRange     '3.3.1',
+312 silly addNameRange     '3.3.2',
+312 silly addNameRange     '3.3.3',
+312 silly addNameRange     '3.3.4',
+312 silly addNameRange     '3.3.5',
+312 silly addNameRange     '3.3.6',
+312 silly addNameRange     '1.0.0-beta',
+312 silly addNameRange     '1.0.0-beta2',
+312 silly addNameRange     '1.0.0-rc',
+312 silly addNameRange     '1.0.0-rc2',
+312 silly addNameRange     '1.0.0-rc3',
+312 silly addNameRange     '1.0.0-rc4',
+312 silly addNameRange     '2.0.0-beta',
+312 silly addNameRange     '2.0.0-beta2',
+312 silly addNameRange     '2.0.0-beta3',
+312 silly addNameRange     '2.0.0-rc',
+312 silly addNameRange     '2.0.0-rc2',
+312 silly addNameRange     '2.0.0-rc3',
+312 silly addNameRange     '3.0.0-alpha1',
+312 silly addNameRange     '3.0.0-alpha2',
+312 silly addNameRange     '3.0.0-alpha3',
+312 silly addNameRange     '3.0.0-alpha4',
+312 silly addNameRange     '3.0.0-alpha5',
+312 silly addNameRange     '3.0.0-beta1',
+312 silly addNameRange     '3.0.0-beta2',
+312 silly addNameRange     '3.0.0-beta3',
+312 silly addNameRange     '3.0.0-beta4',
+312 silly addNameRange     '3.0.0-beta6',
+312 silly addNameRange     '3.0.0-beta7',
+312 silly addNameRange     '3.0.0-rc1',
+312 silly addNameRange     '3.0.0-rc2',
+312 silly addNameRange     '3.0.0-rc3',
+312 silly addNameRange     '3.0.0-rc4',
+312 silly addNameRange     '3.0.0-rc5',
+312 silly addNameRange     '3.3.7',
+312 silly addNameRange     '3.3.8',
+312 silly addNameRange     '3.4.0',
+312 silly addNameRange     '3.4.1',
+312 silly addNameRange     '3.4.2',
+312 silly addNameRange     '3.4.3',
+312 silly addNameRange     '3.4.4',
+312 silly addNameRange     '3.4.5',
+312 silly addNameRange     '3.4.6',
+312 silly addNameRange     '3.4.7',
+312 silly addNameRange     '3.4.8',
+312 silly addNameRange     '4.0.0-rc1',
+312 silly addNameRange     '4.0.0-rc2',
+312 silly addNameRange     '3.5.0',
+312 silly addNameRange     '4.0.0-rc3',
+312 silly addNameRange     '4.0.0-rc4',
+312 silly addNameRange     '3.5.1',
+312 silly addNameRange     '4.0.0',
+312 silly addNameRange     '3.5.2',
+312 silly addNameRange     '4.1.0',
+312 silly addNameRange     '4.1.1',
+312 silly addNameRange     '3.5.3',
+312 silly addNameRange     '4.1.2',
+312 silly addNameRange     '3.6.0',
+312 silly addNameRange     '4.2.0',
+312 silly addNameRange     '3.7.0',
+312 silly addNameRange     '3.8.0',
+312 silly addNameRange     '4.3.0',
+312 silly addNameRange     '4.3.1',
+312 silly addNameRange     '3.8.1',
+312 silly addNameRange     '4.3.2',
+312 silly addNameRange     '3.9.0',
+312 silly addNameRange     '4.4.0',
+312 silly addNameRange     '4.4.1',
+312 silly addNameRange     '3.10.0',
+312 silly addNameRange     '3.10.1',
+312 silly addNameRange     '3.10.2',
+312 silly addNameRange     '3.10.3',
+312 silly addNameRange     '3.10.4',
+312 silly addNameRange     '4.4.2',
+312 silly addNameRange     '3.10.5',
+312 silly addNameRange     '4.4.3',
+312 silly addNameRange     '3.11.0',
+312 silly addNameRange     '4.4.4',
+312 silly addNameRange     '3.12.0',
+312 silly addNameRange     '3.12.1',
+312 silly addNameRange     '4.4.5',
+312 silly addNameRange     '3.13.0',
+312 silly addNameRange     '4.5.0',
+312 silly addNameRange     '4.5.1',
+312 silly addNameRange     '3.14.0',
+312 silly addNameRange     '4.6.0',
+312 silly addNameRange     '4.6.1',
+312 silly addNameRange     '3.15.0',
+312 silly addNameRange     '4.7.0',
+312 silly addNameRange     '3.15.1',
+312 silly addNameRange     '4.7.1',
+312 silly addNameRange     '3.15.2',
+312 silly addNameRange     '4.7.2',
+312 silly addNameRange     '4.7.3',
+312 silly addNameRange     '3.15.3',
+312 silly addNameRange     '4.7.4',
+312 silly addNameRange     '3.16.0',
+312 silly addNameRange     '4.8.0',
+312 silly addNameRange     '3.16.1',
+312 silly addNameRange     '4.8.1',
+312 silly addNameRange     '3.16.2',
+312 silly addNameRange     '4.8.2',
+312 silly addNameRange     '3.16.3',
+312 silly addNameRange     '3.16.4',
+312 silly addNameRange     '4.8.3',
+312 silly addNameRange     '3.16.5',
+312 silly addNameRange     '3.16.6',
+312 silly addNameRange     '4.8.4',
+312 silly addNameRange     '3.16.7',
+312 silly addNameRange     '4.8.5',
+312 silly addNameRange     '3.16.8',
+312 silly addNameRange     '4.8.6',
+312 silly addNameRange     '3.16.9',
+312 silly addNameRange     '4.8.7',
+312 silly addNameRange     '3.16.10',
+312 silly addNameRange     '4.8.8',
+312 silly addNameRange     '3.17.0',
+312 silly addNameRange     '3.17.1',
+312 silly addNameRange     '4.9.0',
+312 silly addNameRange     '3.17.2',
+312 silly addNameRange     '4.9.1',
+312 silly addNameRange     '4.9.2',
+312 silly addNameRange     '3.17.3',
+312 silly addNameRange     '4.9.3',
+312 silly addNameRange     '3.17.4',
+312 silly addNameRange     '4.9.4',
+312 silly addNameRange     '3.17.5',
+312 silly addNameRange     '4.9.5',
+312 silly addNameRange     '3.17.6',
+312 silly addNameRange     '3.17.7',
+312 silly addNameRange     '4.9.6',
+312 silly addNameRange     '4.9.7',
+312 silly addNameRange     '3.17.8',
+312 silly addNameRange     '4.9.8',
+312 silly addNameRange     '3.18.0',
+312 silly addNameRange     '3.18.1',
+312 silly addNameRange     '4.10.0',
+312 silly addNameRange     '3.18.2',
+312 silly addNameRange     '4.10.1',
+312 silly addNameRange     '5.0.0-alpha.1',
+312 silly addNameRange     '3.18.3',
+312 silly addNameRange     '4.10.2',
+312 silly addNameRange     '3.18.4',
+312 silly addNameRange     '4.10.3',
+312 silly addNameRange     '4.10.4',
+312 silly addNameRange     '4.10.5',
+312 silly addNameRange     '3.18.5',
+312 silly addNameRange     '3.18.6',
+312 silly addNameRange     '4.10.6',
+312 silly addNameRange     '4.10.7',
+312 silly addNameRange     '3.19.0',
+312 silly addNameRange     '4.10.8',
+312 silly addNameRange     '4.11.0',
+312 silly addNameRange     '3.19.1',
+312 silly addNameRange     '4.11.1',
+312 silly addNameRange     '3.19.2',
+312 silly addNameRange     '4.11.2',
+312 silly addNameRange     '3.20.0',
+312 silly addNameRange     '4.12.0',
+312 silly addNameRange     '3.20.1',
+312 silly addNameRange     '4.12.1',
+312 silly addNameRange     '4.12.2',
+312 silly addNameRange     '3.20.2',
+312 silly addNameRange     '4.12.3' ] ]
+313 verbose addNamed [ 'express', '4.9.8' ]
+314 verbose addNamed [ '4.9.8', '4.9.8' ]
+315 silly lockFile 3e3a25f6-express-4-9-8 express@4.9.8
+316 verbose lock express@4.9.8 /Users/Baiqian/.npm/3e3a25f6-express-4-9-8.lock
+317 info retry fetch attempt 1 at 14:32:37
+318 verbose fetch to= /var/folders/mk/j08wbb_s5lx68f4pkbl9rd200000gn/T/npm-4477-bvWDqZ7e/registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz
+319 http GET https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz
+320 silly lockFile 3e3a25f6-express-4-9-8 express@4.9.8
+321 silly lockFile 3e3a25f6-express-4-9-8 express@4.9.8
+322 silly lockFile 6ae7fa08-express-4-9-0 express@~4.9.0
+323 silly lockFile 6ae7fa08-express-4-9-0 express@~4.9.0
+324 http 200 https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz
+325 silly lockFile 50c6e0c2-org-mongoose-mongoose-3-8-27-tgz https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz
+326 silly lockFile 50c6e0c2-org-mongoose-mongoose-3-8-27-tgz https://registry.npmjs.org/mongoose/-/mongoose-3.8.27.tgz
+327 silly lockFile f2a31ed2-mongoose-3-8-27 mongoose@3.8.27
+328 silly lockFile f2a31ed2-mongoose-3-8-27 mongoose@3.8.27
+329 silly lockFile 3ec00dd8-mongoose-3-8-21 mongoose@~3.8.21
+330 silly lockFile 3ec00dd8-mongoose-3-8-21 mongoose@~3.8.21
+331 error Error: EACCES, mkdir '/Users/Baiqian/.npm/mongoose/3.8.27'
+331 error  { [Error: EACCES, mkdir '/Users/Baiqian/.npm/mongoose/3.8.27']
+331 error   errno: 3,
+331 error   code: 'EACCES',
+331 error   path: '/Users/Baiqian/.npm/mongoose/3.8.27',
+331 error   parent: 'TweetVis' }
+332 error Please try running this command again as root/Administrator.
+333 error System Darwin 14.3.0
+334 error command "node" "/usr/local/bin/npm" "install"
+335 error cwd /Users/Baiqian/Documents/playground/TweetVis
+336 error node -v v0.10.38
+337 error npm -v 1.4.28
+338 error path /Users/Baiqian/.npm/mongoose/3.8.27
+339 error code EACCES
+340 error errno 3
+341 error stack Error: EACCES, mkdir '/Users/Baiqian/.npm/mongoose/3.8.27'
+342 verbose exit [ 3, true ]

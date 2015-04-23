@@ -64,10 +64,11 @@ function($scope, $routeParams, Tweet) {
 
 TweetControllers.controller('ListOneCollection', ['$scope', '$routeParams', 'Tweet', '$http', 'filterFilter', 
 function($scope, $routeParams, Tweet, $http, filterFilter) {
+    $scope.collectionId = $routeParams.collectionId;
     $scope.itemsPerPage = 10;
     $scope.currentPage = 1;
 
-    $http.get('/getAllTweets/' + $routeParams.collectionId)
+    $http.get('/getAllTweets/' + $scope.collectionId)
     .success(function(tweets) {
         $scope.tweets = tweets;
         $scope.totalItems = $scope.tweets.length;
