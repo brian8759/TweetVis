@@ -2,6 +2,7 @@
 /.settings
 /.project
 node_modules
+npm-debug.log
 old/
 tmp/
 .tmp/
